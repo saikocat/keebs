@@ -28,6 +28,7 @@ In the table below, `layer` represents layer number, usual is `0 or 1 or 2 or 3`
   * `Backspace` binds on `layer_2` at `Space` key.
   * `MO(2)` binds on any activation key.
 * `LT(2, KC_ENT)` - when held the key, it activates `layer_2` while tap it serves as `Enter` key. To set up this binding, chose `ANY` under `SPECIAL` and input `LT(2, KC_ENT)` for the key. I use this setup for the key next to my 2u Thumb Cluster on my Iris keyboard.
+* VIA has `SPC_FN1` pre-made and assignable as `Space Fn1` (Hold = Layer1, Tap = Space) under `LAYERS` section.
 
 ### Caveats
 Currently, the layer argument of `LT()` is limited to layers 0-15, and the `kc` argument to the Basic Keycode set, meaning you can’t use keycodes like `LCTL()`, `KC_TILD`, or anything greater than `0xFF`.
