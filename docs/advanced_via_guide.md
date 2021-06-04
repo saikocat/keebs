@@ -65,6 +65,51 @@ It's highly recommended to use `KC_SFTENT` for `Right Shift` and `Enter` to leav
 
 If you are gaming then leave all the `Left Modifiers` alone without using `Space Cadets` as more often than not, you will be tapping these keycodes instead of hold (crouch, sprint, etc.).
 
+## Mod-Tap
+
+The Mod-Tap key `MT(mod, kc)` acts like a modifier when held, and a regular keycode when tapped. In other words, you can have a key that sends Escape when you tap it, but functions as a Control or Shift key when you hold it down.
+
+|Keycode                 |Description                                                                            |
+|------------------------|---------------------------------------------------------------------------------------|
+|`MT(MOD_XXXX, KC_XXXX)` |When held, activate modifier XXXX (see table below) <br/> When tapped, send `KC_XXXX`. |
+|`OSM(MOD_XXXX)`         |Activate modifier XXXX (see table below) for the next key pressed.                     |
+
+The modifiers this keycode and `OSM()` accept are prefixed with `MOD_`, not `KC_`:
+
+|Modifier  |Description                             |
+|----------|----------------------------------------|
+|`MOD_LCTL`|Left Control                            |
+|`MOD_LSFT`|Left Shift                              |
+|`MOD_LALT`|Left Alt                                |
+|`MOD_LGUI`|Left GUI (Windows/Command/Meta key)     |
+|`MOD_RCTL`|Right Control                           |
+|`MOD_RSFT`|Right Shift                             |
+|`MOD_RALT`|Right Alt (AltGr)                       |
+|`MOD_RGUI`|Right GUI (Windows/Command/Meta key)    |
+|`MOD_HYPR`|Hyper (Left Control, Shift, Alt and GUI)|
+|`MOD_MEH` |Meh (Left Control, Shift, and Alt)      |
+
+You also can combine these MODs by ORing them together (`|`). See examples section below.
+
+In VIA, `ADV` will be displayed on top of the keycap and hover over it will show the assigned key combination.
+
+### Examples
+
+* We can mimic `KC_SFTENT` with `MT(MOD_RSFT, KC_ENT)`. Beautiful, isn't it? Many ways to accomplish the same goals, and the journey is worthwhile with endless possibilities.
+* On my Iris where both windows key and grave lack a dedicated slot, this key `MT(MOD_LGUI, KC_GRV)` will trigger Windows key when held, and send grave key when tapped.
+* Most Linux desktop has way to switch workspace with Ctrl, Shift and Alt combination, instead of twisting your fingers to get all the key, use `OSM(mod)` then just send the key of corresponding workspace or up down left right arrow key.
+* This key would activate Left Control and Left Shift when held, and send Escape when tapped. It's done by combining  MODs by ORing:
+
+```c
+MT(MOD_LCTL | MOD_LSFT, KC_ESC)
+```
+
+### Caveats
+
+Currently, the `kc` argument of `MT()` is limited to the [Basic Keycode set](https://docs.qmk.fm/#/keycodes_basic), meaning you can't use keycodes like `LCTL()`, `KC_TILD`, or anything greater than `0xFF`.
+
+QMK included Mod-Tap shortcuts to make common combinations more compact in your keymap don't work (`LCTL_T(kc)`, `C_S_T(kc)`, etc.).
+
 ## Wishlist
 
 As an avid VIM user, all I wanted is the `Leader Key` function to be usable in VIA :(
