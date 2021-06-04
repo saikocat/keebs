@@ -1,6 +1,36 @@
 # Advanced VIA Guide
 
-Essential cheatsheet for staggered column and ortholinear setup. Also this serves as a gentle introduction to some of the advanced features of QMK that are usable in VIA.
+This serves as a gentle introduction to some of the advanced features of QMK that are usable in VIA. Also contains tips for staggered column and ortholinear setup.
+
+## Layers
+
+### Switching and Toggling Layers
+
+These functions allow you to activate layers in various ways. Note that layers are not generally independent layouts – multiple layers can be activated at once, and it's typical for layers to use `KC_TRNS` to allow keypresses to pass through to lower layers. When using momentary layer switching with `MO()`, `LM()`, `TT()`, or `LT()`, make sure to leave the key on the above layers transparent or it may not work as intended.
+
+In the table below, `layer` represents layer number, usual is `0 or 1 or 2 or 3` in VIA (as it has max 3 layers) and `KC_XXXX` represents any valid basic keycode.
+
+|Keycode             |Description                                                                                         |
+|--------------------|----------------------------------------------------------------------------------------------------|
+|`MO(layer)`         |While held, `MO`mentarily activates `layer`.                                                        |
+|`LT(layer, KC_XXXX)`|Layer Tap. <br/> When held: activate `layer`. <br/> When tapped: send `KC_XXXX`                     |
+|`TG(layer)`         |Layer Toggle. <br/> When tapped: toggles `layer` on or off                                          |
+|`TO(layer)`         |When tapped: activates `layer` and de-activates all other layers (except your default layer         |
+|`TT(layer)`         |Layer Tap-Toggle. <br/> When tapped: toggles `layer` on or off. <br/> When held: activates `layer`. |
+|`OSL(layer)`        |One-Shot Layer. <br/> Activate `layer` for the next keypress                                        |
+
+### Sample Usage
+
+* Activate `Windows + Space` for language switching with the setup as below (Iris keyboard doesn't have enough keys for a dedicated Windows button). Press and hold `MO(2)` then `MOD_LGUI` key then **RELEASE** `MO(2)` key while still holding on to `MOD_LGUI`, then `KC_SPACE`.
+  * `Space` binds on `layer_0`.
+  * `Window` / `MOD_LGUI` binds on `layer_2` at `Z` key.
+  * `Enter` binds on `layer_1` at `Space` key.
+  * `Backspace` binds on `layer_2` at `Space` key.
+  * `MO(2)` binds on any activation key.
+* `LT(2, KC_ENT)` - when held the key, it activates `layer_2` while tap it serves as `Enter` key. To set up this binding, chose `ANY` under `SPECIAL` and input `LT(2, KC_ENT)` for the key. I use this setup for the key next to my 2u Thumb Cluster on my Iris keyboard.
+
+### Caveats
+Currently, the layer argument of `LT()` is limited to layers 0-15, and the `kc` argument to the Basic Keycode set, meaning you can’t use keycodes like `LCTL()`, `KC_TILD`, or anything greater than `0xFF`.
 
 ## Space Cadet
 
