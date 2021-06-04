@@ -50,6 +50,9 @@ It's highly recommended to use `KC_SFTENT` for `Right Shift` and `Enter` to leav
 
 If you are gaming then leave all the `Left Modifiers` alone without using `Space Cadets` as more often than not, you will be tapping these keycodes instead of hold (crouch, sprint, etc.).
 
+## Wishlist
+
+As an avid VIM user, all I wanted is the `Leader Key` function to be usable in VIA :(
 
 ## References
 
