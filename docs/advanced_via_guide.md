@@ -6,7 +6,7 @@ Essential cheatsheet for staggered column and ortholinear setup. Also this serve
 
 You will find the keycodes for them under `SPECIAL` section in the bottom left panel.
 
-|Keycode    |VIA UI  | Description                               |
+|Keycode    |VIA UI  |Description                                |
 |-----------|--------|-------------------------------------------|
 |`KC_LSPO`  |`LS(`   |Left Shift when held, `(` when tapped      |
 |`KC_RSPC`  |`RS)`   |Right Shift when held, `)` when tapped     |
@@ -21,7 +21,7 @@ It's highly recommended to use `KC_SFTENT` for `Right Shift` and `Enter` to leav
 If you are gaming then leave all the `Left Modifiers` alone without using `Space Cadets` as more often than not, you will be tapping these keycodes instead of hold (crouch, sprint, etc.).
 
 
-# References
+## References
 
 1. [Keycodes](https://docs.qmk.fm/#/keycodes)
 2. [Layers](https://docs.qmk.fm/#/feature_layers)
