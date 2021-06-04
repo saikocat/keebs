@@ -110,6 +110,26 @@ Currently, the `kc` argument of `MT()` is limited to the [Basic Keycode set](htt
 
 QMK included Mod-Tap shortcuts to make common combinations more compact in your keymap don't work (`LCTL_T(kc)`, `C_S_T(kc)`, etc.).
 
+## Macros
+
+Macros in VIA is less powerful than in QMK. You can only able to assign a single key or a sequence of key without delay with an optional Enter tap at the end of macro.
+
+### Examples
+
+* `{KC_G,KC_G,KC_SPC,KC_W,KC_P}` - this macro is a chord that type `gg wp` (short form for "good game well played") at the end of your match. NO salt macros for Overwatch please, else no endorsement for you! :)
+* `{KC_LCTL,KC_A},{KC_BSPC}` - Ctrl A + Delete - Clears the entire input field or document. Simple and effective.
+
+
+## VIA Quirks & Troubleshooting
+
+### Use Only Keycode Alias
+
+For basic keycodes, it seems VIA only accepted keycode alias instead of full keycode (at least on the board that I own). So you have to use `KC_ENT` instead of `KC_ENTER` for example.
+
+### Detect Wrong ANY Key Setup
+
+More often than not when you start to tinker with `MT` mod-tap, the keymap will not be working/assigned. VIA will display as a `blank keycap` and when you hover the key, it will show `KC_NO` (NOTHING) in the status bar at the bottom.
+
 ## Wishlist
 
 As an avid VIM user, all I wanted is the `Leader Key` function to be usable in VIA :(
