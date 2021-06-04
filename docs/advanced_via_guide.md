@@ -2,6 +2,20 @@
 
 This serves as a gentle introduction to some of the advanced features of QMK that are usable in VIA. Also contains tips for staggered column and ortholinear setup.
 
+## Enter "Any" QMK Keycode
+
+`Any` is a unique key with *pastel pink background* that is located under `SPECIAL` section in the bottom left panel which allows us to assign most QMK keycodes/hex codes (`KC_XXXX`, `0xFF`, etc.). It serves a building block for many customizations in this guide as it allows us to unlock powerful key combination modifiers.
+
+![Any key location](https://i.imgur.com/8uXDFvl.png)
+
+Display wise after assigned the QMK keycode:
+
+* `ADV` will be displayed on top of the keycap and hover over it will show the FULL assigned key combination.
+* Some longer keycode like `LT()` will instead display the whole key function on the keycap.
+* Invalid keycode will be displayed as a `blank keycap` and when you hover the key, it will show `KC_NO` (NOTHING) in the status bar at the bottom.
+
+![Any key display](https://i.imgur.com/cfSrRXW.png)
+
 ## Layers
 
 ### Switching and Toggling Layers
