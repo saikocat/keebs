@@ -1,6 +1,6 @@
-# Advanced VIA Guide
+# Practical VIA Keymap Guide
 
-This serves as a gentle introduction to some of the advanced features of QMK that are usable in VIA. Also contains tips for staggered column and ortholinear setup.
+This serves as a gentle introduction to some of the advanced features of QMK that are usable in VIA. Also contains practical tips for staggered column and ortholinear setup.
 
 ## Enter "Any" QMK Keycode
 

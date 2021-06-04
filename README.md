@@ -1,3 +1,3 @@
 # keebs
 
-1. [Advanced VIA Guide](docs/advanced_via_guide.md)
+1. [Practical VIA Keymap Guide](docs/pratical_via_keymap_guide.md)
