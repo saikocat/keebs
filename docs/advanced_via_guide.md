@@ -33,7 +33,7 @@ In the table below, `layer` represents layer number, usual is `0 or 1 or 2 or 3`
 |`TT(layer)`         |Layer Tap-Toggle. <br/> When tapped: toggles `layer` on or off. <br/> When held: activates `layer`. |
 |`OSL(layer)`        |One-Shot Layer. <br/> Activate `layer` for the next keypress                                        |
 
-### Sample Usage
+### Examples
 
 * Activate `Windows + Space` for language switching with the setup as below (Iris keyboard doesn't have enough keys for a dedicated Windows button). Press and hold `MO(2)` then `MOD_LGUI` key then **RELEASE** `MO(2)` key while still holding on to `MOD_LGUI`, then `KC_SPACE`.
   * `Space` binds on `layer_0`.
@@ -41,8 +41,8 @@ In the table below, `layer` represents layer number, usual is `0 or 1 or 2 or 3`
   * `Enter` binds on `layer_1` at `Space` key.
   * `Backspace` binds on `layer_2` at `Space` key.
   * `MO(2)` binds on any activation key.
-* `LT(2, KC_ENT)` - when held the key, it activates `layer_2` while tap it serves as `Enter` key. To set up this binding, chose `ANY` under `SPECIAL` and input `LT(2, KC_ENT)` for the key. I use this setup for the key next to my 2u Thumb Cluster on my Iris keyboard.
-* VIA has `SPC_FN1` pre-made and assignable as `Space Fn1` (Hold = Layer1, Tap = Space) under `LAYERS` section.
+* `LT(2, KC_ENT)` - when held the key, it activates `layer_2` while tap it serves as `Enter` key. To set up this binding, chose the only pastel pink color `Any` key under `SPECIAL` section and input `LT(2, KC_ENT)` for the key. I use this setup for the key next to my 2u Thumb Cluster on my Iris keyboard.
+* VIA has a few useful pre-made and assignable such as `SPC_FN1`/`Space Fn1` (Hold = Layer1, Tap = Space) under `LAYERS` section.
 
 ### Caveats
 Currently, the layer argument of `LT()` is limited to layers 0-15, and the `kc` argument to the Basic Keycode set, meaning you can’t use keycodes like `LCTL()`, `KC_TILD`, or anything greater than `0xFF`.
