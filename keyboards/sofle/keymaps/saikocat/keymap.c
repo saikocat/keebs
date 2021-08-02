@@ -346,22 +346,23 @@ static void render_pet(int PET_X, int PET_Y) {
     void animate_pet(void) {
 
         /* TODO: jump is causing artifact
-        // /* jump /
+        // / jump /
         // if (is_jumping || !showed_jump) {
-        //     /* clear /
+        //     / clear /
         //     oled_set_cursor(PET_X, PET_Y);
         //     oled_write("    ", false);
         //
         //     oled_set_cursor(PET_X, PET_Y-1);
         //     showed_jump = true;
         // } else {
-        //     /* clear /
+        //     / clear /
         //     oled_set_cursor(PET_X, PET_Y-1);
         //     oled_write("    ", false);
         //
         //     oled_set_cursor(PET_X, PET_Y);
         // }
         */
+        oled_set_cursor(PET_X, PET_Y);
 
         /* switch frame */
         current_frame = (current_frame + 1) % 2;
