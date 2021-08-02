@@ -23,3 +23,99 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [1] = LAYOUT(KC_F12, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_GRV, KC_EQL, KC_LCBR, KC_RCBR, KC_MINS, KC_PIPE, KC_TRNS, KC_MINS, KC_MINS, KC_MINS, KC_PLUS, KC_TRNS, KC_TILD, KC_LBRC, KC_9, KC_0, KC_RBRC, KC_BSLS, KC_ASTR, KC_PLUS, KC_EQL, KC_UNDS, KC_COLN, KC_DQUO, KC_TRNS, KC_EXLM, KC_AT, KC_HASH, KC_DLR, KC_PERC, KC_TRNS, KC_NO, KC_CIRC, KC_AMPR, KC_LT, KC_GT, KC_QUES, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_ENT, KC_BSPC, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
     [2] = LAYOUT(KC_F12, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_INS, KC_TRNS, RESET, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, LCTL(KC_LEFT), LCTL(KC_BSPC), KC_TRNS, LCTL(KC_RGHT), KC_PSCR, KC_DEL, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_CAPS, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, DF(0), KC_TRNS, KC_TRNS, LCTL(KC_Z), LCTL(KC_X), LCTL(KC_C), LCTL(KC_V), KC_TRNS, KC_TRNS, KC_TRNS, KC_HOME, KC_PGDN, KC_PGUP, KC_END, DF(2), KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_BSPC, KC_ENT, KC_TRNS, KC_GRV, KC_TRNS, KC_TRNS)
 };
+
+
+/* Function: encoder
+ * -----------------
+ * A rotary encoder is a device that you can twist to perform actions.
+ * Some encoders can also be pushed, just like a button!
+ * A rotary encoder twists clockwise and counter clockwise.
+ * It lends itself to actions that you'd otherwise need to repeatedly press a button for,
+ * and to actions that have both a forward and a reverse direction.
+ *
+ * Reference: https://docs.splitkb.com/hc/en-us/articles/360010513760-How-can-I-use-a-rotary-encoder-
+ */
+
+#ifdef ENCODER_ENABLE
+
+/* Audio control */
+void fn_rotary_audio_control(bool clockwise) {
+    if (clockwise) {
+        tap_code(KC_VOLU);
+    } else {
+        tap_code(KC_VOLD);
+    }
+}
+
+/* Scrolling */
+void fn_rotary_scrolling(bool clockwise) {
+    if (clockwise) {
+        tap_code(KC_PGDOWN);
+    } else {
+        tap_code(KC_PGUP);
+    }
+}
+
+/* Tabbing
+ * -------
+ * Moving through browser mimicing Control + Tab and Control + Shift + Tab
+ */
+void fn_rotary_tabbing(bool clockwise) {
+    if (clockwise) {
+        tap_code16(C(KC_TAB));
+    } else {
+        tap_code16(S(C(KC_TAB)));
+    }
+}
+
+/* History Scrubbing
+ * -----------------
+ * This will perform Control + Z when you turn the encoder clockwise,
+ * and Control + Y when turning it counterclockwise.
+ * With this, you can easily "scroll" through the history when editing a document.
+ */
+void fn_rotary_history_scrubbing(bool clockwise) {
+    if (clockwise) {
+        tap_code16(C(KC_Y));
+    } else {
+        tap_code16(C(KC_Z));
+    }
+}
+
+/* Scrolling Horizontally by Word
+ * ------------------------------
+ * This will perform Control + Right Arrow when you turn the encoder clockwise,
+ * and Control + Left Arrow when turning it counterclockwise.
+ * If you hold shift while turning the encoder, you'll be able to select words while the cursor moves!
+ */
+void fn_rotary_word_scrolling(bool clockwise) {
+    if (clockwise) {
+        tap_code16(C(KC_RGHT));
+    } else {
+        tap_code16(C(KC_LEFT));
+    }
+}
+
+/* Scrolling Through Search Results
+ * --------------------------------
+ * Shortcuts to move to the next or previous result. F3 and Shift + F3.
+ */
+void fn_rotary_search_through_results(bool clockwise) {
+    if (clockwise) {
+        tap_code(KC_F3);
+    } else {
+        tap_code16(S(KC_F3));
+    }
+}
+
+/* User defined func that will be called by QMK every time encoder is turned */
+bool encoder_update_user(uint8_t index, bool clockwise) {
+    if (index == 0) {
+        fn_rotary_search_through_results(clockwise);
+    } else if (index == 1) {
+        fn_rotary_audio_control(clockwise);
+    }
+    return true;
+}
+
+#endif
