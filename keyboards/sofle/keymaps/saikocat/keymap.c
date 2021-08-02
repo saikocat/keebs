@@ -127,6 +127,39 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
 #endif
 
 
+#ifdef OLED_DRIVER_ENABLE
+
+/* Function: Logos
+ * ---------------
+ */
+static void render_logo(void) {
+    /* 32x32 'awake' logo */
+    static const char PROGMEM my_logo[] = {
+        0x00, 0x40, 0x40, 0x80, 0x80, 0x04, 0x08, 0x10, 0x20, 0x00, 0xc0, 0x30, 0x08, 0x10, 0x60, 0x80,
+        0x00, 0x80, 0x60, 0x10, 0x08, 0x30, 0xc0, 0x00, 0x10, 0x08, 0x04, 0x80, 0x80, 0x40, 0x40, 0x00,
+        0x08, 0x08, 0x08, 0x08, 0x00, 0x01, 0x01, 0x00, 0x00, 0x7f, 0x80, 0x40, 0x40, 0x5c, 0x00, 0x01,
+        0x41, 0x01, 0x00, 0x5c, 0x40, 0x40, 0x80, 0x7f, 0x00, 0x01, 0x01, 0x08, 0x08, 0x08, 0x08, 0x00,
+        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x40, 0x40, 0x80, 0xe1, 0x12, 0x0a, 0x06, 0x00,
+        0x80, 0x00, 0x06, 0x0a, 0x12, 0xe1, 0x90, 0x48, 0x64, 0x92, 0x0c, 0x00, 0x00, 0x00, 0x00, 0x00,
+        0x00, 0x00, 0x00, 0x00, 0x00, 0x18, 0x1f, 0x14, 0x14, 0x10, 0x10, 0x11, 0x1f, 0x10, 0x10, 0x18,
+        0x0f, 0x18, 0x10, 0x10, 0x1f, 0x11, 0x10, 0x10, 0x14, 0x14, 0x1f, 0x18, 0x00, 0x00, 0x00, 0x00,
+    };
+
+    oled_write_raw_P(my_logo, sizeof(my_logo));
+}
+
+/* 32 * 32 os logos */
+static const char PROGMEM archlinux_logo[] = {
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0xf0, 0xfe,
+    0xfe, 0xf0, 0xc0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0xf0, 0xf8, 0xf9, 0xff, 0xff, 0xff,
+    0xff, 0xff, 0xff, 0xff, 0xfc, 0xf0, 0xc0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0xf0, 0xfc, 0xff, 0xff, 0xff, 0xff, 0x7f, 0x0f, 0x07, 0x07,
+    0x07, 0x07, 0x0f, 0x7f, 0xff, 0xff, 0xff, 0xff, 0xfc, 0xf0, 0xc0, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x60, 0x78, 0x3c, 0x3f, 0x1f, 0x1f, 0x0f, 0x0f, 0x07, 0x07, 0x07, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x07, 0x07, 0x07, 0x0f, 0x0f, 0x1f, 0x1e, 0x3c, 0x3c, 0x78, 0x60, 0x00
+};
+
 /* Function: Neko Pet Animation
  * ----------------------------
  * - Keyboard Pets react to your wpm counter:
@@ -135,7 +168,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
  *    over 40 wpm they run
  * - They will move sneakily if you hold down Ctrl
  * - Will react if you activate Caps Lock!
- * - Jump every time you hit the space bar
+ * - TODO: Jump every time you hit the space bar
  *
  * Immense thanks to /u/HellSingCoder existing implementation of Luna
  * and /u/whateverworks325 for sprites and idea.
@@ -166,8 +199,10 @@ led_t led_usb_state;
 bool current_oled_on = true;
 
 bool is_sneaking = false;
+/* TODO: jump is causing artifact
 bool is_jumping = false;
 bool showed_jump = true;
+*/
 
 /* logic */
 static void render_pet(int PET_X, int PET_Y) {
@@ -310,24 +345,23 @@ static void render_pet(int PET_X, int PET_Y) {
     /* animation */
     void animate_pet(void) {
 
-        /* jump */
-        if (is_jumping || !showed_jump) {
-
-            /* clear */
-            oled_set_cursor(PET_X, PET_Y +2);
-            oled_write("     ", false);
-
-            oled_set_cursor(PET_X, PET_Y -1);
-
-            showed_jump = true;
-        } else {
-
-            /* clear */
-            oled_set_cursor(PET_X,PET_Y -1);
-            oled_write("     ", false);
-
-            oled_set_cursor(PET_X,PET_Y);
-        }
+        /* TODO: jump is causing artifact
+        // /* jump /
+        // if (is_jumping || !showed_jump) {
+        //     /* clear /
+        //     oled_set_cursor(PET_X, PET_Y);
+        //     oled_write("    ", false);
+        //
+        //     oled_set_cursor(PET_X, PET_Y-1);
+        //     showed_jump = true;
+        // } else {
+        //     /* clear /
+        //     oled_set_cursor(PET_X, PET_Y-1);
+        //     oled_write("    ", false);
+        //
+        //     oled_set_cursor(PET_X, PET_Y);
+        // }
+        */
 
         /* switch frame */
         current_frame = (current_frame + 1) % 2;
@@ -374,6 +408,7 @@ void handle_keycode(uint16_t keycode, keyrecord_t *record) {
                 is_sneaking = false;
             }
             break;
+        /* TODO: jump is causing artifact
         case KC_SPC:
             if (record->event.pressed) {
                 is_jumping = true;
@@ -382,6 +417,7 @@ void handle_keycode(uint16_t keycode, keyrecord_t *record) {
                 is_jumping = false;
             }
             break;
+        */
     }
 }
 
@@ -412,7 +448,7 @@ static void display_status_narrow(void) {
     oled_set_cursor(0,0);
     oled_write_raw_P(archlinux_logo, sizeof(archlinux_logo));
 
-    oled_set_cursor(0,4);
+    oled_set_cursor(0,5);
 
     switch (get_highest_layer(default_layer_state)) {
         case _BASE:
@@ -425,12 +461,12 @@ static void display_status_narrow(void) {
             oled_write("UNDEF", false);
     }
 
-    oled_set_cursor(0,6);
+    oled_set_cursor(0,7);
 
     /* Display current layer */
     oled_write("LAYER", false);
 
-    oled_set_cursor(0,7);
+    oled_set_cursor(0,8);
 
     switch (get_highest_layer(layer_state)) {
         case _BASE:
@@ -450,11 +486,11 @@ static void display_status_narrow(void) {
     }
 
     /* Caps lock */
-    oled_set_cursor(0,9);
+    oled_set_cursor(0,10);
     oled_write("CPSLK", led_usb_state.caps_lock);
 
     /* Pet rendering */
-    render_pet(0,11);
+    render_pet(0,12);
 }
 
 
