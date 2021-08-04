@@ -117,7 +117,7 @@ void fn_rotary_search_through_results(bool clockwise) {
 /* User defined func that will be called by QMK every time encoder is turned */
 bool encoder_update_user(uint8_t index, bool clockwise) {
     if (index == 0) {
-        fn_rotary_search_through_results(clockwise);
+        fn_rotary_audio_control(clockwise);
     } else if (index == 1) {
         fn_rotary_scrolling(clockwise);
     }
@@ -196,7 +196,7 @@ uint8_t current_frame = 0;
 /* status variables */
 int current_wpm = 0;
 led_t led_usb_state;
-bool current_oled_on = true;
+/* bool current_oled_on = true; */
 
 bool is_sneaking = false;
 /* TODO: jump is causing artifact
@@ -381,20 +381,22 @@ static void render_pet(int PET_X, int PET_Y) {
         }
     }
 
-    /* animation timer */
-    if ((timer_elapsed32(anim_timer) > ANIM_FRAME_DURATION) && current_oled_on) {
-        anim_timer = timer_read32();
-        animate_pet();
-    }
-
-    /* this fixes the screen on and off bug */
-    if (current_wpm > 0) {
+    if(get_current_wpm() != 000) {
         oled_on();
-        current_oled_on = true;
+        if(timer_elapsed32(anim_timer) > ANIM_FRAME_DURATION) {
+            anim_timer = timer_read32();
+            animate_pet();
+        }
         anim_sleep = timer_read32();
-    } else if (timer_elapsed32(anim_sleep) > OLED_TIMEOUT) {
-        oled_off();
-        current_oled_on = false;
+    } else {
+        if(timer_elapsed32(anim_sleep) > OLED_TIMEOUT) {
+            oled_off();
+        } else {
+            if(timer_elapsed32(anim_timer) > ANIM_FRAME_DURATION) {
+                anim_timer = timer_read32();
+                animate_pet();
+            }
+        }
     }
 }
 
@@ -430,6 +432,11 @@ void handle_keycode(uint16_t keycode, keyrecord_t *record) {
 static void display_logo_narrow(void) {
     render_logo();
 
+    oled_set_cursor(0,7);
+    oled_write("GIT", false);
+    oled_set_cursor(0,8);
+    oled_write("GUD!", false);
+
     /* wpm counter */
     uint8_t n = get_current_wpm();
     char wpm_str[4];
@@ -456,7 +463,7 @@ static void display_status_narrow(void) {
             oled_write("QWERT", false);
             break;
         case _NAVUTIL:
-            oled_write("NAV", false);
+            oled_write("NAV  ", false);
             break;
         default:
             oled_write("UNDEF", false);
