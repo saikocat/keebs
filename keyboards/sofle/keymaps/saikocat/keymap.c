@@ -31,6 +31,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 
+/* Function: Bit-C microcontroller specific
+ * ----------------------------------------
+ * Just turn off OLED for the keyboard for now when CapsLock is not on
+ */
+
+#ifdef HW_BITC
+
+#include "bitc_led.h"
+
+// Use Bit-C LED to show CAPS LOCK status
+bool led_update_kb(led_t led_state) {
+    bool res = led_update_user(led_state);
+    if (res) {
+        set_bitc_LED(led_state.caps_lock ? LED_DIM : LED_OFF);
+    }
+    return res;
+}
+
+#endif
+
+
 /* Function: encoder
  * -----------------
  * A rotary encoder is a device that you can twist to perform actions.

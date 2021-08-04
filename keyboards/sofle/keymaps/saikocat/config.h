@@ -18,3 +18,5 @@
 
 #define OLED_TIMEOUT 60000
 #define OLED_BRIGHTNESS 128
+
+#define HW_BITC 1
