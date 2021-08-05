@@ -16,6 +16,8 @@
 
 #include QMK_KEYBOARD_H
 
+/* TODO: refactor into modular .h and .c */
+
 enum layer_number {
   _BASE = 0,
   _SYMBOLS,

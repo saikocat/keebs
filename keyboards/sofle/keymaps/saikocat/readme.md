@@ -2,8 +2,9 @@
 
 Layout in *TODO*
 
-**Importants**: Remember to remove `TAPPING_TERM` and `TAP_CODE_DELAY` from
-`rev1/config.h`
+**Importants**:
+- Remember to remove `TAPPING_TERM` and `TAP_CODE_DELAY` from `rev1/config.h`
+- Override `ENCODER_RESOLUTION` to `4`
 
 Features:
 - Bit-C Microcontroller LED supports (NOTE: Only work with Master)
