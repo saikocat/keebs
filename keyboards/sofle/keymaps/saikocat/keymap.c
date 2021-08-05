@@ -136,14 +136,46 @@ void fn_rotary_search_through_results(bool clockwise) {
     }
 }
 
+/* Window tabbing
+ * --------------------------------
+ * Like with tabs, you can also move through applications.
+ * In Windows, you can do this with Alt + Tab and Alt + Shift + Tab.
+ */
+bool is_alt_tab_active = false;
+uint16_t alt_tab_timer = 0;
+
+void fn_rotary_wins_tabbing(bool clockwise) {
+    if (clockwise) {
+        if (!is_alt_tab_active) {
+            is_alt_tab_active = true;
+            register_code(KC_LALT);
+        }
+        alt_tab_timer = timer_read();
+        tap_code16(KC_TAB);
+    } else {
+        alt_tab_timer = timer_read();
+        tap_code16(S(KC_TAB));
+    }
+}
+
 /* User defined func that will be called by QMK every time encoder is turned */
 bool encoder_update_user(uint8_t index, bool clockwise) {
     if (index == 0) {
-        fn_rotary_audio_control(clockwise);
+        fn_rotary_wins_tabbing(clockwise);
     } else if (index == 1) {
         fn_rotary_scrolling(clockwise);
     }
     return true;
+}
+
+/* TODO: move it to correct place */
+void matrix_scan_user(void) {
+  if (is_alt_tab_active) {
+    if (timer_elapsed(alt_tab_timer) > 1250) { /* 1250ms hold wait */
+      unregister_code(KC_LALT);
+      is_alt_tab_active = false;
+    }
+  }
 }
 
 #endif
