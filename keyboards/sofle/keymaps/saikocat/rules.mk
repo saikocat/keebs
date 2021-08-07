@@ -1,9 +1,6 @@
 # VIA required
 VIA_ENABLE = yes
 BLUETOOTH_ENABLE = no
-FAUXCLICKY_ENABLE = no
-KEY_LOCK_ENABLE = no
-LEADER_ENABLE = no
 MIDI_ENABLE = no
 TERMINAL_ENABLE = no
 
@@ -22,3 +19,6 @@ SLEEP_LED_ENABLE = no
 CONSOLE_ENABLE = no
 COMMAND_ENABLE = no
 AUDIO_ENABLE = no
+
+SRC += ./lib/rotary_encoder.c \
+       ./lib/bitc_led.c

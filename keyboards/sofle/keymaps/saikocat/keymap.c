@@ -26,10 +26,12 @@ enum layer_number {
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+    // clang-format off
     [_BASE] = LAYOUT(KC_GESC, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, KC_BSLS, KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSPC, KC_LCTL, KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT, KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_MUTE, XXXXXXX, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_SFTENT, KC_LGUI, KC_ENT, LALT_T(KC_GRV), LT(1,KC_BSPC), KC_SPC, KC_SPC, LT(2,KC_ENT), RCTL_T(KC_DEL), KC_RALT, KC_RGUI),
     [_SYMBOLS] = LAYOUT(KC_F12, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_GRV, KC_EQL, KC_LCBR, KC_RCBR, KC_MINS, KC_PIPE, _______, KC_MINS, KC_MINS, KC_MINS, KC_PLUS, _______, KC_TILD, KC_LBRC, KC_9, KC_0, KC_RBRC, KC_BSLS, KC_ASTR, KC_PLUS, KC_EQL, KC_UNDS, KC_COLN, KC_DQUO, _______, KC_EXLM, KC_AT, KC_HASH, KC_DLR, KC_PERC, _______, XXXXXXX, KC_CIRC, KC_AMPR, KC_LT, KC_GT, KC_QUES, _______, _______, _______, _______, _______, KC_ENT, KC_BSPC, _______, _______, _______, _______),
     [_NAVUTIL] = LAYOUT(KC_F12, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_INS, _______, RESET, _______, _______, _______, _______, LCTL(KC_LEFT), LCTL(KC_BSPC), _______, LCTL(KC_RGHT), KC_PSCR, KC_DEL, _______, _______, _______, _______, _______, KC_CAPS, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, DF(0), _______, _______, LCTL(KC_Z), LCTL(KC_X), LCTL(KC_C), LCTL(KC_V), _______, _______, _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END, DF(2), _______, _______, _______, _______, _______, KC_BSPC, KC_ENT, _______, KC_GRV, _______, _______),
     [_ADJUST] = LAYOUT(_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______)
+    // clang-format on
 };
 
 
@@ -41,7 +43,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 #ifdef HW_BITC
 
-#include "bitc_led.h"
+#include "./lib/bitc_led.h"
 
 // Use Bit-C LED to show CAPS LOCK status
 bool led_update_kb(led_t led_state) {
@@ -68,97 +70,7 @@ bool led_update_kb(led_t led_state) {
 
 #ifdef ENCODER_ENABLE
 
-/* Audio control */
-void fn_rotary_audio_control(bool clockwise) {
-    if (clockwise) {
-        tap_code(KC_VOLU);
-    } else {
-        tap_code(KC_VOLD);
-    }
-}
-
-/* Scrolling */
-void fn_rotary_scrolling(bool clockwise) {
-    if (clockwise) {
-        tap_code(KC_PGDOWN);
-    } else {
-        tap_code(KC_PGUP);
-    }
-}
-
-/* Tabbing
- * -------
- * Moving through browser mimicing Control + Tab and Control + Shift + Tab
- */
-void fn_rotary_tabbing(bool clockwise) {
-    if (clockwise) {
-        tap_code16(C(KC_TAB));
-    } else {
-        tap_code16(S(C(KC_TAB)));
-    }
-}
-
-/* History Scrubbing
- * -----------------
- * This will perform Control + Z when you turn the encoder clockwise,
- * and Control + Y when turning it counterclockwise.
- * With this, you can easily "scroll" through the history when editing a document.
- */
-void fn_rotary_history_scrubbing(bool clockwise) {
-    if (clockwise) {
-        tap_code16(C(KC_Y));
-    } else {
-        tap_code16(C(KC_Z));
-    }
-}
-
-/* Scrolling Horizontally by Word
- * ------------------------------
- * This will perform Control + Right Arrow when you turn the encoder clockwise,
- * and Control + Left Arrow when turning it counterclockwise.
- * If you hold shift while turning the encoder, you'll be able to select words while the cursor moves!
- */
-void fn_rotary_word_scrolling(bool clockwise) {
-    if (clockwise) {
-        tap_code16(C(KC_RGHT));
-    } else {
-        tap_code16(C(KC_LEFT));
-    }
-}
-
-/* Scrolling Through Search Results
- * --------------------------------
- * Shortcuts to move to the next or previous result. F3 and Shift + F3.
- */
-void fn_rotary_search_through_results(bool clockwise) {
-    if (clockwise) {
-        tap_code(KC_F3);
-    } else {
-        tap_code16(S(KC_F3));
-    }
-}
-
-/* Window tabbing
- * --------------------------------
- * Like with tabs, you can also move through applications.
- * In Windows, you can do this with Alt + Tab and Alt + Shift + Tab.
- */
-bool is_alt_tab_active = false;
-uint16_t alt_tab_timer = 0;
-
-void fn_rotary_wins_tabbing(bool clockwise) {
-    if (clockwise) {
-        if (!is_alt_tab_active) {
-            is_alt_tab_active = true;
-            register_code(KC_LALT);
-        }
-        alt_tab_timer = timer_read();
-        tap_code16(KC_TAB);
-    } else {
-        alt_tab_timer = timer_read();
-        tap_code16(S(KC_TAB));
-    }
-}
+#include "./lib/rotary_encoder.h"
 
 /* User defined func that will be called by QMK every time encoder is turned */
 bool encoder_update_user(uint8_t index, bool clockwise) {
@@ -170,7 +82,6 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
     return true;
 }
 
-/* TODO: move it to correct place */
 void matrix_scan_user(void) {
   if (is_alt_tab_active) {
     if (timer_elapsed(alt_tab_timer) > 1250) { /* 1250ms hold wait */
@@ -243,25 +154,25 @@ static const char PROGMEM archlinux_logo[] = {
 #define ANIM_FRAMES 2
 
 /* timers */
-uint32_t anim_timer = 0;
-uint32_t anim_sleep = 0;
+uint32_t pet_anim_timer = 0;
+uint32_t pet_anim_sleep = 0;
 
 /* current frame */
-uint8_t current_frame = 0;
+uint8_t pet_current_frame = 0;
 
 /* status variables */
 int current_wpm = 0;
 led_t led_usb_state;
 /* bool current_oled_on = true; */
 
-bool is_sneaking = false;
+bool pet_is_sneaking = false;
 /* TODO: jump is causing artifact
 bool is_jumping = false;
 bool showed_jump = true;
 */
 
 /* logic */
-static void render_pet(int PET_X, int PET_Y) {
+static void pet_render(int PET_X, int PET_Y) {
 
     /* Idle  */
     static const char PROGMEM idle[ANIM_FRAMES][ANIM_SIZE] = {
@@ -399,7 +310,7 @@ static void render_pet(int PET_X, int PET_Y) {
     };
 
     /* animation */
-    void animate_pet(void) {
+    void pet_animate(void) {
 
         /* TODO: jump is causing artifact
         // / jump /
@@ -421,50 +332,50 @@ static void render_pet(int PET_X, int PET_Y) {
         oled_set_cursor(PET_X, PET_Y);
 
         /* switch frame */
-        current_frame = (current_frame + 1) % 2;
+        pet_current_frame = (pet_current_frame + 1) % 2;
 
         /* current status */
         if(led_usb_state.caps_lock) {
-            oled_write_raw_P(annoy[abs(1 - current_frame)], ANIM_SIZE);
-        } else if(is_sneaking) {
-            oled_write_raw_P(sneak[abs(1 - current_frame)], ANIM_SIZE);
+            oled_write_raw_P(annoy[abs(1 - pet_current_frame)], ANIM_SIZE);
+        } else if(pet_is_sneaking) {
+            oled_write_raw_P(sneak[abs(1 - pet_current_frame)], ANIM_SIZE);
         } else if(current_wpm <= MIN_WALK_SPEED) {
-            oled_write_raw_P(idle[abs(1 - current_frame)], ANIM_SIZE);
+            oled_write_raw_P(idle[abs(1 - pet_current_frame)], ANIM_SIZE);
         } else if(current_wpm <= MIN_RUN_SPEED) {
-            oled_write_raw_P(walk[abs(1 - current_frame)], ANIM_SIZE);
+            oled_write_raw_P(walk[abs(1 - pet_current_frame)], ANIM_SIZE);
         } else {
-            oled_write_raw_P(run[abs(1 - current_frame)], ANIM_SIZE);
+            oled_write_raw_P(run[abs(1 - pet_current_frame)], ANIM_SIZE);
         }
     }
 
     if(get_current_wpm() != 000) {
         oled_on();
-        if(timer_elapsed32(anim_timer) > ANIM_FRAME_DURATION) {
-            anim_timer = timer_read32();
-            animate_pet();
+        if(timer_elapsed32(pet_anim_timer) > ANIM_FRAME_DURATION) {
+            pet_anim_timer = timer_read32();
+            pet_animate();
         }
-        anim_sleep = timer_read32();
+        pet_anim_sleep = timer_read32();
     } else {
-        if(timer_elapsed32(anim_sleep) > OLED_TIMEOUT) {
+        if(timer_elapsed32(pet_anim_sleep) > OLED_TIMEOUT) {
             oled_off();
         } else {
-            if(timer_elapsed32(anim_timer) > ANIM_FRAME_DURATION) {
-                anim_timer = timer_read32();
-                animate_pet();
+            if(timer_elapsed32(pet_anim_timer) > ANIM_FRAME_DURATION) {
+                pet_anim_timer = timer_read32();
+                pet_animate();
             }
         }
     }
 }
 
 /* modularize so easier to copy and paste */
-void handle_keycode(uint16_t keycode, keyrecord_t *record) {
+void pet_handle_keycode(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case KC_LCTL:
         case KC_RCTL:
             if (record->event.pressed) {
-                is_sneaking = true;
+                pet_is_sneaking = true;
             } else {
-                is_sneaking = false;
+                pet_is_sneaking = false;
             }
             break;
         /* TODO: jump is causing artifact
@@ -554,7 +465,7 @@ static void display_status_narrow(void) {
     oled_write("CPSLK", led_usb_state.caps_lock);
 
     /* Pet rendering */
-    render_pet(0,12);
+    pet_render(0,12);
 }
 
 
@@ -588,7 +499,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     #ifdef OLED_DRIVER_ENABLE
 
-    handle_keycode(keycode, record);
+    pet_handle_keycode(keycode, record);
 
     #endif
 
