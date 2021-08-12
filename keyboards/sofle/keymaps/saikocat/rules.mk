@@ -20,5 +20,8 @@ CONSOLE_ENABLE = no
 COMMAND_ENABLE = no
 AUDIO_ENABLE = no
 
+# Bit-C uses atmel-dfu
+BOOTLOADER = atmel-dfu
+
 SRC += ./lib/rotary_encoder.c \
        ./lib/bitc_led.c
