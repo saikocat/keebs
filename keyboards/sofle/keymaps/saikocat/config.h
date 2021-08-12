@@ -20,3 +20,19 @@
 #define OLED_BRIGHTNESS 128
 
 #define HW_BITC 1
+
+/* Restore default values for TAPPING_TERM & TAP_CODE_DELAY & ENCODER_RES */
+#ifdef TAPPING_TERM
+    #undef TAPPING_TERM
+    #define TAPPING_TERM 200
+#endif
+
+#ifdef TAP_CODE_DELAY
+    #undef TAP_CODE_DELAY
+    /* #define TAP_CODE_DELAY 100 */
+#endif
+
+#ifdef ENCODER_RESOLUTION
+    #undef ENCODER_RESOLUTION
+    #define ENCODER_RESOLUTION 4
+#endif

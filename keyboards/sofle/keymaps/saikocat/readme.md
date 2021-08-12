@@ -3,7 +3,7 @@
 Layout in *TODO*
 
 **Importants**:
-- Remember to remove `TAPPING_TERM` and `TAP_CODE_DELAY` from `rev1/config.h`
+- Restore `TAPPING_TERM` and `TAP_CODE_DELAY` to default values
 - Override `ENCODER_RESOLUTION` to `4`
 
 Features:
