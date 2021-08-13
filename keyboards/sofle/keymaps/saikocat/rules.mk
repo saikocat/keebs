@@ -24,4 +24,5 @@ AUDIO_ENABLE = no
 BOOTLOADER = atmel-dfu
 
 SRC += features/rotary_encoder.c \
-       features/bitc_led.c
+       features/bitc_led.c \
+       features/pet_neko.c
