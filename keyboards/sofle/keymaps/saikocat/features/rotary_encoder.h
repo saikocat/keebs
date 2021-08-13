@@ -16,9 +16,9 @@
 
 #pragma once
 
-#include "quantum.h"
+#include QMK_KEYBOARD_H
 
-bool is_alt_tab_active;
+bool     is_alt_tab_active;
 uint16_t alt_tab_timer;
 
 void fn_rotary_audio_control(bool clockwise);

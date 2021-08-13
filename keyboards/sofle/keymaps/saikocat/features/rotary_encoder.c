@@ -14,7 +14,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
 /* Function: encoder
  * -----------------
  * A rotary encoder is a device that you can twist to perform actions.
@@ -103,8 +102,8 @@ void fn_rotary_search_through_results(bool clockwise) {
  * Like with tabs, you can also move through applications.
  * In Windows, you can do this with Alt + Tab and Alt + Shift + Tab.
  */
-bool is_alt_tab_active = false;
-uint16_t alt_tab_timer = 0;
+bool     is_alt_tab_active = false;
+uint16_t alt_tab_timer     = 0;
 
 void fn_rotary_wins_tabbing(bool clockwise) {
     if (clockwise) {

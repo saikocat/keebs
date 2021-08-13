@@ -47,7 +47,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
 #ifdef HW_BITC
 
-#include "./lib/bitc_led.h"
+#include "features/bitc_led.h"
 
 // Use Bit-C LED to show CAPS LOCK status
 bool led_update_kb(led_t led_state) {
@@ -74,7 +74,7 @@ bool led_update_kb(led_t led_state) {
 
 #ifdef ENCODER_ENABLE
 
-#include "./lib/rotary_encoder.h"
+#include "features/rotary_encoder.h"
 
 /* User defined func that will be called by QMK every time encoder is turned */
 bool encoder_update_user(uint8_t index, bool clockwise) {

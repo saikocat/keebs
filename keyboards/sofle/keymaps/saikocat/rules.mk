@@ -23,5 +23,5 @@ AUDIO_ENABLE = no
 # Bit-C uses atmel-dfu
 BOOTLOADER = atmel-dfu
 
-SRC += ./lib/rotary_encoder.c \
-       ./lib/bitc_led.c
+SRC += features/rotary_encoder.c \
+       features/bitc_led.c
