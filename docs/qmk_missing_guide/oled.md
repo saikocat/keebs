@@ -26,7 +26,7 @@ See [this excellent article](https://docs.splitkb.com/hc/en-us/articles/36001381
 
 ## Font Size & Max Rendering Width (per "physical line")
 
-Most of the time the code you copy from is using the default font (glcdfont.c](https://github.com/qmk/qmk_firmware/blob/master/drivers/oled/glcdfont.c), which is Helidox 8x6 font.
+Most of the time the code you copy from is using the default font [glcdfont.c](https://github.com/qmk/qmk_firmware/blob/master/drivers/oled/glcdfont.c), which is Helidox 8x6 font.
 
 It's a fixed-width font that means all character takes up the same width. In this case, 1 character will take up `6px` on screen.
 
