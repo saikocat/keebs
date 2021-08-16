@@ -119,3 +119,14 @@ TODO
 
 ## Animation
 TODO
+
+
+## Turn Off OLED when Computer is Sleeping
+
+Another trick you can do to avoid OLED screen burnout besides defining `OLED_TIMEOUT` is to hook to this function and turn it off:
+
+```c
+void suspend_power_down_user(void) {
+    oled_off();
+}
+```
