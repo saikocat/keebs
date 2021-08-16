@@ -18,7 +18,7 @@
  * - Fix flickering on my OLED when oled's off interfere with animations
  */
 
-#include "keystats.h"
+#include QMK_KEYBOARD_H
 
 /* WPM-responsive animation settings here */
 #define MIN_WALK_SPEED 10
@@ -28,20 +28,6 @@
 #define ANIM_FRAME_DURATION 200 /* how long each frame lasts in ms */
 #define ANIM_SIZE 128           /* number of bytes in array. If you change sprites, minimize for adequate firmware size. max is 1024 */
 #define ANIM_FRAMES 2
-
-/* timers */
-uint32_t pet_anim_timer;
-uint32_t pet_anim_sleep;
-
-/* current frame */
-uint8_t pet_current_frame;
-
-/* status variables */
-bool pet_is_sneaking;
-/* TODO: jump is causing artifact
-bool is_jumping = false;
-bool showed_jump = true;
-*/
 
 /* logic */
 void pet_render(int PET_X, int PET_Y);

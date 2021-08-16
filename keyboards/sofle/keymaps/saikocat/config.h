@@ -16,7 +16,7 @@
 
 #pragma once
 
-#define OLED_TIMEOUT 120000
+#define OLED_TIMEOUT 60000
 #define OLED_BRIGHTNESS 128
 
 #define HW_BITC 1
@@ -27,10 +27,14 @@
     #define TAPPING_TERM 200
 #endif
 
+#define TAPPING_TERM_PER_KEY
+
 #ifdef TAP_CODE_DELAY
     #undef TAP_CODE_DELAY
-    /* #define TAP_CODE_DELAY 100 */
+    #define TAP_CODE_DELAY 10 /* 100 */
 #endif
+
+#define PERMISSIVE_HOLD_PER_KEY
 
 #ifdef ENCODER_RESOLUTION
     #undef ENCODER_RESOLUTION

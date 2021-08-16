@@ -18,6 +18,7 @@
  * - Fix flickering on my OLED when oled's off interfere with animations
  */
 
+#include "keystats.h"
 #include "pet_neko.h"
 
 /* timers */
