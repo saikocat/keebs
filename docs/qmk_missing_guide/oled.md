@@ -65,6 +65,14 @@ oled_write_P(PSTR("-----"), false);
 oled_write_P(PSTR("\n"), false);
 ```
 
+## Cursor Positioning
+
+The most common function you'll see and use will be `void oled_set_cursor(uint8_t colume, uint8_t line);` This moves cursor to character position indicated by column and line, wraps if out of bounds. 
+
+We can find out max column denoted by `oled_max_chars()` and max lines by `oled_max_lines()` functions.
+
+You can also find out based on the font we used (see previous section). As the font is fixed height and width (8x6). We can quickly using the oled display size (128x32) and divide by height or width to get the line accordingly (do note 2px extra for width formula). I find this easier to estimate and plan my drawing using that formula. So for 128x32 display, we get 16 lines (128 / 8) and 5 columns ((32 - 2) / 6) max.
+
 ## PROGMEM Keyword
 
 Let me digress a bit and talk about memory in microcontroller:
@@ -120,6 +128,8 @@ TODO
 ## Animation
 TODO
 
+## Scrolling
+TODO
 
 ## Turn Off OLED when Computer is Sleeping
 
