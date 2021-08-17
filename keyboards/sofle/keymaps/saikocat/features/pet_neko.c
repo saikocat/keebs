@@ -18,25 +18,29 @@
  * - Fix flickering on my OLED when oled's off interfere with animations
  */
 
-#include "keystats.h"
 #include "pet_neko.h"
 
 /* timers */
-uint32_t pet_anim_timer = 0;
-uint32_t pet_anim_sleep = 0;
+static uint32_t pet_anim_timer = 0;
+static uint32_t pet_anim_sleep = 0;
 
 /* current frame */
-uint8_t pet_current_frame = 0;
+static uint8_t pet_current_frame = 0;
 
 /* status variables */
-bool pet_is_sneaking = false;
+static bool pet_is_sneaking = false;
 /* TODO: jump is causing artifact
 bool is_jumping = false;
 bool showed_jump = true;
 */
+static uint8_t current_wpm = 0;
+static led_t led_usb_state;
 
 /* logic */
 void pet_render(int PET_X, int PET_Y) {
+    current_wpm = get_current_wpm();
+    led_usb_state = host_keyboard_led_state();
+
     // clang-format off
     /* Idle  */
     static const char PROGMEM idle[ANIM_FRAMES][ANIM_SIZE] = {

@@ -16,7 +16,7 @@
 
 #include QMK_KEYBOARD_H
 
-#include "constants.h"
+#include "definitions.h"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // clang-format off

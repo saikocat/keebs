@@ -19,8 +19,6 @@
 #define OLED_TIMEOUT 60000
 #define OLED_BRIGHTNESS 128
 
-#define HW_BITC 1
-
 /* Restore default values for TAPPING_TERM & TAP_CODE_DELAY & ENCODER_RES */
 #ifdef TAPPING_TERM
     #undef TAPPING_TERM

@@ -1,4 +1,9 @@
+#pragma once
+
 #include QMK_KEYBOARD_H
+
+/* Define Hardware Microcontroller is using Bit-C */
+#define HW_BITC 1
 
 enum layer_number {
     _BASE = 0,
@@ -7,6 +12,8 @@ enum layer_number {
     _ADJUST,
 };
 
-#define SPC_FN2 LT(2, KC_SPC)
-#define BSPC_FN1 LT(1, KC_BSPC)
-#define ALT_TAB LALT(KC_TAB)
+enum custom_keycodes {
+    QMKBEST = SAFE_RANGE,
+    SPC_FN2 = LT(2, KC_SPC),
+    BSPC_FN1 = LT(1, KC_BSPC),
+};

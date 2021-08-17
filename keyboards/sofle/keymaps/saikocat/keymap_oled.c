@@ -1,8 +1,11 @@
 #ifdef OLED_DRIVER_ENABLE
 
-#    include "constants.h"
-#    include "features/keystats.h"
+#    include "definitions.h"
 #    include "features/pet_neko.h"
+
+/* status variables */
+uint8_t current_wpm;
+led_t led_usb_state;
 
 /* Function: Logos
  * ---------------
