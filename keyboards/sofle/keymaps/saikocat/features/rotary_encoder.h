@@ -18,13 +18,10 @@
 
 #include QMK_KEYBOARD_H
 
-bool     is_alt_tab_active;
-uint16_t alt_tab_timer;
-
 void fn_rotary_audio_control(bool clockwise);
 void fn_rotary_scrolling(bool clockwise);
 void fn_rotary_tabbing(bool clockwise);
 void fn_rotary_history_scrubbing(bool clockwise);
 void fn_rotary_word_scrolling(bool clockwise);
 void fn_rotary_search_through_results(bool clockwise);
-void fn_rotary_wins_tabbing(bool clockwise);
+void fn_rotary_wins_tabbing(bool clockwise, bool* is_alt_tab_active, uint16_t* alt_tab_timer);

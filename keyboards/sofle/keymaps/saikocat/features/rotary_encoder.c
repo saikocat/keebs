@@ -102,19 +102,16 @@ void fn_rotary_search_through_results(bool clockwise) {
  * Like with tabs, you can also move through applications.
  * In Windows, you can do this with Alt + Tab and Alt + Shift + Tab.
  */
-bool     is_alt_tab_active = false;
-uint16_t alt_tab_timer     = 0;
-
-void fn_rotary_wins_tabbing(bool clockwise) {
+void fn_rotary_wins_tabbing(bool clockwise, bool* is_alt_tab_active, uint16_t* alt_tab_timer) {
     if (clockwise) {
-        if (!is_alt_tab_active) {
-            is_alt_tab_active = true;
+        if (!*is_alt_tab_active) {
+            *is_alt_tab_active = true;
             register_code(KC_LALT);
         }
-        alt_tab_timer = timer_read();
+        *alt_tab_timer = timer_read();
         tap_code16(KC_TAB);
     } else {
-        alt_tab_timer = timer_read();
+        *alt_tab_timer = timer_read();
         tap_code16(S(KC_TAB));
     }
 }
