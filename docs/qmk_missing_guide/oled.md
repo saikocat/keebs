@@ -121,15 +121,17 @@ wpm_str[0] = '0' + n / 10;
 
 Even if firmware size is not an issue, try to avoid `sprintf` (I see lots of copy pasta for it) as it has security issues. `snprintf` is preferred as it limits buffer size or these highly recommeneded [safe variants of sprintf](https://docs.microsoft.com/en-us/cpp/c-runtime-library/reference/snprintf-s-snprintf-s-l-snwprintf-s-snwprintf-s-l`).
 
-
-## Cursor Positioning
-TODO
-
 ## Animation
 TODO
 
-## Scrolling
-TODO
+## Bidrectional Communication (RAW HID) for Fancier Display
+
+Pretty amazing stuffs with dynamic info sources already been done in this [Reddit post](https://www.reddit.com/r/MechanicalKeyboards/comments/myutc8/another_oled_display_mod_with_dynamic_info_source/gvwz26q/) and [/u/BlankSourceCode](https://github.com/BlankSourceCode/qmk-hid-display):
+- Perf
+- Stocks
+- Weather
+- Spotify
+- Windows Notifications
 
 ## Turn Off OLED when Computer is Sleeping
 
