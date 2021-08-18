@@ -81,7 +81,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 void suspend_power_down_user(void) {
-#ifdef OLED_DRIVER_ENAABLE
+#ifdef OLED_DRIVER_ENABLE
     oled_off();
 #endif
 }
