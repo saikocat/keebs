@@ -64,8 +64,6 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case BSPC_FN1:
             return true;
-        case SPC_FN2:
-            return true;
         default:
             return false;
     }
