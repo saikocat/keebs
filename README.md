@@ -3,7 +3,7 @@
 ## Docs
 1. [Practical VIA Keymap Guide](docs/pratical_via_keymap_guide.md)
 2. [Iris Rev 4 Modding Blog](docs/iris_modding_log.md)
-3. [WIP] [QMK Firmware Customization Missing Guide For Newbie](docs/)
+3. [WIP] [QMK Firmware Customization Missing Guide For Newbie](docs/qmk_missing_guide/)
 4. [WIP] O-Rings mod guide (vibration dampening) for Sofle & Corne Keyboard for
    consistent sound and soft typing feels.
 
