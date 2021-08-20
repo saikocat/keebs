@@ -16,6 +16,9 @@
 
 #pragma once
 
+/* Define Hardware Microcontroller is using Bit-C */
+#define HW_BITC 1
+
 #define OLED_TIMEOUT 60000
 #define OLED_BRIGHTNESS 128
 

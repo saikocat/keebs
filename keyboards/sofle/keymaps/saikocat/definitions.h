@@ -2,9 +2,6 @@
 
 #include QMK_KEYBOARD_H
 
-/* Define Hardware Microcontroller is using Bit-C */
-#define HW_BITC 1
-
 enum layer_number {
     _BASE = 0,
     _LOWER,
