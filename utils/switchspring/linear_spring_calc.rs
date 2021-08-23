@@ -27,4 +27,14 @@ mod switchspring {
         bottom_out_force: Option<f32>,    // fb
         initial_force: Option<f32>,       // fi
     }
+
+    impl LinearSpringCalc {
+        pub fn find_spring_length(&self) -> f32 {
+            let fa = self.actuation_force.unwrap();
+            let fb = self.bottom_out_force.unwrap();
+            return ((fb * (self.case_length - self.actuation_displacement)) -
+                (fa * (self.case_length - self.bottom_out_displacement))) /
+                    (fb - fa);
+        }
+    }
 }
