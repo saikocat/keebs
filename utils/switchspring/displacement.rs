@@ -21,7 +21,7 @@ impl SwitchDisplacement {
     }
 }
 
-const CHERRY_MX: SwitchDisplacement = SwitchDisplacement::new(2.0, 4.0);
-const CHERRY_MX_SPEED: SwitchDisplacement = SwitchDisplacement::new(1.2, 3.4);
-const GATERON_INK_YELLOW: SwitchDisplacement = SwitchDisplacement::new(1.5, 3.5);
-const KAILH_SPEED: SwitchDisplacement = SwitchDisplacement::new(1.1, 3.5);
+pub const CHERRY_MX: SwitchDisplacement = SwitchDisplacement::new(2.0, 4.0);
+pub const CHERRY_MX_SPEED: SwitchDisplacement = SwitchDisplacement::new(1.2, 3.4);
+pub const GATERON_INK_YELLOW: SwitchDisplacement = SwitchDisplacement::new(1.5, 3.5);
+pub const KAILH_SPEED: SwitchDisplacement = SwitchDisplacement::new(1.1, 3.5);
