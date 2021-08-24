@@ -1,10 +1,6 @@
 # VIA required
 VIA_ENABLE = yes
 
-# Hardware build specific
-OLED_DRIVER_ENABLE = yes
-ENCODER_ENABLE = yes
-
 LTO_ENABLE = yes
 WPM_ENABLE = yes
 
@@ -22,14 +18,29 @@ MIDI_ENABLE = no
 TERMINAL_ENABLE = no
 UNICODE_ENABLE = no
 NKRO_ENABLE = no
+FAUXCLICKY_ENABLE = no
 
 # Bit-C uses atmel-dfu
 BOOTLOADER = atmel-dfu
 
-LIB_SRC += features/rotary_encoder.c \
-       features/bitc_led.c \
-       features/pet_neko.c
 
-SRC += keymap_encoder.c \
-       keymap_led.c \
-       keymap_oled.c
+# If "-e OLED=" or "OLED=NEKO qmk ..." is passed as environment variable
+ifneq ($(strip $(OLED)),)
+       OLED_DRIVER_ENABLE = yes
+       OPT_DEFS += -D${OLED}
+       ifeq ($(OLED), $(filter $(OLED), NEKO))
+              SRC += features/oled_pet_neko.c keymap_oled.c
+       endif
+endif
+
+ifneq ($(strip $(BITC)),)
+       OPT_DEFS += -DHW_BITC
+       SRC += features/bitc_led.c keymap_led.c
+endif
+
+ifneq ($(strip $(ROTARY_ENCODER)),)
+       ENCODER_ENABLE = yes
+       SRC += features/rotary_encoder.c keymap_encoder.c
+endif
+
+# BITC=1 ROTARY_ENCODER=1 OLED=NEKO qmk compile -kb sofle/rev1 -km saikocat

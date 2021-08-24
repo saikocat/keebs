@@ -9,7 +9,7 @@ Layout in *TODO*
 Features:
 - Bit-C Microcontroller LED supports (NOTE: Only work with Master)
 - The OLED on master half shows selected mode and caps lock state and neko pet.
-- Left encoder controls search through results. Right encoder PGUP/PGDOWN.
-- VIA support
 
-Sprites for neko pet.
+Build:
+
+    BITC=1 ROTARY_ENCODER=1 OLED=NEKO qmk compile -kb sofle/rev1 -km saikocat
