@@ -1,7 +1,7 @@
 #ifdef OLED_DRIVER_ENABLE
 
 #    include "definitions.h"
-#    include "features/pet_neko.h"
+#    include "features/oled_pet.h"
 
 /* status variables */
 uint8_t current_wpm;
@@ -119,7 +119,8 @@ static void display_status_narrow(void) {
     oled_write_P(PSTR("CPSLK"), led_usb_state.caps_lock);
 
     /* Pet rendering */
-    pet_render(0, 12);
+    oled_set_cursor(0, 12);
+    pet_render_status();
 }
 
 /* QMK rendering starts here

@@ -69,15 +69,6 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     }
 }
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-#ifdef OLED_DRIVER_ENABLE
-#    include "features/pet_neko.h"
-    pet_handle_keycode(keycode, record);
-#endif
-
-    return true;
-}
-
 void suspend_power_down_user(void) {
 #ifdef OLED_DRIVER_ENABLE
     oled_off();
