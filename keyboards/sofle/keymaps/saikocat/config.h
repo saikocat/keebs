@@ -16,28 +16,28 @@
 
 #pragma once
 
-/* Define Hardware Microcontroller is using Bit-C */
-#define HW_BITC 1
-
-#define OLED_TIMEOUT 60000
-#define OLED_BRIGHTNESS 128
+#ifdef OLED_DRIVER_ENABLE
+#    define OLED_TIMEOUT 64000
+#    define OLED_BRIGHTNESS 128
+#    define OLED_UPDATE_INTERVAL 50
+#endif
 
 /* Restore default values for TAPPING_TERM & TAP_CODE_DELAY & ENCODER_RES */
 #ifdef TAPPING_TERM
-    #undef TAPPING_TERM
-    #define TAPPING_TERM 200
+#    undef TAPPING_TERM
+#    define TAPPING_TERM 200
 #endif
 
 #define TAPPING_TERM_PER_KEY
 
 #ifdef TAP_CODE_DELAY
-    #undef TAP_CODE_DELAY
-    #define TAP_CODE_DELAY 10 /* 100 */
+#    undef TAP_CODE_DELAY
+#    define TAP_CODE_DELAY 10 /* 100 */
 #endif
 
 #define PERMISSIVE_HOLD_PER_KEY
 
 #ifdef ENCODER_RESOLUTION
-    #undef ENCODER_RESOLUTION
-    #define ENCODER_RESOLUTION 4
+#    undef ENCODER_RESOLUTION
+#    define ENCODER_RESOLUTION 4
 #endif
