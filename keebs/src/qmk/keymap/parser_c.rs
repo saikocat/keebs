@@ -35,13 +35,13 @@ pub fn modsbit_keycode(input: &str) -> IResult<&str, &str> {
     ))(input);
 }
 
-/// Layer & Mod-Tap Keycode
+/// Advanced Keycode
 ///
-/// Supports mods_bit
+/// Layer & Mod-Tap Keycodes, and can contains other punctuation (mods_bit, etc.)
 /// - MT(MOD_LCTL | MOD_LSFT, KC_ESC)
 /// - LM(_LAYER2, MOD_LALT)
 /// - LM(_LAYER2, MOD_LCTL | MOD_LALT)
-pub fn layer_mt_keycode(input: &str) -> IResult<&str, &str> {
+pub fn advanced_keycode(input: &str) -> IResult<&str, &str> {
     return recognize(tuple((
         keycode,
         tag("("),
