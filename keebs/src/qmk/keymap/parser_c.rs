@@ -8,13 +8,15 @@ use nom::{
     IResult,
 };
 
+use super::token::{identifier, punctuation};
+
 /// Keycode Parsing
 ///
 /// QMK Keycode has at least 2 chars, uppercase, underscore allows (like KC_XXXXXX)
 pub fn keycode(input: &str) -> IResult<&str, &str> {
     return recognize(tuple((
-        none_of("|0123456789"),
-        many1(one_of("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_")),
+        none_of(identifier::KEYCODE_NOT_STARTSWITH),
+        many1(one_of(identifier::KEYCODE_ONEOF)),
     )))(input);
 }
 
@@ -22,7 +24,12 @@ pub fn keycode(input: &str) -> IResult<&str, &str> {
 ///
 /// LCTL(KC)
 pub fn modifier_keycode(input: &str) -> IResult<&str, &str> {
-    return recognize(tuple((keycode, tag("("), keycode, tag(")"))))(input);
+    return recognize(tuple((
+        keycode,
+        tag(punctuation::OPENING_PARENTH),
+        keycode,
+        tag(punctuation::CLOSING_PARENTH),
+    )))(input);
 }
 
 /// Modifier bitwise Keycode
@@ -30,7 +37,7 @@ pub fn modifier_keycode(input: &str) -> IResult<&str, &str> {
 /// MOD_LCTL | MOD_LSFT
 pub fn modsbit_keycode(input: &str) -> IResult<&str, &str> {
     return recognize(separated_list1(
-        recognize(tuple((multispace0, tag("|"), multispace0))),
+        recognize(tuple((multispace0, tag(punctuation::PIPE), multispace0))),
         keycode,
     ))(input);
 }
