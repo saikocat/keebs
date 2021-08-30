@@ -1,7 +1,9 @@
 pub mod parser_c;
 pub mod parser_json;
+pub mod token;
 
 mod keymap;
 pub use self::keymap::Keymap;
 
-pub mod token;
+mod layout;
+pub use self::layout::Layout;
