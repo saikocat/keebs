@@ -6,4 +6,4 @@ mod keymap;
 pub use self::keymap::Keymap;
 
 mod layout;
-pub use self::layout::Layout;
+pub use self::layout::LayoutMacro;
