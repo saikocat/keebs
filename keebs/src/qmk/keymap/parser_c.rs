@@ -51,13 +51,13 @@ pub fn modsbit_keycode(input: &str) -> IResult<&str, &str> {
 pub fn advanced_keycode(input: &str) -> IResult<&str, &str> {
     return recognize(tuple((
         keycode,
-        tag("("),
+        tag(punctuation::OPENING_PARENTH),
         many1(alt((
-            recognize(tuple((multispace0, tag(","), multispace0))),
+            recognize(tuple((multispace0, tag(punctuation::COMMA), multispace0))),
             modsbit_keycode,
             digit1,
             keycode,
         ))),
-        tag(")"),
+        tag(punctuation::CLOSING_PARENTH),
     )))(input);
 }
