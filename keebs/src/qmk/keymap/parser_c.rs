@@ -1,10 +1,13 @@
 use nom::{
     branch::alt,
-    bytes::complete::tag,
-    character::complete::{alphanumeric1, digit1, multispace0, none_of, one_of},
+    bytes::complete::{tag, take_until},
+    character::complete::{
+        alphanumeric1, digit1, line_ending, multispace0, multispace1, none_of, one_of,
+    },
     combinator::recognize,
-    multi::{many1, separated_list1},
-    sequence::tuple,
+    error::ParseError,
+    multi::{many1, separated_list0, separated_list1},
+    sequence::{delimited, pair, preceded, terminated, tuple},
     IResult,
 };
 
@@ -30,6 +33,43 @@ pub fn modifier_keycode(input: &str) -> IResult<&str, &str> {
         keycode,
         tag(punctuation::CLOSING_PARENTH),
     )))(input);
+}
+
+/// Layout Macro Def
+///
+/// Usually inside <keyboard>.h or their rev folder .h file
+/// "#define LAYOUT (" or "#define LAYOUT_xxxx_xxx ("
+pub fn layout_macro_def(input: &str) -> IResult<&str, &str> {
+    return preceded(
+        pair(tag("#define"), multispace0),
+        alt((
+            recognize(pair(
+                tag("LAYOUT_"),
+                many1(one_of(identifier::ACCEPTABLE_CHAR)),
+            )),
+            tag("LAYOUT"),
+        )),
+    )(input);
+}
+
+/// Layout Macro Layout
+///
+/// Content of the macro layout - switches position parts
+/// "( \
+/// k1, k2, k3 \
+/// k4, k5, k6 \
+/// )"
+pub fn layout_macro_layout(input: &str) -> IResult<&str, &str> {
+    return delimited(
+        tuple((
+            tag(punctuation::OPENING_PARENTH),
+            multispace0,
+            tag(punctuation::BACKSLASH),
+            line_ending,
+        )),
+        recognize(many1(none_of(punctuation::CLOSING_PARENTH))),
+        tag(punctuation::CLOSING_PARENTH),
+    )(input);
 }
 
 /// Modifier bitwise Keycode
