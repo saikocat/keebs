@@ -24,7 +24,7 @@
  * Usage guide
  *  1. Place this file next to keymap.c or in userspace.
  *  2. Add the following lines into rules.mk:
- *      OLED_DRIVER_ENABLE = yes
+ *      OLED_ENABLE = yes
  *      SRC += oled_pet_neko.c
  *  3. Animation defaults to Neko or add 'OPT_DEFS += -DNEKO' or env OLED=NEKO
  *  4. To animate with WPM, add 'WPM_ENABLE = yes' into rules.mk.

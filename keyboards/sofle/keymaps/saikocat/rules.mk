@@ -26,7 +26,8 @@ BOOTLOADER = atmel-dfu
 
 # If "-e OLED=" or "OLED=NEKO qmk ..." is passed as environment variable
 ifneq ($(strip $(OLED)),)
-       OLED_DRIVER_ENABLE = yes
+       OLED_ENABLE = yes
+       OLED_DRIVER = SSD1306
        OPT_DEFS += -D${OLED}
        ifeq ($(OLED), $(filter $(OLED), NEKO))
               SRC += features/oled_pet_neko.c keymap_oled.c

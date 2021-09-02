@@ -16,7 +16,7 @@
 
 #pragma once
 
-#ifdef OLED_DRIVER_ENABLE
+#ifdef OLED_ENABLE
 #    define OLED_TIMEOUT 64000
 #    define OLED_BRIGHTNESS 128
 #    define OLED_UPDATE_INTERVAL 50

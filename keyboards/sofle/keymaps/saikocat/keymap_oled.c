@@ -1,4 +1,4 @@
-#ifdef OLED_DRIVER_ENABLE
+#ifdef OLED_ENABLE
 
 #    include "definitions.h"
 #    include "features/oled_pet.h"
