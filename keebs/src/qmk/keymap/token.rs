@@ -12,7 +12,7 @@ pub mod punctuation {
 pub mod identifier {
     pub const KEYCODE_NOT_STARTSWITH: &'static str = "|0123456789";
     pub const KEYCODE_ONEOF: &'static str = "0123456789_";
-    pub const KEYCODE_MACRO_NONEOF: &'static str = ",\\";
+    pub const MACRO_KEYENTRY_NONEOF: &'static str = ",\\";
     pub const ACCEPTABLE_CHAR: &'static str =
         "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_";
 }
