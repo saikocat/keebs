@@ -82,22 +82,11 @@ pub fn modsbit_keycode(input: &str) -> IResult<&str, &str> {
     ))(input);
 }
 
-/// Advanced Keycode
-///
-/// Layer & Mod-Tap Keycodes, and can contains other punctuation (mods_bit, etc.)
-/// - MT(MOD_LCTL | MOD_LSFT, KC_ESC)
-/// - LM(_LAYER2, MOD_LALT)
-/// - LM(_LAYER2, MOD_LCTL | MOD_LALT)
-pub fn advanced_keycode(input: &str) -> IResult<&str, &str> {
-    return recognize(tuple((
-        keycode,
-        tag(punctuation::OPENING_PARENTH),
-        many1(alt((
-            recognize(tuple((multispace0, tag(punctuation::COMMA), multispace0))),
-            modsbit_keycode,
-            digit1,
-            keycode,
-        ))),
-        tag(punctuation::CLOSING_PARENTH),
-    )))(input);
+/// Match any LAYOUT_xxx_xxx macro name
+fn layout_macro_name_matcher<'a, E: ParseError<&'a str>>(
+) -> impl FnMut(&'a str) -> IResult<&'a str, &'a str, E> {
+    return recognize(pair(
+        tag("LAYOUT_"),
+        many1(one_of(identifier::ACCEPTABLE_CHAR)),
+    ));
 }
