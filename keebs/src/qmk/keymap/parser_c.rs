@@ -35,6 +35,53 @@ pub fn modifier_keycode(input: &str) -> IResult<&str, &str> {
     )))(input);
 }
 
+/// Modifier bitwise Keycode
+///
+/// MOD_LCTL | MOD_LSFT
+pub fn modsbit_keycode(input: &str) -> IResult<&str, &str> {
+    return recognize(separated_list1(
+        recognize(tuple((multispace0, tag(punctuation::PIPE), multispace0))),
+        keycode,
+    ))(input);
+}
+
+/// Advanced Keycode
+///
+/// Layer & Mod-Tap Keycodes, and can contains other punctuation (mods_bit, etc.)
+/// - MT(MOD_LCTL | MOD_LSFT, KC_ESC)
+/// - LM(_LAYER2, MOD_LALT)
+/// - LM(_LAYER2, MOD_LCTL | MOD_LALT)
+pub fn advanced_keycode(input: &str) -> IResult<&str, &str> {
+    return recognize(tuple((
+        keycode,
+        tag(punctuation::OPENING_PARENTH),
+        many1(alt((
+            recognize(tuple((multispace0, tag(punctuation::COMMA), multispace0))),
+            modsbit_keycode,
+            digit1,
+            keycode,
+        ))),
+        tag(punctuation::CLOSING_PARENTH),
+    )))(input);
+}
+
+pub fn layout_macro_alias(input: &str) -> IResult<&str, (&str, &str)> {
+    return delimited(
+        recognize(pair(tag("#define"), space1)),
+        alt((
+            tuple((
+                terminated(layout_macro_name_matcher(), space1),
+                layout_macro_name_matcher(),
+            )),
+            tuple((
+                terminated(tag("LAYOUT"), space1),
+                layout_macro_name_matcher(),
+            )),
+        )),
+        line_ending,
+    )(input);
+}
+
 /// Layout Macro Def
 ///
 /// Usually inside <keyboard>.h or their rev folder .h file
