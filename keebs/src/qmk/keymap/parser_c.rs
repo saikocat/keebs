@@ -2,9 +2,9 @@ use nom::{
     branch::alt,
     bytes::complete::{tag, take_until},
     character::complete::{
-        alphanumeric1, digit1, line_ending, multispace0, multispace1, none_of, one_of,
+        alphanumeric1, digit1, line_ending, multispace0, multispace1, none_of, one_of, space1,
     },
-    combinator::recognize,
+    combinator::{peek, recognize},
     error::ParseError,
     multi::{many1, separated_list0, separated_list1},
     sequence::{delimited, pair, preceded, terminated, tuple},
@@ -87,15 +87,10 @@ pub fn layout_macro_alias(input: &str) -> IResult<&str, (&str, &str)> {
 /// Usually inside <keyboard>.h or their rev folder .h file
 /// "#define LAYOUT (" or "#define LAYOUT_xxxx_xxx ("
 pub fn layout_macro_def(input: &str) -> IResult<&str, &str> {
-    return preceded(
+    return delimited(
         pair(tag("#define"), multispace0),
-        alt((
-            recognize(pair(
-                tag("LAYOUT_"),
-                many1(one_of(identifier::ACCEPTABLE_CHAR)),
-            )),
-            tag("LAYOUT"),
-        )),
+        alt((layout_macro_name_matcher(), tag("LAYOUT"))),
+        pair(multispace0, peek(tag(punctuation::CLOSING_PARENTH))),
     )(input);
 }
 
