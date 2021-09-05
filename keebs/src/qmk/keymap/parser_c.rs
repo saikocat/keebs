@@ -65,6 +65,9 @@ pub fn advanced_keycode(input: &str) -> IResult<&str, &str> {
     )))(input);
 }
 
+/// Layout Macro Alias
+///
+/// To find defined aliases for layouts
 pub fn layout_macro_alias(input: &str) -> IResult<&str, (&str, &str)> {
     return delimited(
         recognize(pair(tag("#define"), space1)),
@@ -114,14 +117,43 @@ pub fn layout_macro_layout(input: &str) -> IResult<&str, &str> {
     )(input);
 }
 
-/// Modifier bitwise Keycode
-///
-/// MOD_LCTL | MOD_LSFT
-pub fn modsbit_keycode(input: &str) -> IResult<&str, &str> {
-    return recognize(separated_list1(
-        recognize(tuple((multispace0, tag(punctuation::PIPE), multispace0))),
-        keycode,
-    ))(input);
+/// Layout Macro KeyEntry
+pub fn layout_macro_keyentry(input: &str) -> IResult<&str, Vec<Vec<LayoutMacroKeyEntry>>> {
+    let (rest, rows) = many1(terminated(
+        separated_list1(
+            tag(punctuation::COMMA),
+            recognize(many1(none_of(identifier::MACRO_KEYENTRY_NONEOF))),
+        ),
+        pair(tag(punctuation::BACKSLASH), line_ending),
+    ))(input)?;
+
+    // TODO: lazy to write full nom for now
+    // Get 1 entry length, preceding space is used for width_factor later per entry
+    let entry_length: usize = rows.iter().fold(1, |mut acc, row| {
+        if row[0].len() > acc {
+            acc = row[0].trim().len();
+        }
+        return acc;
+    });
+
+    let entry_mapper = |entry: &str| {
+        return LayoutMacroKeyEntry {
+            label: entry.to_string().trim().to_string(),
+            width_factor: (entry.len() / entry_length) as u8,
+        };
+    };
+    let row_mapper = |row: &Vec<&str>| {
+        return row
+            .iter()
+            .map(|entry| entry_mapper(entry))
+            .collect::<Vec<LayoutMacroKeyEntry>>();
+    };
+    let result = rows
+        .iter()
+        .map(|row| row_mapper(row))
+        .collect::<Vec<Vec<LayoutMacroKeyEntry>>>();
+
+    return Ok((rest, result));
 }
 
 /// Match any LAYOUT_xxx_xxx macro name
