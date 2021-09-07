@@ -11,6 +11,7 @@ use nom::{
     IResult,
 };
 
+use super::layout::LayoutMacroKeyEntry;
 use super::token::{identifier, punctuation};
 
 /// Keycode Parsing
