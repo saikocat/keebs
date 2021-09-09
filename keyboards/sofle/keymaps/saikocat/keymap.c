@@ -49,9 +49,10 @@ layer_state_t layer_state_set_user(layer_state_t state) { return update_tri_laye
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case BSPC_FN1:
-            return 130;
+            return 150;
         case SPC_FN2:
-            return TAPPING_TERM + 1250;
+            return 150;
+            // return TAPPING_TERM + 1250;
         default:
             return TAPPING_TERM;
     }
@@ -63,6 +64,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case BSPC_FN1:
+        case SPC_FN2:
             return true;
         default:
             return false;
