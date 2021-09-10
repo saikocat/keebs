@@ -1,3 +1,5 @@
+You probably want to read this instead https://precondition.github.io/home-row-mods as I am still very unsatisfied with my experiment and finding on this topic.
+
 # Tap-Hold
 
 This function is awesome as it allows you to have at least 2 purposes for modifier and layer based keys (hold-type) and a normal keycode (tap-type). It's especially helpful for small keyboards without many keys. I will just cover the common topics that is applicable for most people. 
