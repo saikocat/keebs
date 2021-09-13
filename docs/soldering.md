@@ -32,3 +32,19 @@ To tin a tip, follow these steps. First, clean the tip. Then, apply fresh solder
 
 If you are just starting your session, begin soldering as soon as you finish tinning the tip. Throughout a project, clean and then tin your tip after every few joints. If you're tinning a tip after completing a project, wipe the tip again briefly after tinning and then turn the iron off and put it away
 
+### Cleaning Wire Operation
+
+Hakko FX888D or [559B](https://www.hakko.com/english/products/hakko_599b.html) both has a brass sponge (bunch of cleaning wires). But if you don't read the user manual or know how it works. It might have adverse effects on your soldering iron tips (oxidations).
+
+#### Order of operations:
+
+1. Perform soldering.
+2. After finishing one soldering step, first place the soldering iron on the iron holder without cleaning the tip (as the tin from soldering wire protects the tip from oxidation).
+    * Remove any residual solder from the tip surface first by by thrusting the tip into the cleaning wire.
+    * **DO NOT "wipe"** the tip against the cleaning wire. This action may cause dangerous splatter from solder that maybe on the tip.
+3. Clean the tip just before soldering.
+4. Perform next soldering step.
+
+> **WARNING**: If the order of step 2 and 3 is reversed, the oxidation of tips will be accelerated.
+
+> **NOTE**: Right way of cleaning, **THRUST** into the wires and **NOT WIPE** the tip against the wires!
