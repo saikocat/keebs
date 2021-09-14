@@ -34,7 +34,9 @@ If you are just starting your session, begin soldering as soon as you finish tin
 
 ### Cleaning Wire Operation
 
-Hakko FX888D or [559B](https://www.hakko.com/english/products/hakko_599b.html) both has a brass sponge (bunch of cleaning wires). But if you don't read the user manual or know how it works. It might have adverse effects on your soldering iron tips (oxidations).
+Hakko FX888D or [559B](https://www.hakko.com/english/products/hakko_599b.html) both has coils of brass. But if you don't read the user manual or know how it works. It might have adverse effects on your soldering iron tips (oxidations).
+
+> **NOTE**: Right way of cleaning, **THRUST/STAB/PLUNGE** the iron tip into the wires and **NOT WIPE** the tip against the wires!
 
 #### Order of operations:
 
@@ -47,4 +49,3 @@ Hakko FX888D or [559B](https://www.hakko.com/english/products/hakko_599b.html) b
 
 > **WARNING**: If the order of step 2 and 3 is reversed, the oxidation of tips will be accelerated.
 
-> **NOTE**: Right way of cleaning, **THRUST** into the wires and **NOT WIPE** the tip against the wires!
