@@ -6,3 +6,6 @@ ifneq ($(PLATFORM),CHIBIOS)
         LTO_ENABLE = yes
     endif
 endif
+
+# Disable unused features to reduce firmware size
+GRAVE_ESC_ENABLE = no
