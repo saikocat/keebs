@@ -16,3 +16,12 @@
 
 /* Set Polling rate to 1000Hz */
 #define USB_POLLING_INTERVAL_MS 1
+
+#ifdef TAPPING_TERM
+#    undef TAPPING_TERM
+#endif
+#if defined(KEYBOARD_crkbd)
+#    define TAPPING_TERM 200
+#else
+#    define TAPPING_TERM 175
+#endif
