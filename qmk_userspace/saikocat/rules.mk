@@ -25,3 +25,15 @@ FAUXCLICKY_ENABLE = no
 
 EXTRAKEY_ENABLE = no
 MOUSEKEY_ENABLE = no
+
+
+# Enable additional LED features that Bit-C provided
+ifeq ($(strip $(LED_INDICATOR_ENABLE)), yes)
+	OPT_DEFS += -DLED_INDICATOR_ENABLE
+	SRC += led_custom.c
+
+	ifeq ($(strip $(LED_PROVIDER)), bit_c)
+		OPT_DEFS += -DLED_PROVIDER_BIT_C
+		SRC += led_provider_bit_c.c
+	endif
+endif
