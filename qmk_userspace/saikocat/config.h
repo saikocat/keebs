@@ -17,6 +17,7 @@
 /* Set Polling rate to 1000Hz */
 #define USB_POLLING_INTERVAL_MS 1
 
+/* Tap-Hold configurations */
 #ifdef TAPPING_TERM
 #    undef TAPPING_TERM
 #endif
@@ -24,4 +25,21 @@
 #    define TAPPING_TERM 200
 #else
 #    define TAPPING_TERM 175
+#endif
+
+#define TAPPING_TERM_PER_KEY
+
+#define PERMISSIVE_HOLD_PER_KEY
+
+/* Split keyboard setting */
+#if defined(SPLIT_KEYBOARD)
+#    define SPLIT_LAYER_STATE_ENABLE
+#    define SPLIT_LED_STATE_ENABLE
+#    define SPLIT_MODS_ENABLE
+#    ifdef WPM_ENABLE
+#        define SPLIT_WPM_ENABLE
+#    endif
+#    ifdef OLED_ENABLE
+#        define SPLIT_OLED_ENABLE
+#    endif
 #endif
