@@ -19,6 +19,6 @@
 #include QMK_KEYBOARD_H
 
 /* (WEAK) Process hook that might be used by specific mcu */
-void process_led_state(led_t led_state);
+void led_update_mcu(led_t led_state);
 /* (WEAK) Post hook for user to override */
-void post_process_led_state(led_t led_state);
+void led_update_keymap(led_t led_state);

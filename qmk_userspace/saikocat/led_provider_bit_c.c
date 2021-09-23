@@ -38,4 +38,4 @@ void set_led(uint8_t mode) {
     }
 }
 
-void process_led_state(led_t led_state) { set_led(led_state.caps_lock ? LED_DIM : LED_OFF); }
+void led_update_mcu(led_t led_state) { set_led(led_state.caps_lock ? LED_DIM : LED_OFF); }

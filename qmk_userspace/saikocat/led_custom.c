@@ -17,14 +17,14 @@
 #ifdef LED_INDICATOR_ENABLE
 #    include "led_custom.h"
 
-__attribute__((weak)) void process_led_state(led_t led_state) {}
-__attribute__((weak)) void post_process_led_state(led_t led_state) {}
+__attribute__((weak)) void led_update_mcu(led_t led_state) {}
+__attribute__((weak)) void led_update_keymap(led_t led_state) {}
 
 bool led_update_kb(led_t led_state) {
     bool res = led_update_user(led_state);
     if (res) {
-        process_led_state(led_state);
-        post_process_led_state(led_state);
+        led_update_mcu(led_state);
+        led_update_keymap(led_state);
     }
     return res;
 }
