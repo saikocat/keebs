@@ -35,5 +35,20 @@ ifeq ($(strip $(LED_INDICATOR_ENABLE)), yes)
 	ifeq ($(strip $(LED_PROVIDER)), bit_c)
 		OPT_DEFS += -DLED_PROVIDER_BIT_C
 		SRC += led_provider_bit_c.c
+
+        $(info Custom 'LED_PROVIDER' is $(LED_PROVIDER))
 	endif
 endif
+
+ifneq ($(strip $(ENCODER_ENABLE)),)
+	SRC += encoder_custom.c
+
+	ifneq ($(strip $(ENCODER_CUSTOM_RESOLUTION)),)
+		OPT_DEFS += -DENCODER_CUSTOM_RESOLUTION=$(ENCODER_CUSTOM_RESOLUTION)
+
+        $(info Custom 'ENCODER_CUSTOM_RESOLUTION' is $(ENCODER_CUSTOM_RESOLUTION))
+	endif
+endif
+
+# -e ENCODER_ENABLE=yes
+# OPT_DEFS=-DENCODER_RESOLUTION=4
