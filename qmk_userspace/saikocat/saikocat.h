@@ -17,3 +17,26 @@
 #pragma once
 
 #include QMK_KEYBOARD_H
+
+#include "layers.h"
+#include "process_records.h"
+#include "tap_hold.h"
+#ifdef LED_INDICATOR_ENABLE
+#    include "led_custom.h"
+#endif
+#ifdef OLED_ENABLE
+#    include "oled_custom.h"
+#endif
+#ifdef ENCODER_ENABLE
+#    include "encoder_custom.h"
+#endif
+
+/* Layer state check */
+layer_state_t layer_state_set_keymap(layer_state_t state);
+
+/* Power management */
+void suspend_power_down_keymap(void);
+void suspend_wakeup_init_keymap(void);
+
+/* Matrix scan */
+void matrix_scan_keymap(void);
