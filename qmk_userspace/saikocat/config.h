@@ -43,3 +43,29 @@
 #        define SPLIT_OLED_ENABLE
 #    endif
 #endif
+
+/* OLED setting */
+#ifdef OLED_ENABLE
+#    ifdef SPLIT_KEYBOARD
+#        define OLED_UPDATE_INTERVAL 60
+#    else
+#        define OLED_UPDATE_INTERVAL 15
+#    endif
+#    define OLED_DISABLE_TIMEOUT
+#    ifdef OLED_FONT_H
+#        undef OLED_FONT_H
+#    endif
+#    define OLED_FONT_H "oled_font.h"
+#    define OLED_FONT_END 223
+/* #    define OLED_USPC_LOGO_CORNE */
+#endif
+
+/* Encoder setting */
+#ifdef ENCODER_ENABLE
+#    ifdef ENCODER_CUSTOM_RESOLUTION
+#        ifdef ENCODER_RESOLUTION
+#            undef ENCODER_RESOLUTION
+#        endif
+#        define ENCODER_RESOLUTION ENCODER_CUSTOM_RESOLUTION
+#    endif
+#endif

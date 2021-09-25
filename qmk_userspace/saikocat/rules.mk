@@ -1,4 +1,6 @@
-SRC += saikocat.c
+SRC += saikocat.c \
+		process_records.c \
+		tap_hold.c
 
 # Enable Link Time Optimization wherever supported
 ifneq ($(PLATFORM),CHIBIOS)
@@ -26,6 +28,9 @@ FAUXCLICKY_ENABLE = no
 EXTRAKEY_ENABLE = no
 MOUSEKEY_ENABLE = no
 
+LTO_ENABLE = yes
+BOOTMAGIC_ENABLE = yes
+BOOTLOADER = atmel-dfu
 
 # Enable additional LED features that Bit-C provided
 ifeq ($(strip $(LED_INDICATOR_ENABLE)), yes)
@@ -37,6 +42,21 @@ ifeq ($(strip $(LED_INDICATOR_ENABLE)), yes)
 		SRC += led_provider_bit_c.c
 
         $(info Custom 'LED_PROVIDER' is $(LED_PROVIDER))
+	endif
+endif
+
+# Enable custom OLED features
+ifneq ($(strip $(OLED_CUSTOM)),)
+	OLED_ENABLE = yes
+	OLED_DRIVER ?= SSD1306
+	OPT_DEFS += -DOLED_CUSTOM
+	SRC += oled_custom.c
+
+	ifeq ($(OLED_CUSTOM_MASCOT), $(filter $(OLED_CUSTOM_MASCOT), neko))
+		OPT_DEFS += -DOLED_CUSTOM_MASCOT
+		SRC += oled_mascot_neko.c
+
+        $(info Custom 'OLED_CUSTOM_MASCOT' is $(OLED_CUSTOM_MASCOT))
 	endif
 endif
 
