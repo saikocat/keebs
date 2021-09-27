@@ -17,18 +17,27 @@
 #pragma once
 
 #include "quantum.h"
+#include "version.h"
+#include "action.h"
+
 #include "layers.h"
 
 enum userspace_custom_keycodes {
     QMK_BEST = SAFE_RANGE,
-    ADJ_COLN,
+    COLN_ADJ,
     SPC_LWR  = LT(_LOWER, KC_SPC),
     BSPC_LWR = LT(_LOWER, KC_BSPC),
     SPC_RSE  = LT(_RAISE, KC_SPC),
     DEL_RSE  = LT(_RAISE, KC_DEL),
     ENT_RSE  = LT(_RAISE, KC_ENTER),
-    ADJ_SCLN = LT(_ADJUST, KC_SCLN), 
+    SCLN_ADJ = LT(_ADJUST, KC_SCLN),
+    ESC_ALT  = LALT_T(KC_ESC),
 };
+
+void unshift_key_tap(uint16_t kc, uint16_t shift_kc);
+
+bool mod_key_press(uint16_t code, uint16_t mod_code, bool pressed, uint16_t this_timer);
+bool mod_key_press_timer(uint16_t code, uint16_t mod_code, bool pressed);
 
 bool process_record_tri_layer_state(uint16_t keycode, keyrecord_t *record);
 bool process_record_keymap(uint16_t keycode, keyrecord_t *record);

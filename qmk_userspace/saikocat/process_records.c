@@ -17,8 +17,48 @@
 #include "process_records.h"
 #include "oled_custom.h"
 
+/* Reverse of shift
+ *
+ * If shift is held, output its non-shifted version
+ * If shift is not held, output its shifted version
+ *
+ * Use this mainly for vim command shortcut (:)
+ */
+void unshift_key_tap(uint16_t kc, uint16_t shift_kc) {
+    uint8_t temp_mod = get_mods();
+    uint8_t temp_osm = get_oneshot_mods();
+    clear_mods();
+    clear_oneshot_mods();
+    if ((temp_mod | temp_osm) & MOD_MASK_SHIFT) {
+        tap_code(kc);
+    } else {
+        tap_code16(shift_kc);
+    }
+    set_mods(temp_mod);
+}
+
+bool mod_key_press(uint16_t code, uint16_t mod_code, bool pressed, uint16_t this_timer) {
+    if (pressed) {
+        this_timer = timer_read();
+    } else {
+        if (timer_elapsed(this_timer) < TAPPING_TERM) {
+            tap_code(code);
+        } else {
+            register_code(mod_code);
+            tap_code(code);
+            unregister_code(mod_code);
+        }
+    }
+    return false;
+}
+
+bool mod_key_press_timer(uint16_t code, uint16_t mod_code, bool pressed) {
+    static uint16_t this_timer;
+    return mod_key_press(code, mod_code, pressed, this_timer);
+}
+
 __attribute__((weak)) bool process_record_tri_layer_state(uint16_t keycode, keyrecord_t *record) {
-    static uint16_t my_colon_timer;
+    static uint16_t layer_tap_colon_timer;
 
     switch (keycode) {
         case BSPC_LWR:
@@ -39,13 +79,30 @@ __attribute__((weak)) bool process_record_tri_layer_state(uint16_t keycode, keyr
                 update_tri_layer(_LOWER, _RAISE, _ADJUST);
             }
             break;
-        case ADJ_SCLN:
+        case SCLN_ADJ:
             if (record->event.pressed) {
                 layer_on(_ADJUST);
                 update_tri_layer(_LOWER, _ADJUST, _SPECIAL);
             } else {
                 layer_off(_ADJUST);
                 update_tri_layer(_LOWER, _ADJUST, _SPECIAL);
+            }
+            break;
+        case COLN_ADJ:
+            if (record->event.pressed) {
+                /* held state */
+                layer_on(_ADJUST);
+                update_tri_layer(_LOWER, _ADJUST, _SPECIAL);
+
+                layer_tap_colon_timer = timer_read();
+            } else {
+                layer_off(_ADJUST);
+                update_tri_layer(_LOWER, _ADJUST, _SPECIAL);
+
+                /* send colon cos vim cmd */
+                if (timer_elapsed(layer_tap_colon_timer) < TAPPING_TERM) {
+                    unshift_key_tap(KC_SCLN, KC_COLN);
+                }
             }
             break;
     }
