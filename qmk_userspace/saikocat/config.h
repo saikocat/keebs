@@ -44,8 +44,14 @@
 #    endif
 #endif
 
-/* OLED setting */
+/* OLED setting
+ * - OLED_DISABLE_TIMEOUT: Prevent matrix_changed triggering oled_on(),
+ *   timeout using our own idle timer
+ */
 #ifdef OLED_ENABLE
+#    ifdef OLED_UPDATE_INTERVAL
+#        undef OLED_UPDATE_INTERVAL
+#    endif
 #    ifdef SPLIT_KEYBOARD
 #        define OLED_UPDATE_INTERVAL 60
 #    else
@@ -60,7 +66,7 @@
 /* #    define OLED_USPC_LOGO_CORNE */
 #endif
 
-/* Encoder setting */
+/* Encoder Resolution setting */
 #ifdef ENCODER_ENABLE
 #    ifdef ENCODER_CUSTOM_RESOLUTION
 #        ifdef ENCODER_RESOLUTION
