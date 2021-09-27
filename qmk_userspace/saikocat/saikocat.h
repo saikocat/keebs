@@ -19,6 +19,7 @@
 #include QMK_KEYBOARD_H
 
 #include "layers.h"
+#include "layouts.h"
 #include "process_records.h"
 #include "tap_hold.h"
 #ifdef LED_INDICATOR_ENABLE
