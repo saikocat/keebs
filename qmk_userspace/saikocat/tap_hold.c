@@ -20,9 +20,9 @@
 __attribute__((weak)) uint16_t get_tapping_term_keymap(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case BSPC_LWR:
-            return 150;
+            return 175;
         case SPC_RSE:
-            return 150;
+            return 175;
         default:
             return TAPPING_TERM;
     }
@@ -35,8 +35,9 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) { return get_ta
 __attribute__((weak)) bool get_permissive_hold_keymap(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case BSPC_LWR:
-        case SPC_RSE:
             return true;
+        case SPC_RSE:
+            return false;
         default:
             return false;
     }
