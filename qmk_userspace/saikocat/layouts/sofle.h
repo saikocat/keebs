@@ -84,7 +84,7 @@
     _______,   _______, _______, _______, _______, _______,                      _______, _______, _______, _______, _______, _______, \
     _______,   KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                      KC_CIRC, KC_AMPR, KC_ASTR, KC_PIPE, KC_BSLS, _______, \
     _______,   KC_UNDS, KC_LBRC, KC_LPRN, KC_RPRN, KC_GRV,                       KC_DQUO, KC_LCBR, KC_RCBR, KC_RBRC, KC_EQL,  KC_DQUO, \
-    KC_SFTENT, KC_MINS, KC_RBRC, KC_PLUS, KC_EQL,  KC_TILD, _______,    _______, KC_ASTR, KC_PLUS, KC_LT,   KC_GT,   KC_QUES, _______, \
+    KC_SFTENT, KC_EQL, KC_RBRC, KC_PLUS, KC_MINS,  KC_TILD, _______,    _______, KC_ASTR, KC_PLUS, KC_LT,   KC_GT,   KC_QUES, _______, \
                          _______, _______, SH_MON, _______, _______,    _______, _______, _______, _______, _______
 
 /*
