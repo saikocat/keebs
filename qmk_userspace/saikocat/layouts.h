@@ -16,7 +16,9 @@
 
 #pragma once
 
+#include "layouts/crkbd.h"
 #include "layouts/sofle.h"
+#include "layouts/std_split_3x6_3.h"
 
 #define HR_SGAC(k1, k2, k3, k4) SFT_T(k1), GUI_T(k2), ALT_T(k3), CTL_T(k4)
 
@@ -40,6 +42,32 @@
 #define ______________COLEMAK_MOD_DH_R3____________       KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH
 
 
+#define _________________LOWER_L1__________________       KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC
+#define _________________LOWER_L2__________________       KC_UNDS, KC_LBRC, KC_LPRN, KC_RPRN, KC_GRV
+#define _________________LOWER_L3__________________       KC_EQL,  KC_RBRC, KC_PLUS, KC_MINS, KC_TILD
+
+#define _________________LOWER_R1__________________       KC_CIRC, KC_AMPR, KC_ASTR, KC_PIPE, KC_BSLS
+#define _________________LOWER_R2__________________       KC_DQUO, KC_LCBR, KC_RCBR, KC_RBRC, KC_EQL
+#define _________________LOWER_R3__________________       KC_ASTR, KC_PLUS, KC_LT,   KC_GT,   KC_QUES
+
+
+#define _________________RAISE_L1__________________       KC_PSCR,    KC_ESC,     LCTL(KC_F), KC_TAB,     KC_INS
+#define _________________RAISE_L2__________________       KC_LSFT,    KC_LGUI,    KC_LALT,    KC_LCTL,    KC_CAPS
+#define _________________RAISE_L3__________________       LCTL(KC_Z), LCTL(KC_X), LCTL(KC_C), LCTL(KC_V), LCTL(KC_TAB)
+
+#define _________________RAISE_R1__________________       DF(_QWERTY), DF(_COLEMAK_DH), DF(_RAISE), XXXXXXX, _______
+#define _________________RAISE_R2__________________       KC_LEFT,     KC_DOWN,         KC_UP,      KC_RGHT, KC_F11
+#define _________________RAISE_R3__________________       KC_HOME,     KC_PGDN,         KC_PGUP,    KC_END,  KC_F12
+
+
+#define _________________ADJUST_L1_________________       KC_PAST, KC_7,   KC_8,    KC_9,    KC_PMNS
+#define _________________ADJUST_L2_________________       KC_PEQL, KC_4,   KC_5,    KC_6,    KC_PPLS
+#define _________________ADJUST_L3_________________       KC_P0,   KC_1,   KC_2,    KC_3,    KC_PSLS
+
+#define _________________ADJUST_R1_________________       DF(_QWERTY),     KC_F7,   KC_F8,   KC_F9,   KC_F10
+#define _________________ADJUST_R2_________________       DF(_COLEMAK_DH), KC_F4,   KC_F5,   KC_F6,   KC_F11
+#define _________________ADJUST_R3_________________       DF(_RAISE),      KC_F1,   KC_F2,   KC_F3,   KC_F12
+
 
 #define ________________NUMBER_LEFT________________       KC_1,    KC_2,    KC_3,    KC_4,    KC_5
 #define ________________NUMBER_RIGHT_______________       KC_6,    KC_7,    KC_8,    KC_9,    KC_0
@@ -47,4 +75,8 @@
 #define _________________FUNC_RIGHT________________       KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10
 
 #define ___________________BLANK___________________       _______, _______, _______, _______, _______
+
+#define _____________BOTTOM_HOMEROW_L______________       ESC_ALT, BSPC_LWR, KC_SPC
+#define _____________BOTTOM_HOMEROW_R______________       KC_ENT,  SPC_RSE,  COLN_ADJ
+
 // clang-format on
