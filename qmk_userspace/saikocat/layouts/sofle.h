@@ -83,9 +83,10 @@
 #define __LLY__LOWER \
     _______,   _______, _______, _______, _______, _______,                      _______, _______, _______, _______, _______, _______, \
     _______,   KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                      KC_CIRC, KC_AMPR, KC_ASTR, KC_PIPE, KC_BSLS, _______, \
-    _______,   KC_UNDS, KC_LBRC, KC_LPRN, KC_RPRN, KC_GRV,                       KC_DQUO, KC_LCBR, KC_RCBR, KC_RBRC, KC_EQL,  KC_DQUO, \
-    KC_SFTENT, KC_EQL,  KC_RBRC, KC_PLUS, KC_MINS, KC_TILD, _______,    _______, KC_ASTR, KC_PLUS, KC_LT,   KC_GT,   KC_QUES, _______, \
+    _______,   KC_LBRC, KC_LPRN, KC_UNDS, KC_RPRN, KC_GRV,                       KC_DQUO, KC_LCBR, KC_EQL,  KC_RCBR, KC_RBRC, KC_DQUO, \
+    KC_SFTENT, KC_RBRC, KC_EQL,  KC_PLUS, KC_MINS, KC_TILD, _______,    _______, KC_ASTR, KC_PLUS, KC_LT,   KC_GT,   KC_LBRC, _______, \
                         _______, _______, SH_MON,  _______, _______,    _______, _______, _______, _______, _______
+
 
 /*
  * _RAISE / _NAVIGATION
@@ -102,12 +103,11 @@
  *            |      |      |      |      |/       /         \      \ |      |      |      |      |
  *            `----------------------------------'           '------''---------------------------'
  */
-
 #define __LLY__RAISE \
     _______, _______,    _______,    _______,    _______,    _______,                             _______,     _______,         _______,    _______, _______, _______, \
-    _______, KC_PSCR,    KC_ESC,     LCTL(KC_F), KC_TAB,     KC_INS,                              DF(_QWERTY), DF(_COLEMAK_DH), DF(_RAISE), XXXXXXX, _______, KC_DEL,  \
-    _______, KC_LSFT,    KC_LGUI,    KC_LALT,    KC_LCTL,    KC_CAPS,                             KC_LEFT,     KC_DOWN,         KC_UP,      KC_RGHT, KC_F11,  KC_LCTL, \
-    _______, LCTL(KC_Z), LCTL(KC_X), LCTL(KC_C), LCTL(KC_V), LCTL(KC_TAB), _______,      _______, KC_HOME,     KC_PGDN,         KC_PGUP,    KC_END,  KC_F12,  _______, \
+    _______, _______,    _______,    LCTL(KC_F), _______,     _______,                            DF(_QWERTY), DF(_COLEMAK_DH), DF(_RAISE), KC_INS,  KC_PSCR, KC_DEL,  \
+    _______, KC_LSFT,    KC_LGUI,    KC_LALT,    KC_LCTL,    KC_CAPS,                             KC_LEFT,     KC_DOWN,         KC_UP,      KC_RGHT, KC_TAB,  KC_LCTL, \
+    _______, LCTL(KC_Z), LCTL(KC_X), LCTL(KC_C), LCTL(KC_V), LCTL(KC_TAB), _______,      _______, KC_HOME,     KC_PGDN,         KC_PGUP,    KC_END,  KC_ESC,  _______, \
                                          _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______
 
 /*

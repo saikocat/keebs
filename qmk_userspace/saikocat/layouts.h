@@ -43,21 +43,21 @@
 
 
 #define _________________LOWER_L1__________________       KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC
-#define _________________LOWER_L2__________________       KC_UNDS, KC_LBRC, KC_LPRN, KC_RPRN, KC_GRV
-#define _________________LOWER_L3__________________       KC_EQL,  KC_RBRC, KC_PLUS, KC_MINS, KC_TILD
+#define _________________LOWER_L2__________________       KC_LBRC, KC_LPRN, KC_UNDS, KC_RPRN, KC_GRV
+#define _________________LOWER_L3__________________       KC_RBRC, KC_EQL,  KC_PLUS, KC_MINS, KC_TILD
 
 #define _________________LOWER_R1__________________       KC_CIRC, KC_AMPR, KC_ASTR, KC_PIPE, KC_BSLS
-#define _________________LOWER_R2__________________       KC_DQUO, KC_LCBR, KC_RCBR, KC_RBRC, KC_EQL
-#define _________________LOWER_R3__________________       KC_ASTR, KC_PLUS, KC_LT,   KC_GT,   KC_QUES
+#define _________________LOWER_R2__________________       KC_DQUO, KC_LCBR, KC_EQL,  KC_RCBR, KC_RBRC
+#define _________________LOWER_R3__________________       KC_ASTR, KC_PLUS, KC_LT,   KC_GT,   KC_LBRC
 
 
-#define _________________RAISE_L1__________________       KC_PSCR,    KC_ESC,     LCTL(KC_F), KC_TAB,     KC_INS
+#define _________________RAISE_L1__________________       _______,    _______,    LCTL(KC_F), _______,    _______
 #define _________________RAISE_L2__________________       KC_LSFT,    KC_LGUI,    KC_LALT,    KC_LCTL,    KC_CAPS
 #define _________________RAISE_L3__________________       LCTL(KC_Z), LCTL(KC_X), LCTL(KC_C), LCTL(KC_V), LCTL(KC_TAB)
 
-#define _________________RAISE_R1__________________       DF(_QWERTY), DF(_COLEMAK_DH), DF(_RAISE), XXXXXXX, _______
-#define _________________RAISE_R2__________________       KC_LEFT,     KC_DOWN,         KC_UP,      KC_RGHT, KC_F11
-#define _________________RAISE_R3__________________       KC_HOME,     KC_PGDN,         KC_PGUP,    KC_END,  KC_F12
+#define _________________RAISE_R1__________________       DF(_QWERTY), DF(_COLEMAK_DH), DF(_RAISE), KC_INS,  KC_PSCR
+#define _________________RAISE_R2__________________       KC_LEFT,     KC_DOWN,         KC_UP,      KC_RGHT, KC_TAB
+#define _________________RAISE_R3__________________       KC_HOME,     KC_PGDN,         KC_PGUP,    KC_END,  KC_ESC
 
 
 #define _________________ADJUST_L1_________________       KC_PAST, KC_7,   KC_8,    KC_9,    KC_PMNS
