@@ -63,7 +63,6 @@
 #    endif
 #    define OLED_FONT_H "oled_font.h"
 #    define OLED_FONT_END 223
-/* #    define OLED_USPC_LOGO_CORNE */
 #endif
 
 /* Encoder Resolution setting */
