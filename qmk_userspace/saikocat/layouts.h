@@ -76,7 +76,7 @@
 
 #define ___________________BLANK___________________       _______, _______, _______, _______, _______
 
-#define _____________BOTTOM_HOMEROW_L______________       ESC_ALT, BSPC_LWR, KC_SPC
-#define _____________BOTTOM_HOMEROW_R______________       KC_ENT,  SPC_RSE,  COLN_ADJ
+#define _____________BOTTOM_HOMEROW_L______________       ESC_ALT,    BSPC_LWR, KC_SPC
+#define _____________BOTTOM_HOMEROW_R______________       KC_SFTENT,  SPC_RSE,  COLN_ADJ
 
 // clang-format on
