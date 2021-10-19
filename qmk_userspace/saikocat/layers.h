@@ -26,7 +26,7 @@ enum userspace_layers {
     _SPECIAL,
     _GAME,
     _GAME_NUM,
-    _NUM_HORI,
+    _NUM_NUMPAD,
     _SYMBOL     = _LOWER,
     _NAVIGATION = _RAISE,
     _NUM_FN     = _ADJUST,

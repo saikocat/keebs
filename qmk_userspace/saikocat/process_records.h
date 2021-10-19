@@ -32,6 +32,7 @@ enum userspace_custom_keycodes {
     ENT_RSE  = LT(_RAISE, KC_ENTER),
     SCLN_ADJ = LT(_ADJUST, KC_SCLN),
     SPC_ADJ  = LT(_ADJUST, KC_SPC),
+    SPC_NUM  = LT(_NUM_NUMPAD, KC_SPC),
     ESC_ALT  = LALT_T(KC_ESC),
 };
 

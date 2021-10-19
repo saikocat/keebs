@@ -201,7 +201,7 @@ void oled_render_blink_prompt(void) {
             oled_write_ln_P(blink ? PSTR("> sp_") : PSTR("> sp "), false);
             break;
         case _GAME:
-        case _GAME_NUMB:
+        case _GAME_NUM:
             oled_write_ln_P(blink ? PSTR("> gm_") : PSTR("> gm "), false);
             break;
         default:
@@ -217,10 +217,13 @@ void oled_render_keyboard_layout(void) {
         case _COLEMAK_DH:
             oled_write_P(PSTR("CM-DH"), false);
             break;
+        case _NAVIGATION:
+            oled_write_P(PSTR(" NAV "), false);
+            break;
         case _GAME:
             oled_write_P(PSTR("GAMES"), false);
             break;
-        case _GAME_NUMB:
+        case _GAME_NUM:
             oled_write_P(PSTR("GM-NB"), false);
             break;
     }
