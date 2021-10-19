@@ -21,6 +21,7 @@
 #include "layouts/std_split_3x6_3.h"
 
 #define HR_SGAC(k1, k2, k3, k4) SFT_T(k1), GUI_T(k2), ALT_T(k3), CTL_T(k4)
+#define HR_SCGA(k1, k2, k3, k4) SFT_T(k1), CTL_T(k2), GUI_T(k3), ALT_T(k4)
 
 // clang-format off
 #define _________________QWERTY_L1_________________       KC_Q,    KC_W,    KC_E,    KC_R,    KC_T
@@ -52,7 +53,7 @@
 
 
 #define _________________RAISE_L1__________________       _______,    _______,    LCTL(KC_F), _______,    KC_INS
-#define _________________RAISE_L2__________________       KC_LSFT,    KC_LGUI,    KC_LALT,    KC_LCTL,    KC_CAPS
+#define _________________RAISE_L2__________________       KC_LSFT,    KC_LCTL,    KC_LGUI,    KC_LALT,    KC_CAPS
 #define _________________RAISE_L3__________________       LCTL(KC_Z), LCTL(KC_X), LCTL(KC_C), LCTL(KC_V), LCTL(KC_TAB)
 
 #define _________________RAISE_R1__________________       DF(_QWERTY), DF(_COLEMAK_DH), DF(_RAISE), DF(_GAME),  KC_PSCR

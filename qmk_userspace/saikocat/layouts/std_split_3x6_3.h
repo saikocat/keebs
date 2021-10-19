@@ -118,7 +118,7 @@
  */
 #define __LLY_S3X6H3__SPECIAL \
     _______, RESET,   EEP_RST, XXXXXXX, XXXXXXX, XXXXXXX,                              XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
-    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, CG_TOGG,                              XXXXXXX, KC_LCTL, KC_LALT, KC_LGUI, KC_LSFT, XXXXXXX, \
+    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, CG_TOGG,                              XXXXXXX, KC_LALT, KC_LGUI, KC_LCTL, KC_LSFT, XXXXXXX, \
     _______, C_S_T(KC_Z), C_S_T(KC_X), C_S_T(KC_C), C_S_T(KC_V), C_S_T(KC_TAB),        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
                                                      _______, _______, _______,        _______, _______, _______
 
@@ -139,7 +139,7 @@
     KC_TAB,  _________________QWERTY_L1_________________,        DF(_QWERTY), DF(_COLEMAK_DH), DF(_RAISE), DF(_GAME),  KC_PSCR, _______, \
     KC_LCTL, _________________QWERTY_L2_________________,        ___________________BLANK___________________, _______, \
     KC_LSFT, _________________QWERTY_L3_________________,        ___________________BLANK___________________, _______, \
-                          SH_MON, MO(_GAME_NUMB), KC_SPC,        _____________BOTTOM_HOMEROW_R______________
+                          SH_MON, MO(_GAME_NUM), KC_SPC,        _____________BOTTOM_HOMEROW_R______________
 
 
 
