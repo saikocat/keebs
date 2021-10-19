@@ -51,17 +51,17 @@
 #define _________________LOWER_R3__________________       KC_ASTR, KC_PLUS, KC_LT,   KC_GT,   KC_LBRC
 
 
-#define _________________RAISE_L1__________________       _______,    _______,    LCTL(KC_F), _______,    _______
+#define _________________RAISE_L1__________________       _______,    _______,    LCTL(KC_F), _______,    KC_INS
 #define _________________RAISE_L2__________________       KC_LSFT,    KC_LGUI,    KC_LALT,    KC_LCTL,    KC_CAPS
 #define _________________RAISE_L3__________________       LCTL(KC_Z), LCTL(KC_X), LCTL(KC_C), LCTL(KC_V), LCTL(KC_TAB)
 
-#define _________________RAISE_R1__________________       DF(_QWERTY), DF(_COLEMAK_DH), DF(_RAISE), KC_INS,  KC_PSCR
-#define _________________RAISE_R2__________________       KC_LEFT,     KC_DOWN,         KC_UP,      KC_RGHT, KC_TAB
-#define _________________RAISE_R3__________________       KC_HOME,     KC_PGDN,         KC_PGUP,    KC_END,  KC_ESC
+#define _________________RAISE_R1__________________       DF(_QWERTY), DF(_COLEMAK_DH), DF(_RAISE), DF(_GAME),  KC_PSCR
+#define _________________RAISE_R2__________________       KC_LEFT,     KC_DOWN,         KC_UP,      KC_RGHT,    KC_TAB
+#define _________________RAISE_R3__________________       KC_HOME,     KC_PGDN,         KC_PGUP,    KC_END,     KC_ESC
 
 
 #define _________________ADJUST_L1_________________       KC_PAST, KC_7,   KC_8,    KC_9,    KC_PMNS
-#define _________________ADJUST_L2_________________       KC_PEQL, KC_4,   KC_5,    KC_6,    KC_PPLS
+#define _________________ADJUST_L2_________________       KC_EQL,  KC_4,   KC_5,    KC_6,    KC_PPLS
 #define _________________ADJUST_L3_________________       KC_P0,   KC_1,   KC_2,    KC_3,    KC_PSLS
 
 #define _________________ADJUST_R1_________________       DF(_QWERTY),     KC_F7,   KC_F8,   KC_F9,   KC_F10
@@ -76,7 +76,7 @@
 
 #define ___________________BLANK___________________       _______, _______, _______, _______, _______
 
-#define _____________BOTTOM_HOMEROW_L______________       ESC_ALT,    BSPC_LWR, KC_SPC
+#define _____________BOTTOM_HOMEROW_L______________       ESC_ALT,    BSPC_LWR, SPC_ADJ
 #define _____________BOTTOM_HOMEROW_R______________       KC_SFTENT,  SPC_RSE,  COLN_ADJ
 
 // clang-format on

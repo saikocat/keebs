@@ -200,6 +200,10 @@ void oled_render_blink_prompt(void) {
         case _SPECIAL:
             oled_write_ln_P(blink ? PSTR("> sp_") : PSTR("> sp "), false);
             break;
+        case _GAME:
+        case _GAME_NUMB:
+            oled_write_ln_P(blink ? PSTR("> gm_") : PSTR("> gm "), false);
+            break;
         default:
             oled_write_ln_P(blink ? PSTR("> _  ") : PSTR(">    "), false);
     }
@@ -212,6 +216,12 @@ void oled_render_keyboard_layout(void) {
             break;
         case _COLEMAK_DH:
             oled_write_P(PSTR("CM-DH"), false);
+            break;
+        case _GAME:
+            oled_write_P(PSTR("GAMES"), false);
+            break;
+        case _GAME_NUMB:
+            oled_write_P(PSTR("GM-NB"), false);
             break;
     }
 }
@@ -256,6 +266,7 @@ void oled_render_status_secondary(void) {
 
     oled_write_ln_P(PSTR(""), false);
     oled_render_blink_prompt();
+    oled_write_ln_P(PSTR(""), false);
 
 #ifdef OLED_CUSTOM_MASCOT
     oled_render_mascot_status();
