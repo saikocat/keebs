@@ -202,16 +202,16 @@ void oled_render_mascot_status(void) {
 #endif
 
     /* Time gap between tap timer updates */
-    uint32_t keystroke_gap_time = timer_elapsed32(oled_idle_timer);
+    uint32_t tap_interval = timer_elapsed32(oled_idle_timer);
 
     void animation_phase(void) {
         if (get_mods() & MOD_MASK_SHIFT || host_keyboard_led_state().caps_lock) {
             mascot_action(scratch);
         } else if (get_mods() & MOD_MASK_CAG) {
             mascot_action(sneak);
-        } else if (keystroke_gap_time < NEKO_FRAME_DURATION * 4) {
+        } else if (tap_interval < NEKO_FRAME_DURATION * 4) {
             mascot_action(run);
-        } else if (keystroke_gap_time < NEKO_FRAME_DURATION * 16) {
+        } else if (tap_interval < NEKO_FRAME_DURATION * 16) {
             mascot_action(walk);
         } else {
             mascot_action(sleep);
@@ -219,7 +219,7 @@ void oled_render_mascot_status(void) {
     }
 
     /* Extra handling in standalone user case & when user prefers not to use OLED_DISABLE_TIMEOUT */
-    if ((OLED_TIMEOUT > 0) && (keystroke_gap_time > OLED_TIMEOUT)) {
+    if ((OLED_TIMEOUT > 0) && (tap_interval > OLED_TIMEOUT)) {
         oled_off();
         return;
     }

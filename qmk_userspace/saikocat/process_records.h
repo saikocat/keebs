@@ -20,21 +20,7 @@
 #include "version.h"
 #include "action.h"
 
-#include "layers.h"
-
-enum userspace_custom_keycodes {
-    QMK_BEST = SAFE_RANGE,
-    COLN_ADJ,
-    SPC_LWR  = LT(_LOWER, KC_SPC),
-    BSPC_LWR = LT(_LOWER, KC_BSPC),
-    SPC_RSE  = LT(_RAISE, KC_SPC),
-    DEL_RSE  = LT(_RAISE, KC_DEL),
-    ENT_RSE  = LT(_RAISE, KC_ENTER),
-    SCLN_ADJ = LT(_ADJUST, KC_SCLN),
-    SPC_ADJ  = LT(_ADJUST, KC_SPC),
-    SPC_NUM  = LT(_NUM_NUMPAD, KC_SPC),
-    ESC_ALT  = LALT_T(KC_ESC),
-};
+#include "definitions_custom.h"
 
 void unshift_key_tap(uint16_t kc, uint16_t shift_kc);
 

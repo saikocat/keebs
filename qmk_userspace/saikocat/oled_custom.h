@@ -19,7 +19,7 @@
 #include "quantum.h"
 #include "oled_driver.h"
 
-#include "layers.h"
+#include "definitions_custom.h"
 #include "oled_mascot.h"
 
 /* User overridable to set oled orientation */
