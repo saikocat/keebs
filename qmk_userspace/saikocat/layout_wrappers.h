@@ -52,9 +52,9 @@
 #define _________________LOWER_R3__________________       KC_ASTR, KC_PLUS, KC_LT,   KC_GT,   KC_LBRC
 
 
-#define _________________RAISE_L1__________________       _______,    _______,    LCTL(KC_F), _______,    KC_INS
-#define _________________RAISE_L2__________________       KC_LSFT,    KC_LCTL,    KC_LGUI,    KC_LALT,    KC_CAPS
-#define _________________RAISE_L3__________________       LCTL(KC_Z), LCTL(KC_X), LCTL(KC_C), LCTL(KC_V), LCTL(KC_TAB)
+#define _________________RAISE_L1__________________       _______,  _______, C(KC_F), _______, KC_INS
+#define _________________RAISE_L2__________________       KC_LSFT,  KC_LCTL, KC_LGUI, KC_LALT, KC_CAPS
+#define _________________RAISE_L3__________________       C(KC_Z),  C(KC_X), C(KC_C), C(KC_V), C(KC_TAB)
 
 #define _________________RAISE_R1__________________       DF(_QWERTY), DF(_COLEMAK_DH), DF(_RAISE), DF(_GAME),  KC_PSCR
 #define _________________RAISE_R2__________________       KC_LEFT,     KC_DOWN,         KC_UP,      KC_RGHT,    KC_TAB
