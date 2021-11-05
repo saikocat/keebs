@@ -15,7 +15,6 @@
  */
 
 #include "tap_hold.h"
-#include "process_records.h"
 
 __attribute__((weak)) uint16_t get_tapping_term_keymap(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {

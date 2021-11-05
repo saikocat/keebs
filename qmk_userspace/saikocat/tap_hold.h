@@ -18,5 +18,7 @@
 
 #include "quantum.h"
 
+#include "definitions_custom.h"
+
 uint16_t get_tapping_term_keymap(uint16_t keycode, keyrecord_t *record);
 bool     get_permissive_hold_keymap(uint16_t keycode, keyrecord_t *record);
