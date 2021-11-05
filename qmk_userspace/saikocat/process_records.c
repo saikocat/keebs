@@ -118,5 +118,15 @@ bool                       process_record_user(uint16_t keycode, keyrecord_t *re
     return process_record_keymap(keycode, record);
 }
 
-__attribute__((weak)) void post_process_record_keymap(uint16_t keycode, keyrecord_t *record) {}
-void                       post_process_record_user(uint16_t keycode, keyrecord_t *record) { post_process_record_keymap(keycode, record); }
+__attribute__((weak)) void post_process_record_keymap(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        /* swaphand without layer state conflict */
+        case SH_MON:
+            if (record->event.pressed && layer_state_is(_LOWER)) {
+                layer_off(_LOWER);
+            }
+            break;
+    }
+}
+
+void post_process_record_user(uint16_t keycode, keyrecord_t *record) { post_process_record_keymap(keycode, record); }
