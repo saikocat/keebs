@@ -31,6 +31,8 @@
 
 #define PERMISSIVE_HOLD_PER_KEY
 
+#define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
+
 /* Split keyboard setting */
 #if defined(SPLIT_KEYBOARD)
 #    define SPLIT_LAYER_STATE_ENABLE

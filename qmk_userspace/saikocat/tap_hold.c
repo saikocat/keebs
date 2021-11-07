@@ -19,9 +19,8 @@
 __attribute__((weak)) uint16_t get_tapping_term_keymap(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case BSPC_LWR:
-            return 175;
         case SPC_RSE:
-            return 175;
+            return TAPPING_TERM;  // - 25;
         default:
             return TAPPING_TERM;
     }
@@ -31,10 +30,27 @@ __attribute__((weak)) uint16_t get_tapping_term_keymap(uint16_t keycode, keyreco
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) { return get_tapping_term_keymap(keycode, record); }
 #endif
 
+__attribute__((weak)) bool get_hold_on_other_key_press_keymap(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case BSPC_LWR:
+        case SPC_RSE:
+        case ESC_ALT:
+            return true;
+        case SPC_ADJ:
+        case SPC_NUM:
+            return false;
+        default:
+            return false;
+    }
+}
+
+#ifdef HOLD_ON_OTHER_KEY_PRESS_PER_KEY
+bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) { return get_hold_on_other_key_press_keymap(keycode, record); }
+#endif
+
 __attribute__((weak)) bool get_permissive_hold_keymap(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case BSPC_LWR:
-            return true;
         case SPC_RSE:
             return false;
         default:
