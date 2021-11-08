@@ -21,7 +21,7 @@ enum userspace_layers {
     _QWERTY = 0,
     _COLEMAK_DH,
     _GAME,
-    _NUM_NUMPAD,
+    _NUM,
     _LOWER,
     _RAISE,
     _ADJUST,
@@ -29,7 +29,6 @@ enum userspace_layers {
     _GAME_NUM,
     _SYMBOL     = _LOWER,
     _NAVIGATION = _RAISE,
-    _NUM_FN     = _ADJUST,
 };
 
 /* Define custom keycodes */
@@ -43,6 +42,6 @@ enum userspace_custom_keycodes {
     ENT_RSE  = LT(_RAISE, KC_ENTER),
     SCLN_ADJ = LT(_ADJUST, KC_SCLN),
     SPC_ADJ  = LT(_ADJUST, KC_SPC),
-    SPC_NUM  = LT(_NUM_NUMPAD, KC_SPC),
+    SPC_NUM  = LT(_NUM, KC_SPC),
     ESC_ALT  = LALT_T(KC_ESC),
 };

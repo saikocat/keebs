@@ -20,12 +20,12 @@
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QWERTY]     = LAYOUT_crkbd_wrapper(__LLY_S3X6H3__QWERTY),
     [_COLEMAK_DH] = LAYOUT_crkbd_wrapper(__LLY_S3X6H3__COLEMAK_DH),
+    [_GAME]       = LAYOUT_crkbd_wrapper(__LLY_S3X6H3__GAME),
     [_LOWER]      = LAYOUT_crkbd_wrapper(__LLY_S3X6H3__LOWER),
     [_RAISE]      = LAYOUT_crkbd_wrapper(__LLY_S3X6H3__RAISE),
     [_ADJUST]     = LAYOUT_crkbd_wrapper(__LLY_S3X6H3__ADJUST),
+    [_NUM]        = LAYOUT_crkbd_wrapper(__LLY_S3X6H3__NUM),
     [_SPECIAL]    = LAYOUT_crkbd_wrapper(__LLY_S3X6H3__SPECIAL),
-    [_GAME]       = LAYOUT_crkbd_wrapper(__LLY_S3X6H3__GAME),
-    [_GAME_NUM]  = LAYOUT_crkbd_wrapper(__LLY_S3X6H3__GAME_NUM),
-    [_NUM_NUMPAD] = LAYOUT_crkbd_wrapper(__LLY_S3X6H3__NUM_NUMPAD),
+    [_GAME_NUM]   = LAYOUT_crkbd_wrapper(__LLY_S3X6H3__GAME_NUM),
 };
 // clang-format on

@@ -52,22 +52,22 @@
 #define _________________LOWER_R3__________________       KC_ASTR, KC_PLUS, KC_LT,   KC_GT,   KC_LBRC
 
 
-#define _________________RAISE_L1__________________       _______,  _______, C(KC_F), _______, KC_INS
-#define _________________RAISE_L2__________________       KC_LSFT,  KC_LCTL, KC_LGUI, KC_LALT, KC_CAPS
-#define _________________RAISE_L3__________________       C(KC_Z),  C(KC_X), C(KC_C), C(KC_V), C(KC_TAB)
+#define _________________RAISE_L1__________________       KC_PAST, KC_7,   KC_8,    KC_9,    KC_PMNS
+#define _________________RAISE_L2__________________       KC_EQL,  KC_4,   KC_5,    KC_6,    KC_PPLS
+#define _________________RAISE_L3__________________       KC_P0,   KC_1,   KC_2,    KC_3,    KC_PSLS
 
 #define _________________RAISE_R1__________________       DF(_QWERTY), DF(_COLEMAK_DH), DF(_RAISE), DF(_GAME),  KC_PSCR
 #define _________________RAISE_R2__________________       KC_LEFT,     KC_DOWN,         KC_UP,      KC_RGHT,    KC_TAB
-#define _________________RAISE_R3__________________       KC_HOME,     KC_PGDN,         KC_PGUP,    KC_END,     KC_ESC
+#define _________________RAISE_R3__________________       KC_HOME,     KC_PGDN,         KC_PGUP,    KC_END,     KC_INS
 
 
-#define _________________ADJUST_L1_________________       KC_PAST, KC_7,   KC_8,    KC_9,    KC_PMNS
-#define _________________ADJUST_L2_________________       KC_EQL,  KC_4,   KC_5,    KC_6,    KC_PPLS
-#define _________________ADJUST_L3_________________       KC_P0,   KC_1,   KC_2,    KC_3,    KC_PSLS
+#define _________________ADJUST_L1_________________       _______,  _______, C(KC_F), _______, _______
+#define _________________ADJUST_L2_________________       KC_LSFT,  KC_LCTL, KC_LGUI, KC_LALT, KC_CAPS
+#define _________________ADJUST_L3_________________       C(KC_Z),  C(KC_X), C(KC_C), C(KC_V), C(KC_TAB)
 
-#define _________________ADJUST_R1_________________       DF(_QWERTY),     KC_F7,   KC_F8,   KC_F9,   KC_F10
-#define _________________ADJUST_R2_________________       DF(_COLEMAK_DH), KC_F4,   KC_F5,   KC_F6,   KC_F11
-#define _________________ADJUST_R3_________________       DF(_RAISE),      KC_F1,   KC_F2,   KC_F3,   KC_F12
+#define _________________ADJUST_R1_________________       _______, KC_F7, KC_F8, KC_F9, KC_F10
+#define _________________ADJUST_R2_________________       _______, KC_F4, KC_F5, KC_F6, KC_F11
+#define _________________ADJUST_R3_________________       _______, KC_F1, KC_F2, KC_F3, KC_F12
 
 
 #define ________________NUMBER_LEFT________________       KC_1,    KC_2,    KC_3,    KC_4,    KC_5
