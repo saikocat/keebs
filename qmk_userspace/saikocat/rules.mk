@@ -52,7 +52,7 @@ ifneq ($(strip $(OLED_CUSTOM)),)
 	OPT_DEFS += -DOLED_CUSTOM
 	SRC += oled_custom.c
 
-	ifeq ($(OLED_CUSTOM_MASCOT), $(filter $(OLED_CUSTOM_MASCOT), neko))
+	ifeq ($(OLED_CUSTOM_MASCOT), neko)
 		OPT_DEFS += -DOLED_CUSTOM_MASCOT
 		SRC += oled_mascot_neko.c
 
