@@ -35,6 +35,7 @@
 
 /* Split keyboard setting */
 #if defined(SPLIT_KEYBOARD)
+#    define EE_HANDS
 #    define SPLIT_LAYER_STATE_ENABLE
 #    define SPLIT_LED_STATE_ENABLE
 #    define SPLIT_MODS_ENABLE
