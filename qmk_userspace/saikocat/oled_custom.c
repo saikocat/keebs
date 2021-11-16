@@ -261,7 +261,7 @@ void oled_render_status_primary(void) {
     oled_render_layer_state(get_highest_layer(layer_state | default_layer_state));
 
     oled_set_cursor(0, 11);
-    oled_render_mod_status(get_mods() | get_oneshot_mods());
+    oled_render_mod_status(get_mods());
 }
 
 void oled_render_status_secondary(void) {

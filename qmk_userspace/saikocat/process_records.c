@@ -24,6 +24,18 @@
  *
  * Use this mainly for vim command shortcut (:)
  */
+#ifdef NO_ACTION_ONESHOT
+void unshift_key_tap(uint16_t kc, uint16_t shift_kc) {
+    uint8_t temp_mod = get_mods();
+    clear_mods();
+    if (temp_mod & MOD_MASK_SHIFT) {
+        tap_code(kc);
+    } else {
+        tap_code16(shift_kc);
+    }
+    set_mods(temp_mod);
+}
+#else
 void unshift_key_tap(uint16_t kc, uint16_t shift_kc) {
     uint8_t temp_mod = get_mods();
     uint8_t temp_osm = get_oneshot_mods();
@@ -36,6 +48,7 @@ void unshift_key_tap(uint16_t kc, uint16_t shift_kc) {
     }
     set_mods(temp_mod);
 }
+#endif
 
 bool mod_key_press(uint16_t code, uint16_t mod_code, bool pressed, uint16_t this_timer) {
     if (pressed) {

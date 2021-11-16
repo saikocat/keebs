@@ -57,11 +57,11 @@
 #define _________________RAISE_L3__________________       KC_P0,   KC_1,   KC_2,    KC_3,    KC_PSLS
 
 #define _________________RAISE_R1__________________       DF(_QWERTY), DF(_COLEMAK_DH), DF(_RAISE), DF(_GAME),  KC_PSCR
-#define _________________RAISE_R2__________________       KC_LEFT,     KC_DOWN,         KC_UP,      KC_RGHT,    KC_TAB
+#define _________________RAISE_R2__________________       KC_LEFT,     KC_DOWN,         KC_UP,      KC_RGHT,    KC_LSFT
 #define _________________RAISE_R3__________________       KC_HOME,     KC_PGDN,         KC_PGUP,    KC_END,     KC_INS
 
 
-#define _________________ADJUST_L1_________________       _______,  _______, C(KC_F), _______, _______
+#define _________________ADJUST_L1_________________       _______,  _______, _______, _______, _______
 #define _________________ADJUST_L2_________________       KC_LSFT,  KC_LCTL, KC_LGUI, KC_LALT, KC_CAPS
 #define _________________ADJUST_L3_________________       C(KC_Z),  C(KC_X), C(KC_C), C(KC_V), C(KC_TAB)
 

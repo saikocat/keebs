@@ -33,6 +33,8 @@
 
 #define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
 
+#define NO_ACTION_ONESHOT
+
 /* Split keyboard setting */
 #if defined(SPLIT_KEYBOARD)
 #    define EE_HANDS
