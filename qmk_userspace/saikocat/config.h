@@ -16,6 +16,9 @@
 
 /* Set Polling rate to 1000Hz */
 #define USB_POLLING_INTERVAL_MS 1
+#define QMK_KEYS_PER_SCAN 4
+
+#define TAP_CODE_DELAY 5
 
 /* Tap-Hold configurations */
 #ifdef TAPPING_TERM
@@ -28,11 +31,14 @@
 #endif
 
 #define TAPPING_TERM_PER_KEY
-
 #define PERMISSIVE_HOLD_PER_KEY
-
 #define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
+#define IGNORE_MOD_TAP_INTERRUPT_PER_KEY
+#define TAPPING_FORCE_HOLD_PER_KEY
 
+/* Space saving option */
+#undef LOCKING_SUPPORT_ENABLE
+#undef LOCKING_RESYNC_ENABLE
 #define NO_ACTION_ONESHOT
 
 /* Split keyboard setting */
@@ -45,7 +51,12 @@
 #        define SPLIT_WPM_ENABLE
 #    endif
 #    ifdef OLED_ENABLE
-#        define SPLIT_OLED_ENABLE
+#        ifndef SLAVE_OLED_MASTER_TRACKBALL
+#            define SPLIT_OLED_ENABLE
+#        endif
+#    endif
+#    ifdef CUSTOM_SPLIT_TRANSPORT_SYNC
+#        define SPLIT_TRANSACTION_IDS_USER RPC_ID_USER_STATE_SYNC
 #    endif
 #endif
 
@@ -66,6 +77,7 @@
 #    ifdef OLED_FONT_H
 #        undef OLED_FONT_H
 #    endif
+#    define OLED_BRIGHTNESS 128
 #    define OLED_FONT_H "oled_font.h"
 #    define OLED_FONT_END 223
 #endif
@@ -78,4 +90,18 @@
 #        endif
 #        define ENCODER_RESOLUTION ENCODER_CUSTOM_RESOLUTION
 #    endif
+#endif
+
+/* Pimoroni Trackball */
+/* Default configurations
+ *
+ * #define PIMORONI_TRACKBALL_INTERVAL_MS 8       // change update rate for trackball, from testing update rate seems to be limited to around 250. Updating more frequently will slow down the keyboard.
+ * #define PIMORONI_TRACKBALL_SCALE 5             // 5 is default, I personally prefer 3 which feels a little smoother.
+ * #define PIMORONI_TRACKBALL_DEBOUNCE_CYCLES 20  // number of cycles to stop motion after clicking. 20 x 8 (INTERVAL) so 160ms.
+ * #define PIMORONI_TRACKBALL_ERROR_COUNT 10      // stops trying to read from the pimoroni after this many faults.
+ */
+#ifdef PIMORONI_TRACKBALL_ENABLE
+#    define POINTING_DEVICE_ROTATION_90
+#    define PIMORONI_TRACKBALL_SCALE 3
+#    define PIMORONI_TRACKBALL_INTERVAL_MS 4
 #endif

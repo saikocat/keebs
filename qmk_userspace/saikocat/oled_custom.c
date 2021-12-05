@@ -14,23 +14,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "sync_timer.h"
+
 #include "oled_custom.h"
 
 #define OLED_IDLE_THRESHOLD 60000U
 /* keystroke/tap gap timer */
 uint32_t oled_idle_timer = 0;
 
-__attribute__((weak)) oled_rotation_t oled_init_keymap(oled_rotation_t rotation) { return OLED_ROTATION_270; }
-
 bool process_record_user_oled(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
 #ifdef OLED_ENABLE
         /* keystroke/tap gap timer update */
-        oled_idle_timer = timer_read32();
+        oled_idle_timer = sync_timer_read32();
 #endif
     }
     return true;
 }
+
+__attribute__((weak)) oled_rotation_t oled_init_keymap(oled_rotation_t rotation) { return OLED_ROTATION_270; }
 
 #ifdef SWAP_HANDS_ENABLE
 extern bool swap_hands;
@@ -229,21 +231,10 @@ void oled_render_keyboard_layout(void) {
     }
 }
 
-void oled_render_wpm(uint8_t padding) {
+void oled_render_wpm(void) {
 #ifdef WPM_ENABLE
-    uint8_t n = get_current_wpm();
-    char    wpm_counter[4];
-    wpm_counter[3] = '\0';
-    wpm_counter[2] = '0' + n % 10;
-    wpm_counter[1] = (n /= 10) % 10 ? '0' + (n) % 10 : (n / 10) % 10 ? '0' : ' ';
-    wpm_counter[0] = n / 10 ? '0' + n / 10 : ' ';
-    oled_write_P(PSTR("WPM:"), false);
-    if (padding) {
-        for (uint8_t n = padding; n > 0; n--) {
-            oled_write_P(PSTR(" "), false);
-        }
-    }
-    oled_write(wpm_counter, false);
+    oled_write_P(PSTR("WPM: "), false);
+    oled_write(get_u8_str(get_current_wpm(), '0'), false);
 #endif
 }
 
@@ -277,7 +268,7 @@ void oled_render_status_secondary(void) {
 
     oled_set_cursor(0, 13);
 #ifdef WPM_ENABLE
-    oled_render_wpm(2);
+    oled_render_wpm();
 #endif
 }
 
@@ -285,21 +276,38 @@ void oled_render_status_secondary(void) {
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) { return oled_init_keymap(rotation); }
 
-void oled_task_user(void) {
+bool oled_off_if_idle(void) {
     /* Bail out of rendering if idled */
-    if (is_keyboard_master()) {
-        if (timer_elapsed32(oled_idle_timer) > OLED_IDLE_THRESHOLD) {
-            oled_off();
-            return;
-        } else {
-            oled_on();
-        }
+    if (sync_timer_elapsed32(oled_idle_timer) > OLED_IDLE_THRESHOLD) {
+        oled_off();
+        return true;
+    } else {
+        oled_on();
     }
 
-    /* Render */
+    return false;
+}
+
+bool oled_task_user(void) {
+// TODO: Fix this terrible condition
+#if defined(SPLIT_OLED_ENABLE) && !defined(SLAVE_OLED_MASTER_TRACKBALL)
     if (is_keyboard_master()) {
+        if (oled_off_if_idle()) {
+            return false;
+        }
+    }
+#else
+    if (oled_off_if_idle()) {
+       return false;
+    }
+#endif
+
+    /* Render */
+    if (is_keyboard_left()) {
         oled_render_status_primary();
     } else {
         oled_render_status_secondary();
     }
+
+    return false;
 }

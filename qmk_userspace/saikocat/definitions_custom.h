@@ -43,5 +43,32 @@ enum userspace_custom_keycodes {
     SCLN_ADJ = LT(_ADJUST, KC_SCLN),
     SPC_ADJ  = LT(_ADJUST, KC_SPC),
     SPC_NUM  = LT(_NUM, KC_SPC),
+    BSPC_NUM = LT(_NUM, KC_BSPC),
     ESC_ALT  = LALT_T(KC_ESC),
+    /* Trackball: Scroll, Left Click, Right Click, Middle Click */
+    TB_SCR,
+    TB_LCL,
+    TB_RCL,
+    TB_MCL,
+    /* Home row mods left hand */
+    GUI_Z = LGUI_T(KC_Z),
+    GUI_A = LGUI_T(KC_A),
+    ALT_S = LALT_T(KC_S),
+    SFT_D = LSFT_T(KC_D),
+    CTL_F = LCTL_T(KC_F),
+    // Colemak //
+    ALT_R = LALT_T(KC_R),
+    SFT_S = LSFT_T(KC_S),
+    CTL_T = LCTL_T(KC_T),
+    /* Home row mods right hand */
+    CTL_J    = RCTL_T(KC_J),
+    SFT_K    = RSFT_T(KC_K),
+    ALT_L    = LALT_T(KC_L),
+    GUI_SCLN = RGUI_T(KC_SCLN),
+    GUI_SCSH = RGUI_T(KC_SLSH),
+    // Colemak //
+    CTL_N = RCTL_T(KC_N),
+    SFT_E = RSFT_T(KC_E),
+    ALT_I = LALT_T(KC_I),
+    GUI_O = RGUI_T(KC_O),
 };

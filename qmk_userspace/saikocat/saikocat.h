@@ -21,7 +21,6 @@
 #include "definitions_custom.h"
 #include "layout_wrappers.h"
 #include "process_records.h"
-#include "tap_hold.h"
 #ifdef LED_INDICATOR_ENABLE
 #    include "led_custom.h"
 #endif
@@ -30,6 +29,13 @@
 #endif
 #ifdef ENCODER_ENABLE
 #    include "encoder_custom.h"
+#endif
+#ifdef PIMORONI_TRACKBALL_ENABLE
+#    include "pimoroni_trackball_custom.h"
+#    include "colours_control.h"
+#endif
+#ifdef SPLIT_KEYBOARD
+#    include "transport_sync.h"
 #endif
 
 /* Layer state check */
@@ -41,3 +47,6 @@ void suspend_wakeup_init_keymap(void);
 
 /* Matrix scan */
 void matrix_scan_keymap(void);
+
+/* Post keyboard init */
+void keyboard_post_init_keymap(void);

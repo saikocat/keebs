@@ -23,8 +23,6 @@ layer_state_t                       layer_state_set_user(layer_state_t state) {
         return state;
     }
 
-    // state = update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
-    // state = update_tri_layer_state(state, _LOWER, _ADJUST, _SPECIAL);
     state = layer_state_set_keymap(state);
     return state;
 }
@@ -35,17 +33,38 @@ void                       suspend_power_down_user(void) {
 #ifdef OLED_ENABLE
     oled_off();
 #endif
+#ifdef PIMORONI_TRACKBALL_ENABLE
+    pointing_device_suspend_power_down_keymap();
+#endif
     suspend_power_down_keymap();
 }
 
 __attribute__((weak)) void suspend_wakeup_init_keymap(void) {}
-void                       suspend_wakeup_init_user(void) { suspend_wakeup_init_keymap(); }
+void                       suspend_wakeup_init_user(void) {
+#ifdef OLED_ENABLE
+    oled_on();
+    // extern uint32_t oled_idle_timer;
+    // oled_idle_timer = sync_timer_read32();
+#endif
+    suspend_wakeup_init_keymap();
+}
 
 /* Matrix scan */
 __attribute__((weak)) void matrix_scan_keymap(void) {}
 void                       matrix_scan_user(void) {
 #ifdef ENCODER_ENABLE
-    matrix_scan_encoder();
+    matrix_scan_user_encoder();
 #endif
     matrix_scan_keymap();
+}
+
+__attribute__((weak)) void keyboard_post_init_keymap(void) {}
+void                       keyboard_post_init_user(void) {
+#if defined(SPLIT_KEYBOARD) && defined(SPLIT_TRANSACTION_IDS_USER)
+    keyboard_post_init_transport_sync();
+#endif
+    // #ifdef CONSOLE_ENABLE
+    //     debug_enable=true;
+    // #endif
+    keyboard_post_init_keymap();
 }

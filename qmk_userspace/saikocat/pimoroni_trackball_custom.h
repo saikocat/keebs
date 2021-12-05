@@ -16,17 +16,21 @@
 
 #pragma once
 
-#include "quantum.h"
-//#include "version.h"
-#include "action.h"
+#include "pointing_device.h"
+#include "drivers/sensors/pimoroni_trackball.h"
 
-#include "definitions_custom.h"
+#ifndef PIMORONONI_TRACKBALL_LED_TIMEOUT
+#    define PIMORONONI_TRACKBALL_LED_TIMEOUT 60000
+#endif
 
-void unshift_key_tap(uint16_t kc, uint16_t shift_kc);
+#ifndef PIMORONONI_TRACKBALL_SCROLL_DIVIDER
+#    define PIMORONONI_TRACKBALL_SCROLL_DIVIDER 12
+#endif
 
-bool mod_key_press(uint16_t code, uint16_t mod_code, bool pressed, uint16_t this_timer);
-bool mod_key_press_timer(uint16_t code, uint16_t mod_code, bool pressed);
+void keyboard_post_init_keymap_trackball(void);
 
-bool process_record_tri_layer_state(uint16_t keycode, keyrecord_t *record);
-bool process_record_keymap(uint16_t keycode, keyrecord_t *record);
-void post_process_record_keymap(uint16_t keycode, keyrecord_t *record);
+void pointing_device_suspend_power_down_keymap(void);
+
+bool process_record_user_pimoroni_trackball(uint16_t keycode, keyrecord_t *record);
+
+void pimoroni_trackball_set_scrolling(bool scrolling);

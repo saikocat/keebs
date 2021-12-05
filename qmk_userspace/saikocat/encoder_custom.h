@@ -18,7 +18,7 @@
 
 #include "quantum.h"
 
-void matrix_scan_encoder(void);
+void matrix_scan_user_encoder(void);
 bool encoder_update_keymap(uint8_t index, bool clockwise);
 
 void encoder_fn_audio_control(bool clockwise);

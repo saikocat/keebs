@@ -16,6 +16,7 @@
 
 #include "process_records.h"
 #include "oled_custom.h"
+#include "pimoroni_trackball_custom.h"
 
 /* Reverse of shift
  *
@@ -65,6 +66,8 @@ bool mod_key_press(uint16_t code, uint16_t mod_code, bool pressed, uint16_t this
     return false;
 }
 
+bool is_keyrecord_held(keyrecord_t *record) { return !record->tap.count && record->event.pressed; }
+
 bool mod_key_press_timer(uint16_t code, uint16_t mod_code, bool pressed) {
     static uint16_t this_timer;
     return mod_key_press(code, mod_code, pressed, this_timer);
@@ -74,35 +77,36 @@ __attribute__((weak)) bool process_record_tri_layer_state(uint16_t keycode, keyr
     static uint16_t layer_tap_colon_timer;
 
     switch (keycode) {
-        case BSPC_LWR:
-            if (record->event.pressed) {
-                layer_on(_LOWER);
-                update_tri_layer(_LOWER, _RAISE, _ADJUST);
-            } else {
-                layer_off(_LOWER);
-                update_tri_layer(_LOWER, _RAISE, _ADJUST);
-            }
-            break;
-        case SPC_RSE:
-            if (record->event.pressed) {
-                layer_on(_RAISE);
-                update_tri_layer(_LOWER, _RAISE, _ADJUST);
-            } else {
-                layer_off(_RAISE);
-                update_tri_layer(_LOWER, _RAISE, _ADJUST);
-            }
-            break;
+        // case SPC_LWR:
+        // case BSPC_LWR:
+        //     if (is_keyrecord_held(record)) {
+        //         layer_on(_LOWER);
+        //         update_tri_layer(_LOWER, _RAISE, _ADJUST);
+        //     } else {
+        //         layer_off(_LOWER);
+        //         update_tri_layer(_LOWER, _RAISE, _ADJUST);
+        //     }
+        //     return false;
+        // case SPC_RSE:
+        //     if (is_keyrecord_held(record)) {
+        //         layer_on(_RAISE);
+        //         update_tri_layer(_LOWER, _RAISE, _ADJUST);
+        //     } else {
+        //         layer_off(_RAISE);
+        //         update_tri_layer(_LOWER, _RAISE, _ADJUST);
+        //     }
+        //     return false;
         case SCLN_ADJ:
-            if (record->event.pressed) {
+            if (is_keyrecord_held(record)) {
                 layer_on(_ADJUST);
                 update_tri_layer(_LOWER, _ADJUST, _SPECIAL);
             } else {
                 layer_off(_ADJUST);
                 update_tri_layer(_LOWER, _ADJUST, _SPECIAL);
             }
-            break;
+            return false;
         case COLN_ADJ:
-            if (record->event.pressed) {
+            if (is_keyrecord_held(record)) {
                 /* held state */
                 layer_on(_ADJUST);
                 update_tri_layer(_LOWER, _ADJUST, _SPECIAL);
@@ -117,7 +121,7 @@ __attribute__((weak)) bool process_record_tri_layer_state(uint16_t keycode, keyr
                     unshift_key_tap(KC_SCLN, KC_COLN);
                 }
             }
-            break;
+            return false;
     }
     return true;
 }
@@ -127,7 +131,14 @@ bool                       process_record_user(uint16_t keycode, keyrecord_t *re
 #ifdef OLED_ENABLE
     process_record_user_oled(keycode, record);
 #endif
-    process_record_tri_layer_state(keycode, record);
+#ifdef PIMORONI_TRACKBALL_ENABLE
+    if (!process_record_user_pimoroni_trackball(keycode, record)) {
+        return false;
+    }
+#endif
+    if (!process_record_tri_layer_state(keycode, record)) {
+        return false;
+    }
     return process_record_keymap(keycode, record);
 }
 

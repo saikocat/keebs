@@ -9,13 +9,13 @@ ifneq ($(PLATFORM),CHIBIOS)
 	endif
 endif
 
+CONSOLE_ENABLE = no
+
 # Disable unused features to reduce firmware size
 GRAVE_ESC_ENABLE = no
-
 RGBLIGHT_ENABLE = no
 BACKLIGHT_ENABLE = no
 SLEEP_LED_ENABLE = no
-CONSOLE_ENABLE = no
 COMMAND_ENABLE = no
 AUDIO_ENABLE = no
 BLUETOOTH_ENABLE = no
@@ -72,3 +72,45 @@ endif
 
 # -e ENCODER_ENABLE=yes
 # OPT_DEFS=-DENCODER_RESOLUTION=4
+
+PIMORONI_TRACKBALL_ENABLE ?= no
+ifeq ($(strip $(PIMORONI_TRACKBALL_ENABLE)), yes)
+	POINTING_DEVICE_ENABLE = yes
+	POINTING_DEVICE_DRIVER = pimoroni_trackball
+
+	OPT_DEFS += -DPIMORONI_TRACKBALL_ENABLE
+
+	# Extra custom sauces
+	SRC += pimoroni_trackball_custom.c \
+			colours_control.c
+
+$(info Custom 'POINTING_DEVICE' is PIMORONI_TRACKBALL)
+endif
+
+SLAVE_OLED_MASTER_TRACKBALL ?= no
+ifeq ($(strip $(SLAVE_OLED_MASTER_TRACKBALL)), yes)
+	OPT_DEFS += -DSLAVE_OLED_MASTER_TRACKBALL
+$(info Custom 'SLAVE_OLED_MASTER_TRACKBALL' is true)
+
+	POINTING_DEVICE_RIGHT ?= yes
+	ifeq ($(strip $(POINTING_DEVICE_RIGHT)), yes)
+		OPT_DEFS += -DPOINTING_DEVICE_RIGHT
+$(info Custom 'POINTING_DEVICE_RIGHT' is true)
+	endif
+
+	POINTING_DEVICE_LEFT ?= no
+	ifeq ($(strip $(POINTING_DEVICE_LEFT)), yes)
+		OPT_DEFS += -DPOINTING_DEVICE_LEFT
+$(info Custom 'POINTING_DEVICE_LEFT' is true)
+	endif
+endif
+
+CUSTOM_SPLIT_TRANSPORT_SYNC ?= yes
+ifeq ($(strip $(CUSTOM_SPLIT_TRANSPORT_SYNC)), yes)
+    ifeq ($(strip $(SPLIT_KEYBOARD)), yes)
+        QUANTUM_LIB_SRC += $(USER_PATH)/transport_sync.c
+        OPT_DEFS += -DCUSTOM_SPLIT_TRANSPORT_SYNC
+
+$(info Custom 'CUSTOM_SPLIT_TRANSPORT_SYNC' is enabled)
+    endif
+endif

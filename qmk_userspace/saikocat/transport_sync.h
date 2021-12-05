@@ -16,17 +16,15 @@
 
 #pragma once
 
-#include "quantum.h"
-//#include "version.h"
-#include "action.h"
+#include QMK_KEYBOARD_H
 
-#include "definitions_custom.h"
+typedef union {
+    uint32_t raw;
+    struct {
+        uint32_t oled_idle_timer;
+    };
+} user_runtime_config_t;
 
-void unshift_key_tap(uint16_t kc, uint16_t shift_kc);
+extern user_runtime_config_t user_state;
 
-bool mod_key_press(uint16_t code, uint16_t mod_code, bool pressed, uint16_t this_timer);
-bool mod_key_press_timer(uint16_t code, uint16_t mod_code, bool pressed);
-
-bool process_record_tri_layer_state(uint16_t keycode, keyrecord_t *record);
-bool process_record_keymap(uint16_t keycode, keyrecord_t *record);
-void post_process_record_keymap(uint16_t keycode, keyrecord_t *record);
+void keyboard_post_init_transport_sync(void);

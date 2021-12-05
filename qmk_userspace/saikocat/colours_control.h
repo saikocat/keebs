@@ -16,17 +16,11 @@
 
 #pragma once
 
-#include "quantum.h"
-//#include "version.h"
-#include "action.h"
+#include "quantum/color.h"
 
-#include "definitions_custom.h"
-
-void unshift_key_tap(uint16_t kc, uint16_t shift_kc);
-
-bool mod_key_press(uint16_t code, uint16_t mod_code, bool pressed, uint16_t this_timer);
-bool mod_key_press_timer(uint16_t code, uint16_t mod_code, bool pressed);
-
-bool process_record_tri_layer_state(uint16_t keycode, keyrecord_t *record);
-bool process_record_keymap(uint16_t keycode, keyrecord_t *record);
-void post_process_record_keymap(uint16_t keycode, keyrecord_t *record);
+cRGBW* colour_cycle_hue(cRGBW* state);
+cRGBW* colour_cycle_hue_stateful(void);
+cRGBW* colour_cycle_tint(cRGBW* state);
+cRGBW* colour_cycle_tint_stateful(void);
+cRGBW* colour_cycle_tone(cRGBW* state);
+cRGBW* colour_cycle_tone_stateful(void);
