@@ -78,7 +78,7 @@
 #        undef OLED_FONT_H
 #    endif
 #    define OLED_BRIGHTNESS 128
-#    define OLED_FONT_H "oled_font.h"
+#    define OLED_FONT_H "features/oled_font.h"
 #    define OLED_FONT_END 223
 #endif
 

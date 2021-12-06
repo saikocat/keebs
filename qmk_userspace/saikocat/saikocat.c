@@ -27,28 +27,6 @@ layer_state_t                       layer_state_set_user(layer_state_t state) {
     return state;
 }
 
-/* Power management */
-__attribute__((weak)) void suspend_power_down_keymap(void) {}
-void                       suspend_power_down_user(void) {
-#ifdef OLED_ENABLE
-    oled_off();
-#endif
-#ifdef PIMORONI_TRACKBALL_ENABLE
-    pointing_device_suspend_power_down_keymap();
-#endif
-    suspend_power_down_keymap();
-}
-
-__attribute__((weak)) void suspend_wakeup_init_keymap(void) {}
-void                       suspend_wakeup_init_user(void) {
-#ifdef OLED_ENABLE
-    oled_on();
-    // extern uint32_t oled_idle_timer;
-    // oled_idle_timer = sync_timer_read32();
-#endif
-    suspend_wakeup_init_keymap();
-}
-
 /* Matrix scan */
 __attribute__((weak)) void matrix_scan_keymap(void) {}
 void                       matrix_scan_user(void) {

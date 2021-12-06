@@ -24,7 +24,7 @@
 
 #include "quantum.h"
 
-#include "oled_mascot.h"
+#include "features/oled_mascot.h"
 
 /* Animation settings */
 #define NEKO_FRAMES 2

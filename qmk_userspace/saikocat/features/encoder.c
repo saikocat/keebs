@@ -25,7 +25,7 @@
  * Reference: https://docs.splitkb.com/hc/en-us/articles/360010513760-How-can-I-use-a-rotary-encoder-
  */
 
-#include "encoder.h"
+#include "features/encoder.h"
 
 /* Audio control */
 void encoder_fn_audio_control(bool clockwise) {

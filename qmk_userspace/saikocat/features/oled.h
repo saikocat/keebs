@@ -17,16 +17,16 @@
 #pragma once
 
 #include "quantum.h"
-//#include "version.h"
-#include "action.h"
+#include "oled_driver.h"
 
-#include "definitions_custom.h"
+/* User overridable to set oled orientation */
+oled_rotation_t oled_init_keymap(oled_rotation_t rotation);
+/* Hook to main process_user_records */
+bool process_record_user_oled(uint16_t keycode, keyrecord_t *record);
 
-void unshift_key_tap(uint16_t kc, uint16_t shift_kc);
-
-bool mod_key_press(uint16_t code, uint16_t mod_code, bool pressed, uint16_t this_timer);
-bool mod_key_press_timer(uint16_t code, uint16_t mod_code, bool pressed);
-
-bool process_record_tri_layer_state(uint16_t keycode, keyrecord_t *record);
-bool process_record_keymap(uint16_t keycode, keyrecord_t *record);
-void post_process_record_keymap(uint16_t keycode, keyrecord_t *record);
+void oled_render_wpm(void);
+void oled_render_logo_primary(void);
+void oled_render_logo_secondary(void);
+void oled_render_mod_status(uint8_t modifiers);
+void oled_render_layer_state(uint8_t const state);
+void oled_render_keyboard_layout(void);

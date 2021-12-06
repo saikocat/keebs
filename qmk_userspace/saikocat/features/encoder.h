@@ -14,19 +14,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifdef LED_INDICATOR_ENABLE
-#    include "led_custom.h"
+#pragma once
 
-__attribute__((weak)) void led_update_mcu(led_t led_state) {}
-__attribute__((weak)) void led_update_keymap(led_t led_state) {}
+#include "quantum.h"
 
-bool led_update_kb(led_t led_state) {
-    bool res = led_update_user(led_state);
-    if (res) {
-        led_update_mcu(led_state);
-        led_update_keymap(led_state);
-    }
-    return res;
-}
+void matrix_scan_user_encoder(void);
+bool encoder_update_keymap(uint8_t index, bool clockwise);
 
-#endif
+void encoder_fn_audio_control(bool clockwise);
+void encoder_fn_scrolling(bool clockwise);
+void encoder_fn_tabbing(bool clockwise);
+void encoder_fn_history_scrubbing(bool clockwise);
+void encoder_fn_word_scrolling(bool clockwise);
+void encoder_fn_search_through_results(bool clockwise);
+void encoder_fn_wins_tabbing(bool clockwise, bool* is_alt_tab_active, uint16_t* alt_tab_timer);

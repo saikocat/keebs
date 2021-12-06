@@ -18,32 +18,26 @@
 
 #include QMK_KEYBOARD_H
 
-#include "definitions_custom.h"
-#include "layout_wrappers.h"
-#include "process_records.h"
-#ifdef LED_INDICATOR_ENABLE
-#    include "led_custom.h"
-#endif
+#include "definitions.h"
+#include "layouts/wrappers.h"
+#include "behaviours/power_management.h"
+#include "behaviours/process_records.h"
+
 #ifdef OLED_ENABLE
-#    include "oled_custom.h"
+#    include "features/oled.h"
 #endif
 #ifdef ENCODER_ENABLE
-#    include "encoder_custom.h"
+#    include "features/encoder.h"
 #endif
 #ifdef PIMORONI_TRACKBALL_ENABLE
-#    include "pimoroni_trackball_custom.h"
-#    include "colours_control.h"
+#    include "features/pimoroni_trackball.h"
 #endif
 #ifdef SPLIT_KEYBOARD
-#    include "transport_sync.h"
+#    include "transports/split_transport_sync.h"
 #endif
 
 /* Layer state check */
 layer_state_t layer_state_set_keymap(layer_state_t state);
-
-/* Power management */
-void suspend_power_down_keymap(void);
-void suspend_wakeup_init_keymap(void);
 
 /* Matrix scan */
 void matrix_scan_keymap(void);

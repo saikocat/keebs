@@ -16,6 +16,8 @@
 
 #pragma once
 
+#include "quantum.h"
+
 /* Define layer names */
 enum userspace_layers {
     _QWERTY = 0,
@@ -65,7 +67,7 @@ enum userspace_custom_keycodes {
     SFT_K    = RSFT_T(KC_K),
     ALT_L    = LALT_T(KC_L),
     GUI_SCLN = RGUI_T(KC_SCLN),
-    GUI_SCSH = RGUI_T(KC_SLSH),
+    GUI_SLSH = RGUI_T(KC_SLSH),
     // Colemak //
     CTL_N = RCTL_T(KC_N),
     SFT_E = RSFT_T(KC_E),

@@ -16,7 +16,7 @@
 
 #include "quantum.h"
 
-#include "definitions_custom.h"
+#include "definitions.h"
 
 /* Do check process_record/tri_layer_state for more conflicts */
 
@@ -44,8 +44,8 @@ __attribute__((weak)) uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *r
         case ALT_I:
         case GUI_O:
         case GUI_Z:
-        case GUI_SCSH:
-            return TAPPING_TERM + 25;
+        case GUI_SLSH:
+            return TAPPING_TERM;
         default:
             return TAPPING_TERM;
     }
@@ -104,7 +104,7 @@ __attribute__((weak)) bool get_ignore_mod_tap_interrupt(uint16_t keycode, keyrec
         case ALT_I:
         case GUI_O:
         case GUI_Z:
-        case GUI_SCSH:
+        case GUI_SLSH:
             return true;
         default:
             return false;
@@ -129,7 +129,7 @@ __attribute__((weak)) bool get_tapping_force_hold(uint16_t keycode, keyrecord_t 
         case ALT_I:
         case GUI_O:
         case GUI_Z:
-        case GUI_SCSH:
+        case GUI_SLSH:
             return true;
         default:
             return false;

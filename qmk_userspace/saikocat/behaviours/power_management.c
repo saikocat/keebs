@@ -14,17 +14,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#pragma once
+#include "behaviours/power_management.h"
+#include "features/oled.h"
+#include "features/pimoroni_trackball.h"
 
-#include QMK_KEYBOARD_H
+__attribute__((weak)) void suspend_wakeup_init_keymap(void) {}
+void                       suspend_wakeup_init_user(void) {
+#ifdef OLED_ENABLE
+    oled_on();
+#endif
+    suspend_wakeup_init_keymap();
+}
 
-#define LED_ON 2
-#define LED_DIM 1
-#define LED_OFF 0
-
-#define GPIO_STATE_LOW 0
-#define GPIO_STATE_HIGH 1
-
-#define PIN_LED F0
-
-void set_led(uint8_t mode);
+__attribute__((weak)) void suspend_power_down_keymap(void) {}
+void                       suspend_power_down_user(void) {
+#ifdef OLED_ENABLE
+    oled_off();
+#endif
+#ifdef PIMORONI_TRACKBALL_ENABLE
+    pointing_device_suspend_power_down_keymap();
+#endif
+    suspend_power_down_keymap();
+}

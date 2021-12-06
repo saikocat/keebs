@@ -16,22 +16,5 @@
 
 #pragma once
 
-#ifdef OLED_ENABLE
-#    include "quantum.h"
-#    include "oled_driver.h"
-
-#    include "definitions_custom.h"
-#    include "oled_mascot.h"
-
-/* User overridable to set oled orientation */
-oled_rotation_t oled_init_keymap(oled_rotation_t rotation);
-/* Hook to main process_user_records */
-bool process_record_user_oled(uint16_t keycode, keyrecord_t *record);
-
-void oled_render_wpm(void);
-void oled_render_logo_primary(void);
-void oled_render_logo_secondary(void);
-void oled_render_mod_status(uint8_t modifiers);
-void oled_render_layer_state(uint8_t const state);
-void oled_render_keyboard_layout(void);
-#endif
+void suspend_power_down_keymap(void);
+void suspend_wakeup_init_keymap(void);

@@ -18,7 +18,7 @@
 #include "transactions.h"
 #include "sync_timer.h"
 
-#include "transport_sync.h"
+#include "transports/split_transport_sync.h"
 
 uint32_t transport_user_state = 0;
 

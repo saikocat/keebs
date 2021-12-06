@@ -14,9 +14,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "process_records.h"
-#include "oled_custom.h"
-#include "pimoroni_trackball_custom.h"
+
+#include "definitions.h"
+#include "behaviours/process_records.h"
+#include "features/oled.h"
+#include "features/pimoroni_trackball.h"
 
 /* Reverse of shift
  *
@@ -77,34 +79,6 @@ __attribute__((weak)) bool process_record_tri_layer_state(uint16_t keycode, keyr
     static uint16_t layer_tap_colon_timer;
 
     switch (keycode) {
-        // case SPC_LWR:
-        // case BSPC_LWR:
-        //     if (is_keyrecord_held(record)) {
-        //         layer_on(_LOWER);
-        //         update_tri_layer(_LOWER, _RAISE, _ADJUST);
-        //     } else {
-        //         layer_off(_LOWER);
-        //         update_tri_layer(_LOWER, _RAISE, _ADJUST);
-        //     }
-        //     return false;
-        // case SPC_RSE:
-        //     if (is_keyrecord_held(record)) {
-        //         layer_on(_RAISE);
-        //         update_tri_layer(_LOWER, _RAISE, _ADJUST);
-        //     } else {
-        //         layer_off(_RAISE);
-        //         update_tri_layer(_LOWER, _RAISE, _ADJUST);
-        //     }
-        //     return false;
-        case SCLN_ADJ:
-            if (is_keyrecord_held(record)) {
-                layer_on(_ADJUST);
-                update_tri_layer(_LOWER, _ADJUST, _SPECIAL);
-            } else {
-                layer_off(_ADJUST);
-                update_tri_layer(_LOWER, _ADJUST, _SPECIAL);
-            }
-            return false;
         case COLN_ADJ:
             if (is_keyrecord_held(record)) {
                 /* held state */
@@ -127,7 +101,7 @@ __attribute__((weak)) bool process_record_tri_layer_state(uint16_t keycode, keyr
 }
 
 __attribute__((weak)) bool process_record_keymap(uint16_t keycode, keyrecord_t *record) { return true; }
-bool                       process_record_user(uint16_t keycode, keyrecord_t *record) {
+__attribute__((weak)) bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #ifdef OLED_ENABLE
     process_record_user_oled(keycode, record);
 #endif

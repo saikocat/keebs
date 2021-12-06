@@ -16,11 +16,4 @@
 
 #pragma once
 
-#include "quantum/color.h"
-
-cRGBW* colour_cycle_hue(cRGBW* state);
-cRGBW* colour_cycle_hue_stateful(void);
-cRGBW* colour_cycle_tint(cRGBW* state);
-cRGBW* colour_cycle_tint_stateful(void);
-cRGBW* colour_cycle_tone(cRGBW* state);
-cRGBW* colour_cycle_tone_stateful(void);
+void oled_render_mascot_status(void);

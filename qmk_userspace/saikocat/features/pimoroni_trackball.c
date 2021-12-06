@@ -21,8 +21,8 @@
 
 #include "lib/lib8tion/lib8tion.h"
 
-#include "definitions_custom.h"
-#include "pimoroni_trackball_custom.h"
+#include "definitions.h"
+#include "features/pimoroni_trackball.h"
 
 static report_mouse_t last_mouse_report               = {0};
 static uint32_t       last_mouse_activity_timer       = 0;
