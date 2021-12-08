@@ -28,24 +28,25 @@ __attribute__((weak)) uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *r
         case SPC_LWR:
         case SPC_RSE:
             return TAPPING_TERM + 25;
-        case GUI_A:
         case ALT_S:
+        case ALT_L:
+        case ALT_I:
+        case ALT_R:
+            return TAPPING_TERM + 30;
+        case GUI_A:
         case SFT_D:
         case CTL_F:
-        case ALT_R:
         case SFT_S:
         case CTL_T:
         case CTL_J:
         case SFT_K:
-        case ALT_L:
         case GUI_SCLN:
         case CTL_N:
         case SFT_E:
-        case ALT_I:
         case GUI_O:
         case GUI_Z:
         case GUI_SLSH:
-            return TAPPING_TERM;
+            return TAPPING_TERM - 25;
         default:
             return TAPPING_TERM;
     }
@@ -59,6 +60,7 @@ __attribute__((weak)) bool get_hold_on_other_key_press(uint16_t keycode, keyreco
     switch (keycode) {
         case ESC_ALT:
         case BSPC_NUM:
+        case TAB_LWR:
             return true;
         default:
             return false;
@@ -74,6 +76,7 @@ __attribute__((weak)) bool get_permissive_hold(uint16_t keycode, keyrecord_t *re
         case ESC_ALT:
         case BSPC_LWR:
         case BSPC_NUM:
+        case TAB_LWR:
             return true;
         default:
             return false;

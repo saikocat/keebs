@@ -36,9 +36,11 @@ enum userspace_layers {
 /* Define custom keycodes */
 enum userspace_custom_keycodes {
     QMK_BEST = SAFE_RANGE,
+    ALT_TAB,
     COLN_ADJ,
     SPC_LWR  = LT(_LOWER, KC_SPC),
     BSPC_LWR = LT(_LOWER, KC_BSPC),
+    TAB_LWR  = LT(_LOWER, KC_TAB),
     SPC_RSE  = LT(_RAISE, KC_SPC),
     DEL_RSE  = LT(_RAISE, KC_DEL),
     ENT_RSE  = LT(_RAISE, KC_ENTER),

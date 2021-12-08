@@ -27,15 +27,6 @@ layer_state_t                       layer_state_set_user(layer_state_t state) {
     return state;
 }
 
-/* Matrix scan */
-__attribute__((weak)) void matrix_scan_keymap(void) {}
-void                       matrix_scan_user(void) {
-#ifdef ENCODER_ENABLE
-    matrix_scan_user_encoder();
-#endif
-    matrix_scan_keymap();
-}
-
 __attribute__((weak)) void keyboard_post_init_keymap(void) {}
 void                       keyboard_post_init_user(void) {
 #if defined(SPLIT_KEYBOARD) && defined(SPLIT_TRANSACTION_IDS_USER)

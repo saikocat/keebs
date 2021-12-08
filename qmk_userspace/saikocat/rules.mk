@@ -1,5 +1,6 @@
 SRC += saikocat.c \
 		behaviours/process_records.c \
+		behaviours/matrix_scan.c \
 		behaviours/power_management.c \
 		behaviours/tap_hold.c
 
@@ -49,7 +50,7 @@ ifneq ($(strip $(OLED_CUSTOM)),)
 endif
 
 ifneq ($(strip $(ENCODER_ENABLE)),)
-	SRC += features/encoder_custom.c
+	SRC += features/encoder.c
 
 	ifneq ($(strip $(ENCODER_CUSTOM_RESOLUTION)),)
 		OPT_DEFS += -DENCODER_CUSTOM_RESOLUTION=$(ENCODER_CUSTOM_RESOLUTION)

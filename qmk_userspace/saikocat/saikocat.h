@@ -22,6 +22,7 @@
 #include "layouts/wrappers.h"
 #include "behaviours/power_management.h"
 #include "behaviours/process_records.h"
+#include "behaviours/matrix_scan.h"
 
 #ifdef OLED_ENABLE
 #    include "features/oled.h"
@@ -38,9 +39,6 @@
 
 /* Layer state check */
 layer_state_t layer_state_set_keymap(layer_state_t state);
-
-/* Matrix scan */
-void matrix_scan_keymap(void);
 
 /* Post keyboard init */
 void keyboard_post_init_keymap(void);

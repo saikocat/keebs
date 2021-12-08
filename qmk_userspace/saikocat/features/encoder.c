@@ -119,17 +119,7 @@ void encoder_fn_wins_tabbing(bool clockwise) {
     }
 }
 
-bool     is_alt_tab_active = false;
-uint16_t alt_tab_timer     = 0;
-
-__attribute__((weak)) void matrix_scan_user_encoder(void) {
-    if (is_alt_tab_active) {
-        if (timer_elapsed(alt_tab_timer) > 1250) { /* 1250ms hold wait */
-            unregister_code(KC_LALT);
-            is_alt_tab_active = false;
-        }
-    }
-}
+__attribute__((weak)) void matrix_scan_user_encoder(void) {}
 
 __attribute__((weak)) bool encoder_update_keymap(uint8_t index, bool clockwise) {
     if (index == 0) {
