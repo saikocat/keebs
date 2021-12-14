@@ -106,6 +106,10 @@ void encoder_fn_wins_tabbing(bool clockwise) {
     extern bool     is_alt_tab_active;
     extern uint16_t alt_tab_timer;
 
+    encoder_fn_wins_tabbing_with_timer(clockwise, is_alt_tab_active, alt_tab_timer);
+}
+
+void encoder_fn_wins_tabbing_with_timer(bool clockwise, bool is_alt_tab_active, uint16_t alt_tab_timer) {
     if (clockwise) {
         if (!is_alt_tab_active) {
             is_alt_tab_active = true;

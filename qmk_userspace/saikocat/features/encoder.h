@@ -27,4 +27,5 @@ void encoder_fn_tabbing(bool clockwise);
 void encoder_fn_history_scrubbing(bool clockwise);
 void encoder_fn_word_scrolling(bool clockwise);
 void encoder_fn_search_through_results(bool clockwise);
-void encoder_fn_wins_tabbing(bool clockwise, bool* is_alt_tab_active, uint16_t* alt_tab_timer);
+void encoder_fn_wins_tabbing(bool clockwise);
+void encoder_fn_wins_tabbing_with_timer(bool clockwise, bool is_alt_tab_active, uint16_t alt_tab_timer);
