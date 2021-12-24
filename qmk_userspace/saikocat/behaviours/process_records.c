@@ -69,35 +69,14 @@ bool mod_key_press(uint16_t code, uint16_t mod_code, bool pressed, uint16_t this
 
 bool is_keyrecord_held(keyrecord_t *record) { return !record->tap.count && record->event.pressed; }
 
+bool is_keyrecord_tap(keyrecord_t *record) { return record->tap.count && record->event.pressed; }
+
 bool mod_key_press_timer(uint16_t code, uint16_t mod_code, bool pressed) {
     static uint16_t this_timer;
     return mod_key_press(code, mod_code, pressed, this_timer);
 }
 
-__attribute__((weak)) bool process_record_tri_layer_state(uint16_t keycode, keyrecord_t *record) {
-    static uint16_t layer_tap_colon_timer;
-
-    switch (keycode) {
-        case COLN_ADJ:
-            if (is_keyrecord_held(record)) {
-                /* held state */
-                layer_on(_ADJUST);
-                update_tri_layer(_LOWER, _ADJUST, _SPECIAL);
-
-                layer_tap_colon_timer = timer_read();
-            } else {
-                layer_off(_ADJUST);
-                update_tri_layer(_LOWER, _ADJUST, _SPECIAL);
-
-                /* send colon cos vim cmd */
-                if (timer_elapsed(layer_tap_colon_timer) < TAPPING_TERM) {
-                    unshift_key_tap(KC_SCLN, KC_COLN);
-                }
-            }
-            return false;
-    }
-    return true;
-}
+__attribute__((weak)) bool process_record_tri_layer_state(uint16_t keycode, keyrecord_t *record) { return true; }
 
 __attribute__((weak)) bool process_record_homerow_modifier_cancellation(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
@@ -180,7 +159,18 @@ __attribute__((weak)) bool process_record_super_alt_tab(uint16_t keycode, keyrec
     return true;
 }
 
-__attribute__((weak)) bool process_record_keymap(uint16_t keycode, keyrecord_t *record) { return true; }
+__attribute__((weak)) bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case COLN_ADJ:
+            if (is_keyrecord_tap(record)) {
+                unshift_key_tap(KC_SCLN, KC_COLN);
+                return false;
+            }
+            break;
+    }
+    return true;
+}
+
 __attribute__((weak)) bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     process_record_super_alt_tab(keycode, record);
 #ifdef OLED_ENABLE

@@ -24,7 +24,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_LOWER]      = LAYOUT_crkbd_wrapper(__LLY_S3X6H3__LOWER),
     [_RAISE]      = LAYOUT_crkbd_wrapper(__LLY_S3X6H3__RAISE),
     [_ADJUST]     = LAYOUT_crkbd_wrapper(__LLY_S3X6H3__ADJUST),
-    [_NUM]        = LAYOUT_crkbd_wrapper(__LLY_S3X6H3__NUM_TRADITIONAL),
+    [_NUM]        = LAYOUT_crkbd_wrapper(__LLY_S3X6H3__NUM),
+    [_SYMNUM]     = LAYOUT_crkbd_wrapper(__LLY_S3X6H3__SYMNUM),
     [_SPECIAL]    = LAYOUT_crkbd_wrapper(__LLY_S3X6H3__SPECIAL),
     [_GAME_NUM]   = LAYOUT_crkbd_wrapper(__LLY_S3X6H3__GAME_NUM),
 };

@@ -55,28 +55,41 @@
 #define _________________LOWER_R3__________________       KC_ASTR, KC_PLUS, KC_LT,   KC_GT,   KC_LBRC
 
 
-#define _________________RAISE_L1__________________       _______,    _______,     KC_LCTL,      G(KC_SPC), _______  
+#define _________________RAISE_L1__________________       _______,    _______,     _______,      _______,   G(KC_SPC) 
 #define _________________RAISE_L2__________________       C(KC_LEFT), C(KC_RIGHT), C(S(KC_TAB)), C(KC_TAB), ALT_TAB
-#define _________________RAISE_L3__________________       KC_LGUI,    KC_LALT,     KC_LSFT,      ALT_TAB,   _______
+#define _________________RAISE_L3__________________       C(KC_Z),    C(KC_X),     C(KC_C),      ALT_TAB,   C(KC_V)
 
-#define _________________RAISE_R1__________________       DF(_QWERTY), DF(_COLEMAK_DH), DF(_RAISE), DF(_GAME),  KC_PSCR
+#define _________________RAISE_R1__________________       DF(_QWERTY), DF(_COLEMAK_DH), DF(_NAVIGATION), DF(_GAME),  KC_PSCR
 #define _________________RAISE_R2__________________       KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_INS
 #define _________________RAISE_R3__________________       KC_HOME, KC_PGDN, KC_PGUP, KC_END,  _______
 
 
 #define _________________ADJUST_L1_________________       ___________________BLANK___________________
 #define _________________ADJUST_L2_________________       ________________MOUSE_BUTTON_______________
-#define _________________ADJUST_L3_________________       C(KC_Z),  C(KC_X), C(KC_C), C(KC_V), C(KC_TAB)
+#define _________________ADJUST_L3_________________       C(KC_Z),  C(KC_X), C(KC_C), C(KC_V), _______
 
 #define _________________ADJUST_R1_________________       _______, KC_F7, KC_F8, KC_F9, KC_F10
 #define _________________ADJUST_R2_________________       _______, KC_F4, KC_F5, KC_F6, KC_F11
 #define _________________ADJUST_R3_________________       _______, KC_F1, KC_F2, KC_F3, KC_F12
 
 
+#define _________________SYMBOL_L1_________________       _______, KC_AT,   KC_DLR,  KC_HASH, _______
+#define _________________SYMBOL_L2_________________       KC_LBRC, KC_LPRN, KC_UNDS, KC_RPRN, KC_GRV
+#define _________________SYMBOL_L3_________________       KC_RBRC, KC_EXLM, KC_TILD, KC_MINS, _______
+
+#define _________________SYMBOL_R1_________________       _______, KC_AMPR, KC_CIRC, KC_BSLS, _______
+#define _________________SYMBOL_R2_________________       KC_ASTR, KC_LCBR, KC_EQL,  KC_RCBR, KC_QUOT
+#define _________________SYMBOL_R3_________________       _______, KC_PLUS, KC_PIPE, KC_PERC, KC_DQUO
+
+
 #define ________________NUMBER_LEFT________________       KC_1,    KC_2,    KC_3,    KC_4,    KC_5
 #define ________________NUMBER_RIGHT_______________       KC_6,    KC_7,    KC_8,    KC_9,    KC_0
-#define _________________FUNC_LEFT_________________       KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5
-#define _________________FUNC_RIGHT________________       KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10
+#define ________________NUMBER_LEFT_BEAKL__________       KC_3,    KC_2,    KC_1,    KC_0,    KC_4
+#define ________________NUMBER_RIGHT_BEAKL_________       KC_7,    KC_6,    KC_5,    KC_9,    KC_8
+#define ________________FUNC_LEFT__________________       KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5
+#define ________________FUNC_RIGHT_________________       KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10
+#define ________________SYMBOL_LEFT________________       KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC
+#define ________________SYMBOL_RIGHT_______________       KC_CIRC, KC_AMPR, KC_ASTR, KC_MINS, KC_EQL
 
 
 #define ________________MOUSE_BUTTON_______________       TB_SCR,  TB_MCL,  TB_RCL,  TB_LCL,  TB_RCL

@@ -20,11 +20,11 @@
 #include "drivers/sensors/pimoroni_trackball.h"
 
 #ifndef PIMORONONI_TRACKBALL_LED_TIMEOUT
-#    define PIMORONONI_TRACKBALL_LED_TIMEOUT 60000
+#    define PIMORONONI_TRACKBALL_LED_TIMEOUT 30000U
 #endif
 
 #ifndef PIMORONONI_TRACKBALL_SCROLL_DIVIDER
-#    define PIMORONONI_TRACKBALL_SCROLL_DIVIDER 12
+#    define PIMORONONI_TRACKBALL_SCROLL_DIVIDER 12U
 #endif
 
 void keyboard_post_init_keymap_trackball(void);

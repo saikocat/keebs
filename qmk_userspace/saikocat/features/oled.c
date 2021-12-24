@@ -20,7 +20,6 @@
 #include "features/oled.h"
 #include "features/oled_mascot.h"
 
-#define OLED_IDLE_THRESHOLD 60000U
 /* keystroke/tap gap timer */
 uint32_t oled_idle_timer = 0;
 

@@ -27,26 +27,26 @@ __attribute__((weak)) uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *r
         case SPC_ADJ:
         case SPC_LWR:
         case SPC_RSE:
-            return TAPPING_TERM + 25;
+            return TAPPING_TERM + 30;
         case ALT_S:
         case ALT_L:
         case ALT_I:
         case ALT_R:
-            return TAPPING_TERM + 30;
         case GUI_A:
+        case GUI_SCLN:
+        case GUI_O:
+        case GUI_Z:
+            return TAPPING_TERM + 30;
         case SFT_D:
         case CTL_F:
         case SFT_S:
         case CTL_T:
         case CTL_J:
         case SFT_K:
-        case GUI_SCLN:
         case CTL_N:
         case SFT_E:
-        case GUI_O:
-        case GUI_Z:
         case GUI_SLSH:
-            return TAPPING_TERM - 25;
+            return TAPPING_TERM;
         default:
             return TAPPING_TERM;
     }

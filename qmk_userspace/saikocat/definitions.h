@@ -23,12 +23,16 @@ enum userspace_layers {
     _QWERTY = 0,
     _COLEMAK_DH,
     _GAME,
+    
     _NUM,
+    _SYMNUM,
+
     _LOWER,
     _RAISE,
     _ADJUST,
     _SPECIAL,
     _GAME_NUM,
+
     _SYMBOL     = _LOWER,
     _NAVIGATION = _RAISE,
 };
@@ -37,7 +41,7 @@ enum userspace_layers {
 enum userspace_custom_keycodes {
     QMK_BEST = SAFE_RANGE,
     ALT_TAB,
-    COLN_ADJ,
+    COLN_ADJ = LT(_ADJUST, KC_SCLN),
     SPC_LWR  = LT(_LOWER, KC_SPC),
     BSPC_LWR = LT(_LOWER, KC_BSPC),
     TAB_LWR  = LT(_LOWER, KC_TAB),

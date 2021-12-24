@@ -19,6 +19,10 @@
 #include "quantum.h"
 #include "oled_driver.h"
 
+#ifndef OLED_IDLE_THRESHOLD
+#    define OLED_IDLE_THRESHOLD 30000U
+#endif
+
 /* User overridable to set oled orientation */
 oled_rotation_t oled_init_keymap(oled_rotation_t rotation);
 /* Hook to main process_user_records */
