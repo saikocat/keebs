@@ -25,10 +25,8 @@ uint32_t oled_idle_timer = 0;
 
 bool process_record_user_oled(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
-#ifdef OLED_ENABLE
         /* keystroke/tap gap timer update */
         oled_idle_timer = sync_timer_read32();
-#endif
     }
     return true;
 }
@@ -50,7 +48,7 @@ void oled_render_logo(void) {
     oled_write_P(logo, false);
 }
 
-void oled_render_layer_state(uint8_t const state) {
+__attribute__((weak)) void oled_render_layer_state(uint8_t const state) {
     // clang-format off
     /* 3x3 logo, 1x1 left-right padding = 5x3 space = 30x24px */
     /* order: middle, top, bottom, interlaced */
@@ -166,7 +164,7 @@ static void oled_render_mod_status_helper(uint8_t const left_mod, uint8_t const 
 }
 
 // Primary modifier status display function
-void oled_render_mod_status(uint8_t modifiers) {
+__attribute__((weak)) void oled_render_mod_status(uint8_t modifiers) {
     // clang-format off
     oled_render_mod_status_helper(
         modifiers & MOD_MASK_GUI,
@@ -212,7 +210,7 @@ void oled_render_blink_prompt(void) {
     }
 };
 
-void oled_render_keyboard_layout(void) {
+__attribute__((weak)) void oled_render_keyboard_layout(void) {
     switch (get_highest_layer(default_layer_state)) {
         case _QWERTY:
             oled_write_P(PSTR("QWRTY"), false);
@@ -228,6 +226,8 @@ void oled_render_keyboard_layout(void) {
             break;
         case _GAME_NUM:
             oled_write_P(PSTR("GM-NB"), false);
+        default:
+            oled_write_P(PSTR("UNKNW"), false);
             break;
     }
 }
@@ -243,7 +243,7 @@ __attribute__((weak)) void oled_render_logo_primary(void) { oled_render_logo(); 
 
 __attribute__((weak)) void oled_render_logo_secondary(void) { oled_render_logo(); }
 
-void oled_render_status_primary(void) {
+__attribute__((weak)) void oled_render_status_primary(void) {
     oled_render_logo_primary();
 
     oled_write_ln_P(PSTR(""), false);
@@ -256,7 +256,7 @@ void oled_render_status_primary(void) {
     oled_render_mod_status(get_mods());
 }
 
-void oled_render_status_secondary(void) {
+__attribute__((weak)) void oled_render_status_secondary(void) {
     oled_render_logo_secondary();
 
     oled_write_ln_P(PSTR(""), false);
@@ -289,7 +289,7 @@ bool oled_off_if_idle(void) {
     return false;
 }
 
-bool oled_task_user(void) {
+__attribute__((weak)) bool oled_task_user(void) {
 // TODO: Fix this terrible condition
 #if defined(SPLIT_OLED_ENABLE) && !defined(SLAVE_OLED_MASTER_TRACKBALL)
     if (is_keyboard_master()) {

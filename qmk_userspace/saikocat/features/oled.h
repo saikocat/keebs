@@ -34,3 +34,5 @@ void oled_render_logo_secondary(void);
 void oled_render_mod_status(uint8_t modifiers);
 void oled_render_layer_state(uint8_t const state);
 void oled_render_keyboard_layout(void);
+void oled_render_status_primary(void);
+void oled_render_status_secondary(void);

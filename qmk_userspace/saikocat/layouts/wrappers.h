@@ -89,7 +89,7 @@
 #define ________________FUNC_LEFT__________________       KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5
 #define ________________FUNC_RIGHT_________________       KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10
 #define ________________SYMBOL_LEFT________________       KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC
-#define ________________SYMBOL_RIGHT_______________       KC_CIRC, KC_AMPR, KC_ASTR, KC_MINS, KC_EQL
+#define ________________SYMBOL_RIGHT_______________       KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN
 
 
 #define ________________MOUSE_BUTTON_______________       TB_SCR,  TB_MCL,  TB_RCL,  TB_LCL,  TB_RCL

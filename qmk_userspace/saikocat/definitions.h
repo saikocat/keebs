@@ -23,7 +23,7 @@ enum userspace_layers {
     _QWERTY = 0,
     _COLEMAK_DH,
     _GAME,
-    
+
     _NUM,
     _SYMNUM,
 
