@@ -35,27 +35,28 @@ BOOTMAGIC_ENABLE = yes
 BOOTLOADER = atmel-dfu
 
 # Enable custom OLED features
-ifneq ($(strip $(OLED_CUSTOM)),)
+ifeq ($(strip $(OLED_ENABLE)), yes)
 	OLED_ENABLE = yes
 	OLED_DRIVER ?= SSD1306
-	OPT_DEFS += -DOLED_CUSTOM
 	SRC += features/oled.c
+    $(info 'OLED_ENABLE' is $(OLED_ENABLE))
 
 	ifeq ($(OLED_CUSTOM_MASCOT), neko)
 		OPT_DEFS += -DOLED_CUSTOM_MASCOT
 		SRC += features/oled_mascot_neko.c
 
-        $(info Custom 'OLED_CUSTOM_MASCOT' is $(OLED_CUSTOM_MASCOT))
+        $(info 'OLED_CUSTOM_MASCOT' is $(OLED_CUSTOM_MASCOT))
 	endif
 endif
 
-ifneq ($(strip $(ENCODER_ENABLE)),)
+ifeq ($(strip $(ENCODER_ENABLE)), yes)
 	SRC += features/encoder.c
+    $(info 'ENCODER_ENABLE' is $(ENCODER_ENABLE))
 
 	ifneq ($(strip $(ENCODER_CUSTOM_RESOLUTION)),)
 		OPT_DEFS += -DENCODER_CUSTOM_RESOLUTION=$(ENCODER_CUSTOM_RESOLUTION)
 
-        $(info Custom 'ENCODER_CUSTOM_RESOLUTION' is $(ENCODER_CUSTOM_RESOLUTION))
+        $(info 'ENCODER_CUSTOM_RESOLUTION' is $(ENCODER_CUSTOM_RESOLUTION))
 	endif
 endif
 
@@ -72,24 +73,24 @@ ifeq ($(strip $(PIMORONI_TRACKBALL_ENABLE)), yes)
 	# Extra custom sauces
 	SRC += features/pimoroni_trackball.c
 
-$(info Custom 'POINTING_DEVICE' is PIMORONI_TRACKBALL)
+    $(info 'POINTING_DEVICE' is PIMORONI_TRACKBALL)
 endif
 
 SLAVE_OLED_MASTER_TRACKBALL ?= no
 ifeq ($(strip $(SLAVE_OLED_MASTER_TRACKBALL)), yes)
 	OPT_DEFS += -DSLAVE_OLED_MASTER_TRACKBALL
-$(info Custom 'SLAVE_OLED_MASTER_TRACKBALL' is true)
+    $(info 'SLAVE_OLED_MASTER_TRACKBALL' is true)
 
 	POINTING_DEVICE_RIGHT ?= yes
 	ifeq ($(strip $(POINTING_DEVICE_RIGHT)), yes)
 		OPT_DEFS += -DPOINTING_DEVICE_RIGHT
-$(info Custom 'POINTING_DEVICE_RIGHT' is true)
+        $(info 'POINTING_DEVICE_RIGHT' is true)
 	endif
 
 	POINTING_DEVICE_LEFT ?= no
 	ifeq ($(strip $(POINTING_DEVICE_LEFT)), yes)
 		OPT_DEFS += -DPOINTING_DEVICE_LEFT
-$(info Custom 'POINTING_DEVICE_LEFT' is true)
+        $(info 'POINTING_DEVICE_LEFT' is true)
 	endif
 endif
 
@@ -99,6 +100,6 @@ ifeq ($(strip $(CUSTOM_SPLIT_TRANSPORT_SYNC)), yes)
         QUANTUM_LIB_SRC += $(USER_PATH)/transports/split_transport_sync.c
         OPT_DEFS += -DCUSTOM_SPLIT_TRANSPORT_SYNC
 
-$(info Custom 'CUSTOM_SPLIT_TRANSPORT_SYNC' is enabled)
+        $(info 'CUSTOM_SPLIT_TRANSPORT_SYNC' is enabled)
     endif
 endif
