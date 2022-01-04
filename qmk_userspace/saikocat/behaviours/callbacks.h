@@ -1,4 +1,4 @@
-/* Copyright (C) 2021 @saikocat
+/* Copyright (C) 2022 @saikocat
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,22 +18,8 @@
 
 #include QMK_KEYBOARD_H
 
-#include "definitions.h"
-#include "layouts/wrappers.h"
-#include "behaviours/callbacks.h"
-#include "behaviours/power_management.h"
-#include "behaviours/process_records.h"
-#include "behaviours/matrix_scan.h"
+/* Layer state check */
+layer_state_t layer_state_set_keymap(layer_state_t state);
 
-#ifdef OLED_ENABLE
-#    include "features/oled.h"
-#endif
-#ifdef ENCODER_ENABLE
-#    include "features/encoder.h"
-#endif
-#ifdef PIMORONI_TRACKBALL_ENABLE
-#    include "features/pimoroni_trackball.h"
-#endif
-#ifdef SPLIT_KEYBOARD
-#    include "transports/split_transport_sync.h"
-#endif
+/* Post keyboard init */
+void keyboard_post_init_keymap(void);

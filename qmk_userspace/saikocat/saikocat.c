@@ -15,29 +15,3 @@
  */
 
 #include "saikocat.h"
-
-/* Layer state check */
-__attribute__((weak)) layer_state_t layer_state_set_keymap(layer_state_t state) {
-    state = update_tri_layer_state(state, _LOWER, _ADJUST, _SPECIAL);
-    return state;
-}
-
-layer_state_t layer_state_set_user(layer_state_t state) {
-    if (!is_keyboard_master()) {
-        return state;
-    }
-
-    state = layer_state_set_keymap(state);
-    return state;
-}
-
-__attribute__((weak)) void keyboard_post_init_keymap(void) {}
-void                       keyboard_post_init_user(void) {
-#if defined(SPLIT_KEYBOARD) && defined(SPLIT_TRANSACTION_IDS_USER)
-    keyboard_post_init_transport_sync();
-#endif
-    // #ifdef CONSOLE_ENABLE
-    //     debug_enable=true;
-    // #endif
-    keyboard_post_init_keymap();
-}
