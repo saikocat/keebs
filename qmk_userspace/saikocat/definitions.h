@@ -24,11 +24,10 @@ enum userspace_layers {
     _COLEMAK_DH,
     _GAME,
 
-    _NUM,
-    _SYMNUM,
-
     _LOWER,
     _RAISE,
+    _NUM,
+    _SYMNUM,
     _ADJUST,
     _SPECIAL,
     _GAME_NUM,
@@ -53,6 +52,7 @@ enum userspace_custom_keycodes {
     SPC_NUM  = LT(_NUM, KC_SPC),
     BSPC_NUM = LT(_NUM, KC_BSPC),
     ESC_ALT  = LALT_T(KC_ESC),
+    QUOT_CTL = MT(MOD_RCTL, KC_QUOTE),
     /* Trackball: Scroll, Left Click, Right Click, Middle Click */
     TB_SCR,
     TB_LCL,
