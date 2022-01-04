@@ -1,4 +1,5 @@
 SRC += saikocat.c \
+		behaviours/callbacks.c \
 		behaviours/process_records.c \
 		behaviours/matrix_scan.c \
 		behaviours/power_management.c \
@@ -27,7 +28,7 @@ UNICODE_ENABLE = no
 NKRO_ENABLE = no
 FAUXCLICKY_ENABLE = no
 
-EXTRAKEY_ENABLE = no
+#EXTRAKEY_ENABLE = no
 MOUSEKEY_ENABLE = no
 
 LTO_ENABLE = yes
