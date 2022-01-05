@@ -17,6 +17,7 @@
 #include "definitions.h"
 #include "behaviours/process_records.h"
 #include "features/oled.h"
+#include "features/encoder.h"
 #include "features/pimoroni_trackball.h"
 
 /* Reverse of shift
@@ -175,6 +176,9 @@ __attribute__((weak)) bool process_record_user(uint16_t keycode, keyrecord_t *re
     process_record_super_alt_tab(keycode, record);
 #ifdef OLED_ENABLE
     process_record_user_oled(keycode, record);
+#endif
+#ifdef ENCODER_ENABLE
+    process_record_user_encoder(keycode, record);
 #endif
 #ifdef PIMORONI_TRACKBALL_ENABLE
     if (!process_record_user_pimoroni_trackball(keycode, record)) {
