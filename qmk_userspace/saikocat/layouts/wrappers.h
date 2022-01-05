@@ -16,8 +16,9 @@
 
 #pragma once
 
-#include "layouts/crkbd.h"
 #include "layouts/std_split_3x6_3.h"
+#include "layouts/crkbd.h"
+#include "layouts/kyria.h"
 
 #define HR_GACS(k1, k2, k3, k4) GUI_T(k1), ALT_T(k2), SFT_T(k3), CTL_T(k4)
 
@@ -27,11 +28,11 @@
 #define _________________QWERTY_L3_________________       KC_Z,    KC_X,    KC_C,    KC_V,    KC_B
 
 #define _________________QWERTY_R1_________________       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P
-#define _________________QWERTY_R2_________________       KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT
+#define _________________QWERTY_R2_________________       KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN
 #define _________________QWERTY_R3_________________       KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH
 
 #define _____________HOMEROW_QWERTY_L2_____________       GUI_A,   ALT_S,   SFT_D,   CTL_F,   KC_G
-#define _____________HOMEROW_QWERTY_R2_____________       KC_H,    CTL_J,   SFT_K,   ALT_L,   GUI_SCLN, KC_QUOT
+#define _____________HOMEROW_QWERTY_R2_____________       KC_H,    CTL_J,   SFT_K,   ALT_L,   GUI_SCLN
 
 
 #define ______________COLEMAK_MOD_DH_L1____________       KC_Q,    KC_W,    KC_F,    KC_P,    KC_B
@@ -39,11 +40,11 @@
 #define ______________COLEMAK_MOD_DH_L3____________       KC_Z,    KC_X,    KC_C,    KC_D,    KC_V
 
 #define ______________COLEMAK_MOD_DH_R1____________       KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN
-#define ______________COLEMAK_MOD_DH_R2____________       KC_M,    KC_N,    KC_E,    KC_I,    KC_O,    KC_QUOT
+#define ______________COLEMAK_MOD_DH_R2____________       KC_M,    KC_N,    KC_E,    KC_I,    KC_O
 #define ______________COLEMAK_MOD_DH_R3____________       KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH
 
 #define _________HOMEROW_COLEMAK_MOD_DH_L2_________       GUI_A,   ALT_R,   SFT_S,   CTL_T,   KC_G
-#define _________HOMEROW_COLEMAK_MOD_DH_R2_________       KC_M,    CTL_N,   SFT_E,   ALT_I,   GUI_O,  KC_QUOT
+#define _________HOMEROW_COLEMAK_MOD_DH_R2_________       KC_M,    CTL_N,   SFT_E,   ALT_I,   GUI_O
 
 
 #define _________________LOWER_L1__________________       KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC
@@ -74,12 +75,12 @@
 
 
 #define _________________SYMBOL_L1_________________       _______, KC_AT,   KC_DLR,  KC_HASH, _______
-#define _________________SYMBOL_L2_________________       KC_LBRC, KC_LPRN, KC_UNDS, KC_RPRN, KC_GRV
-#define _________________SYMBOL_L3_________________       KC_RBRC, KC_EXLM, KC_TILD, KC_MINS, _______
+#define _________________SYMBOL_L2_________________       KC_LBRC, KC_LPRN, KC_DQUO, KC_RPRN, KC_GRV
+#define _________________SYMBOL_L3_________________       KC_TILD, KC_EXLM, KC_PERC, KC_MINS, _______
 
-#define _________________SYMBOL_R1_________________       _______, KC_AMPR, KC_CIRC, KC_BSLS, _______
-#define _________________SYMBOL_R2_________________       KC_ASTR, KC_LCBR, KC_EQL,  KC_RCBR, KC_QUOT
-#define _________________SYMBOL_R3_________________       _______, KC_PLUS, KC_PIPE, KC_PERC, KC_DQUO
+#define _________________SYMBOL_R1_________________       _______, KC_AMPR, KC_CIRC, KC_ASTR, _______
+#define _________________SYMBOL_R2_________________       KC_PLUS, KC_LCBR, KC_EQL,  KC_RCBR, KC_RBRC
+#define _________________SYMBOL_R3_________________       _______, KC_UNDS, KC_PIPE, KC_BSLS, KC_QUOT
 
 
 #define ________________NUMBER_LEFT________________       KC_1,    KC_2,    KC_3,    KC_4,    KC_5
@@ -91,6 +92,11 @@
 #define ________________SYMBOL_LEFT________________       KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC
 #define ________________SYMBOL_RIGHT_______________       KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN
 
+#define ________________NUMPAD_TOP_________________        _______,  KC_7,  KC_8,  KC_9,  KC_EQL
+#define ________________NUMPAD_MID_________________        KC_PAST,  KC_4,  KC_5,  KC_6,  KC_PPLS
+#define ________________NUMPAD_BOT_________________        KC_PSLS,  KC_1,  KC_2,  KC_3,  KC_PMNS
+#define ________________NUMPAD_THUMB_______________        KC_ENT,   KC_P0, KC_PDOT
+
 
 #define ________________MOUSE_BUTTON_______________       TB_SCR,  TB_MCL,  TB_RCL,  TB_LCL,  TB_RCL
 
@@ -98,7 +104,7 @@
 
 #define ___________________BLANK___________________       _______, _______, _______, _______, _______
 
-#define _______________3x3_HOMEROW_L_______________       ESC_ALT,    SPC_LWR,  BSPC_NUM
-#define _______________3x3_HOMEROW_R_______________       KC_SFTENT,  SPC_RSE,  COLN_ADJ
+#define ______________3x3_THUMBCLUSTER_L___________       ESC_ALT,    SPC_LWR,  BSPC_NUM
+#define ______________3x3_THUMBCLUSTER_R___________       KC_SFTENT,  SPC_RSE,  COLN_ADJ
 
 // clang-format on

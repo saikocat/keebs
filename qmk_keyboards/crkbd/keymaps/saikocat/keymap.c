@@ -18,15 +18,15 @@
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [_QWERTY]     = LAYOUT_crkbd_wrapper(__LLY_S3X6H3__HOMEROW_QWERTY),
-    [_COLEMAK_DH] = LAYOUT_crkbd_wrapper(__LLY_S3X6H3__HOMEROW_COLEMAK_DH),
-    [_GAME]       = LAYOUT_crkbd_wrapper(__LLY_S3X6H3__GAME),
-    [_LOWER]      = LAYOUT_crkbd_wrapper(__LLY_S3X6H3__LOWER),
-    [_RAISE]      = LAYOUT_crkbd_wrapper(__LLY_S3X6H3__RAISE),
-    [_ADJUST]     = LAYOUT_crkbd_wrapper(__LLY_S3X6H3__ADJUST),
-    [_NUM]        = LAYOUT_crkbd_wrapper(__LLY_S3X6H3__NUM),
-    [_SYMNUM]     = LAYOUT_crkbd_wrapper(__LLY_S3X6H3__SYMNUM),
-    [_SPECIAL]    = LAYOUT_crkbd_wrapper(__LLY_S3X6H3__SPECIAL),
-    [_GAME_NUM]   = LAYOUT_crkbd_wrapper(__LLY_S3X6H3__GAME_NUM),
+    [_QWERTY]     = LAYOUT_crkbd_wrapper(__LAYOUT_SPLIT_3x6_3__QWERTY__HR),
+    [_COLEMAK_DH] = LAYOUT_crkbd_wrapper(__LAYOUT_SPLIT_3x6_3__COLEMAK_DH__HR),
+    [_GAME]       = LAYOUT_crkbd_wrapper(__LAYOUT_SPLIT_3x6_3__GAME),
+    [_LOWER]      = LAYOUT_crkbd_wrapper(__LAYOUT_SPLIT_3x6_3__LOWER),
+    [_RAISE]      = LAYOUT_crkbd_wrapper(__LAYOUT_SPLIT_3x6_3__RAISE),
+    [_NUM]        = LAYOUT_crkbd_wrapper(__LAYOUT_SPLIT_3x6_3__NUM),
+    [_SYMNUM]     = LAYOUT_crkbd_wrapper(__LAYOUT_SPLIT_3x6_3__SYMNUM),
+    [_ADJUST]     = LAYOUT_crkbd_wrapper(__LAYOUT_SPLIT_3x6_3__ADJUST),
+    [_SPECIAL]    = LAYOUT_crkbd_wrapper(__LAYOUT_SPLIT_3x6_3__SPECIAL),
+    [_GAME_NUM]   = LAYOUT_crkbd_wrapper(__LAYOUT_SPLIT_3x6_3__GAME_NUM),
 };
 // clang-format on

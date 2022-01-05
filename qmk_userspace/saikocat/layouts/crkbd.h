@@ -16,10 +16,10 @@
 
 #if defined(KEYBOARD_crkbd)
 
-#include "std_split_3x6_3.h"
-
 // Corne Layout Wrapper
 #define LAYOUT_crkbd_wrapper(...) LAYOUT(__VA_ARGS__)
 #define LAYOUT_base_wrapper(k) LAYOUT_crkbd_wrapper(k)
+
+#include "std_split_3x6_3.h"
 
 #endif
