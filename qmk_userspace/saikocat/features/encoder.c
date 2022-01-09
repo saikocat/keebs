@@ -110,7 +110,7 @@ void encoder_action_incremental_search(bool clockwise) {
  * Like with tabs, you can also move through applications.
  * In Windows, you can do this with Alt + Tab and Alt + Shift + Tab.
  */
-void encoder_action_os_app_switch_with_timer(bool clockwise, bool* is_alt_tab_active, uint16_t* alt_tab_timer) {
+void encoder_action_os_app_switch_with_timer(bool clockwise, bool *is_alt_tab_active, uint16_t *alt_tab_timer) {
     if (!*is_alt_tab_active) {
         *is_alt_tab_active = true;
         register_code(KC_LALT);
@@ -147,59 +147,60 @@ void encoder_action_os_app_switch(bool clockwise) {
     encoder_action_os_app_switch_with_timer(clockwise, &is_alt_tab_active, &alt_tab_timer);
 }
 
-const char* encoder_mode_stringify(encoder_mode_t mode) {
-    switch (mode) {
-        case ENC_MODE_VOLUME_CTRL:
-            return PSTR("Volume       ");
-        case ENC_MODE_WORD_NAV:
-            return PSTR("Word Nav     ");
-        case ENC_MODE_BROWSER_TAB_NAV:
-            return PSTR("BrowserTabNav");
-        case ENC_MODE_UNDO_REDO:
-            return PSTR("Word Nav     ");
-        case ENC_MODE_INCREMENTAL_SEARCH:
-            return PSTR("Incr Search  ");
-        case ENC_MODE_OS_APP_SWITCH:
-            return PSTR("OS App Switch");
-        case ENC_MODE_PAGING:
-            return PSTR("PageUp/PageDn");
-        case ENC_MODE_HORIZONTAL_NAV:
-            return PSTR("HorizontalNav");
-        case ENC_MODE_VERTICAL_NAV:
-            return PSTR("Vertical Nav ");
-        default:
-            return PSTR("Undefined??? ");
-    }
+void encoder_action_noop(bool clockwise) {}
+
+// Why we need these bunch of const for PROGMEM
+// https://stackoverflow.com/a/59089877
+// https://arduino-esp8266.readthedocs.io/en/latest/PROGMEM.html
+// https://deskthority.net/viewtopic.php?f=2&t=24718
+const char PROGMEM encoder_mode_name_00[] = "Volume       ";
+const char PROGMEM encoder_mode_name_01[] = "PageUp/PageDn";
+const char PROGMEM encoder_mode_name_02[] = "BrowserTabNav";
+const char PROGMEM encoder_mode_name_03[] = "Word Nav     ";
+const char PROGMEM encoder_mode_name_04[] = "Undo/Redo    ";
+const char PROGMEM encoder_mode_name_05[] = "Incr Search  ";
+const char PROGMEM encoder_mode_name_06[] = "OS App Switch";
+const char PROGMEM encoder_mode_name_07[] = "HorizontalNav";
+const char PROGMEM encoder_mode_name_08[] = "Vertical Nav ";
+
+const char PROGMEM encoder_mode_name_undefined[] = "Undefined??? ";
+
+typedef void (*EncoderAction)(bool clockwise);
+
+static struct EncoderHandler {
+    const char   *name;
+    EncoderAction action;
+} encoder_handler_table[] = {
+    // A bit brittle as we have to manually update,
+    // but lazy for a codegen solution for now, or a for loop check handling in get_handler func
+    // clang-format off
+    { encoder_mode_name_00, encoder_action_volume_control },
+    { encoder_mode_name_01, encoder_action_paging },
+    { encoder_mode_name_02, encoder_action_browser_tab_nav },
+    { encoder_mode_name_03, encoder_action_word_nav },
+    { encoder_mode_name_04, encoder_action_undo_redo },
+    { encoder_mode_name_05, encoder_action_incremental_search },
+    { encoder_mode_name_06, encoder_action_os_app_switch },
+    { encoder_mode_name_07, encoder_action_horizontal_nav },
+    { encoder_mode_name_08, encoder_action_vertical_nav },
+    // clang-format on
+};
+
+static struct EncoderHandler encoder_default_handler = {encoder_mode_name_undefined, encoder_action_noop};
+
+struct EncoderHandler encoder_get_handler_or_default(encoder_mode_t mode) {
+    // clang-format off
+    return (mode < _ENC_MODE_LAST)
+        ? encoder_handler_table[mode]
+        : encoder_default_handler;
+    // clang-format on
 }
 
-void encoder_action(encoder_mode_t mode, uint8_t clockwise) {
-    switch (mode) {
-        case ENC_MODE_VOLUME_CTRL:
-            return encoder_action_volume_control(clockwise);
-        case ENC_MODE_WORD_NAV:
-            return encoder_action_word_nav(clockwise);
-        case ENC_MODE_BROWSER_TAB_NAV:
-            return encoder_action_browser_tab_nav(clockwise);
-        case ENC_MODE_UNDO_REDO:
-            return encoder_action_undo_redo(clockwise);
-        case ENC_MODE_INCREMENTAL_SEARCH:
-            return encoder_action_incremental_search(clockwise);
-        case ENC_MODE_OS_APP_SWITCH:
-            return encoder_action_os_app_switch(clockwise);
-        case ENC_MODE_PAGING:
-            return encoder_action_paging(clockwise);
-        case ENC_MODE_HORIZONTAL_NAV:
-            return encoder_action_horizontal_nav(clockwise);
-        case ENC_MODE_VERTICAL_NAV:
-            return encoder_action_vertical_nav(clockwise);
-        default:
-            return encoder_action_volume_control(clockwise);
-    }
-}
+const char *PROGMEM encoder_mode_stringify(encoder_mode_t mode) { return encoder_get_handler_or_default(mode).name; }
 
 __attribute__((weak)) void matrix_scan_user_encoder(void) {}
 
-__attribute__((weak)) bool process_record_user_encoder(uint16_t keycode, keyrecord_t* record) {
+__attribute__((weak)) bool process_record_user_encoder(uint16_t keycode, keyrecord_t *record) {
     // TODO: Probably can do a bitwise/bitshift here instead of 2 vars
     static bool sticky_mode  = false;
     static bool sticky_layer = false;
@@ -246,9 +247,11 @@ __attribute__((weak)) bool process_record_user_encoder(uint16_t keycode, keyreco
 
 __attribute__((weak)) bool encoder_update_keymap(uint8_t index, bool clockwise) {
     if (index == 0) {
-        encoder_action(encoder_left_mode, clockwise);
+        // encoder_action(encoder_left_mode, clockwise);
+        encoder_get_handler_or_default(encoder_left_mode).action(clockwise);
     } else if (index == 1) {
-        encoder_action(encoder_right_mode, clockwise);
+        // encoder_action(encoder_right_mode, clockwise);
+        encoder_get_handler_or_default(encoder_right_mode).action(clockwise);
     }
 
 #ifdef OLED_ENABLE

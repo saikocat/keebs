@@ -18,14 +18,36 @@
 
 #include "quantum.h"
 
-void matrix_scan_user_encoder(void);
-bool encoder_update_keymap(uint8_t index, bool clockwise);
+#include "definitions.h"
 
-void encoder_fn_audio_control(bool clockwise);
-void encoder_fn_scrolling(bool clockwise);
-void encoder_fn_tabbing(bool clockwise);
-void encoder_fn_history_scrubbing(bool clockwise);
-void encoder_fn_word_scrolling(bool clockwise);
-void encoder_fn_search_through_results(bool clockwise);
-void encoder_fn_wins_tabbing(bool clockwise);
-void encoder_fn_wins_tabbing_with_timer(bool clockwise, bool is_alt_tab_active, uint16_t alt_tab_timer);
+typedef enum {
+    ENC_MODE_VOLUME_CTRL,
+    ENC_MODE_PAGING,
+    ENC_MODE_BROWSER_TAB_NAV,
+    ENC_MODE_WORD_NAV,
+    ENC_MODE_UNDO_REDO,
+    ENC_MODE_INCREMENTAL_SEARCH,
+    ENC_MODE_OS_APP_SWITCH,
+    ENC_MODE_ALT_TAB = ENC_MODE_OS_APP_SWITCH,
+    ENC_MODE_HORIZONTAL_NAV,
+    ENC_MODE_VERTICAL_NAV,
+    _ENC_MODE_LAST  // Do not use, except for looping through enum values
+} encoder_mode_t;
+
+void encoder_init_mode_user(void);
+bool encoder_update_keymap(uint8_t index, bool clockwise);
+void matrix_scan_user_encoder(void);
+bool process_record_user_encoder(uint16_t keycode, keyrecord_t *record);
+
+const char* PROGMEM encoder_mode_stringify(encoder_mode_t mode);
+
+void encoder_action(encoder_mode_t mode, uint8_t clockwise);
+void encoder_action_volume_control(bool clockwise);
+void encoder_action_paging(bool clockwise);
+void encoder_action_browser_tab_nav(bool clockwise);
+void encoder_action_word_nav(bool clockwise);
+void encoder_action_undo_redo(bool clockwise);
+void encoder_action_incremental_search(bool clockwise);
+void encoder_action_os_app_switch(bool clockwise);
+void encoder_action_os_app_switch_with_timer(bool clockwise, bool* is_alt_tab_active, uint16_t* alt_tab_timer);
+void encoder_action_horizontal_nav(bool clockwise);
