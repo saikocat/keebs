@@ -37,6 +37,7 @@
 #define TAPPING_FORCE_HOLD_PER_KEY
 
 /* Space saving option */
+#define NO_MUSIC_MODE
 #undef LOCKING_SUPPORT_ENABLE
 #undef LOCKING_RESYNC_ENABLE
 // #define NO_ACTION_ONESHOT 
@@ -90,6 +91,13 @@
 #        endif
 #        define ENCODER_RESOLUTION ENCODER_CUSTOM_RESOLUTION
 #    endif
+#endif
+
+/* Combo */
+#if defined(COMBO_ENABLE)
+#    define COMBO_VARIABLE_LEN
+#    define COMBO_TERM 25
+#    define COMBO_ONLY_FROM_LAYER 0
 #endif
 
 /* Pimoroni Trackball */
