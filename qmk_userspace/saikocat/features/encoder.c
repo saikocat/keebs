@@ -156,9 +156,9 @@ void encoder_action_noop(bool clockwise) {}
 const char PROGMEM encoder_mode_name_00[] = "Volume       ";
 const char PROGMEM encoder_mode_name_01[] = "PageUp/PageDn";
 const char PROGMEM encoder_mode_name_02[] = "BrowserTabNav";
-const char PROGMEM encoder_mode_name_03[] = "Word Nav     ";
+// const char PROGMEM encoder_mode_name_03[] = "Word Nav     ";
 const char PROGMEM encoder_mode_name_04[] = "Undo/Redo    ";
-const char PROGMEM encoder_mode_name_05[] = "Incr Search  ";
+// const char PROGMEM encoder_mode_name_05[] = "Incr Search  ";
 const char PROGMEM encoder_mode_name_06[] = "OS App Switch";
 const char PROGMEM encoder_mode_name_07[] = "HorizontalNav";
 const char PROGMEM encoder_mode_name_08[] = "Vertical Nav ";
@@ -168,31 +168,41 @@ const char PROGMEM encoder_mode_name_undefined[] = "Undefined??? ";
 typedef void (*EncoderAction)(bool clockwise);
 
 static struct EncoderHandler {
+    uint8_t       mode;
     const char   *name;
     EncoderAction action;
 } encoder_handler_table[] = {
     // A bit brittle as we have to manually update,
     // but lazy for a codegen solution for now, or a for loop check handling in get_handler func
     // clang-format off
-    { encoder_mode_name_00, encoder_action_volume_control },
-    { encoder_mode_name_01, encoder_action_paging },
-    { encoder_mode_name_02, encoder_action_browser_tab_nav },
-    { encoder_mode_name_03, encoder_action_word_nav },
-    { encoder_mode_name_04, encoder_action_undo_redo },
-    { encoder_mode_name_05, encoder_action_incremental_search },
-    { encoder_mode_name_06, encoder_action_os_app_switch },
-    { encoder_mode_name_07, encoder_action_horizontal_nav },
-    { encoder_mode_name_08, encoder_action_vertical_nav },
+    { ENC_MODE_VOLUME_CTRL,        encoder_mode_name_00,    encoder_action_volume_control },
+    { ENC_MODE_PAGING,             encoder_mode_name_01,    encoder_action_paging },
+    { ENC_MODE_BROWSER_TAB_NAV,    encoder_mode_name_02,    encoder_action_browser_tab_nav },
+    // { ENC_MODE_WORD_NAV,           encoder_mode_name_03,    encoder_action_word_nav },
+    { ENC_MODE_UNDO_REDO,          encoder_mode_name_04,    encoder_action_undo_redo },
+    // { ENC_MODE_INCREMENTAL_SEARCH, encoder_mode_name_05,    encoder_action_incremental_search },
+    { ENC_MODE_OS_APP_SWITCH,      encoder_mode_name_06,    encoder_action_os_app_switch },
+    { ENC_MODE_HORIZONTAL_NAV,     encoder_mode_name_07,    encoder_action_horizontal_nav },
+    { ENC_MODE_VERTICAL_NAV,       encoder_mode_name_08,    encoder_action_vertical_nav },
     // clang-format on
 };
 
-static struct EncoderHandler encoder_default_handler = {encoder_mode_name_undefined, encoder_action_noop};
+static struct EncoderHandler encoder_default_handler = {ENC_MODE_NOOP, encoder_mode_name_undefined, encoder_action_noop};
 
 struct EncoderHandler encoder_get_handler_or_default(encoder_mode_t mode) {
+    size_t i;
+    for (i = 0; i < sizeof(encoder_handler_table); i++) {
+        if (encoder_handler_table[i].mode == mode) {
+            return encoder_handler_table[i];
+        }
+    }
+
+    return encoder_default_handler;
+
     // clang-format off
-    return (mode < _ENC_MODE_LAST)
-        ? encoder_handler_table[mode]
-        : encoder_default_handler;
+    // return (mode < _ENC_MODE_LAST)
+    //     ? encoder_handler_table[mode]
+    //     : encoder_default_handler;
     // clang-format on
 }
 
@@ -200,49 +210,21 @@ const char *PROGMEM encoder_mode_stringify(encoder_mode_t mode) { return encoder
 
 __attribute__((weak)) void matrix_scan_user_encoder(void) {}
 
-__attribute__((weak)) bool process_record_user_encoder(uint16_t keycode, keyrecord_t *record) {
-    // TODO: Probably can do a bitwise/bitshift here instead of 2 vars
-    static bool sticky_mode  = false;
-    static bool sticky_layer = false;
-
-    switch (keycode) {
-        case MO(_LOWER):
-            if (record->event.pressed) {
-                encoder_left_mode  = ENC_MODE_VOLUME_CTRL;
-                encoder_right_mode = ENC_MODE_UNDO_REDO;
-                sticky_mode        = true;
-            } else {
-                sticky_mode = sticky_layer ? true : false;
-            }
+__attribute__((weak)) layer_state_t layer_state_set_encoder(layer_state_t state) {
+    switch (get_highest_layer(state | default_layer_state)) {
+        case _LOWER:
+            encoder_left_mode  = ENC_MODE_UNDO_REDO;
+            encoder_right_mode = ENC_MODE_VOLUME_CTRL;
             break;
-        case MO(_RAISE):
-            if (record->event.pressed) {
-                encoder_left_mode  = ENC_MODE_BROWSER_TAB_NAV;
-                encoder_right_mode = ENC_MODE_HORIZONTAL_NAV;
-                sticky_mode        = true;
-            } else {
-                sticky_mode = sticky_layer ? true : false;
-            }
-            break;
-        case DF(_NAVIGATION):
+        case _RAISE:
             encoder_left_mode  = ENC_MODE_VERTICAL_NAV;
             encoder_right_mode = ENC_MODE_HORIZONTAL_NAV;
-            sticky_mode        = true;
-            sticky_layer       = true;
             break;
-        case DF(_QWERTY):
-        case DF(_COLEMAK_DH):
-            sticky_mode  = false;
-            sticky_layer = false;
-            break;
+        default:
+            encoder_left_mode  = ENC_MODE_OS_APP_SWITCH;
+            encoder_right_mode = ENC_MODE_PAGING;
     }
-
-    // If momentary layer is activated, we reset to default mode
-    if (!sticky_mode) {
-        encoder_left_mode  = ENC_MODE_OS_APP_SWITCH;
-        encoder_right_mode = ENC_MODE_PAGING;
-    }
-    return true;
+    return state;
 }
 
 __attribute__((weak)) bool encoder_update_keymap(uint8_t index, bool clockwise) {

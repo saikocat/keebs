@@ -21,6 +21,7 @@
 #include "definitions.h"
 
 typedef enum {
+    ENC_MODE_NOOP,
     ENC_MODE_VOLUME_CTRL,
     ENC_MODE_PAGING,
     ENC_MODE_BROWSER_TAB_NAV,
@@ -37,7 +38,6 @@ typedef enum {
 void encoder_init_mode_user(void);
 bool encoder_update_keymap(uint8_t index, bool clockwise);
 void matrix_scan_user_encoder(void);
-bool process_record_user_encoder(uint16_t keycode, keyrecord_t *record);
 
 const char* PROGMEM encoder_mode_stringify(encoder_mode_t mode);
 
@@ -51,3 +51,5 @@ void encoder_action_incremental_search(bool clockwise);
 void encoder_action_os_app_switch(bool clockwise);
 void encoder_action_os_app_switch_with_timer(bool clockwise, bool* is_alt_tab_active, uint16_t* alt_tab_timer);
 void encoder_action_horizontal_nav(bool clockwise);
+
+layer_state_t layer_state_set_encoder(layer_state_t state);

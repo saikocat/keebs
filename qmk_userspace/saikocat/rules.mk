@@ -57,8 +57,10 @@ ifeq ($(strip $(OLED_ENABLE)), yes)
 	endif
 endif
 
-ifeq ($(strip $(ENCODER_ENABLE)), yes)
+
+ifeq ($(strip $(CUSTOM_ENCODER_ENABLE)), yes)
 	SRC += features/encoder.c
+	ENCODER_ENABLE = yes
     $(info 'ENCODER_ENABLE' is $(ENCODER_ENABLE))
 
 	ifneq ($(strip $(ENCODER_CUSTOM_RESOLUTION)),)
@@ -66,6 +68,8 @@ ifeq ($(strip $(ENCODER_ENABLE)), yes)
 
         $(info 'ENCODER_CUSTOM_RESOLUTION' is $(ENCODER_CUSTOM_RESOLUTION))
 	endif
+else
+	ENCODER_ENABLE = no
 endif
 
 # -e ENCODER_ENABLE=yes
