@@ -31,9 +31,12 @@
 #define _________________QWERTY_R2_________________       KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN
 #define _________________QWERTY_R3_________________       KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH
 
-#define _____________HOMEROW_QWERTY_L2_____________       GUI_A,   ALT_S,   SFT_D,   CTL_F,   KC_G
-#define _____________HOMEROW_QWERTY_R2_____________       KC_H,    CTL_J,   SFT_K,   ALT_L,   GUI_SCLN
-
+#define _________________QWERTY_HR_L2______________       HR_A,    HR_S,    HR_D,    HR_F,    KC_G
+#define _________________QWERTY_HR_R2______________       KC_H,    HR_J,    HR_K,    HR_L,    HR_SCLN
+#define _________________QWERTY_HR_ALT_L2__________       KC_A,    HR_S,    HR_D,    HR_F,    KC_G
+#define _________________QWERTY_HR_ALT_R2__________       KC_H,    HR_J,    HR_K,    HR_L,    KC_SCLN
+#define _________________QWERTY_HR_ALT_L3__________       HR_Z,    KC_X,    KC_C,    KC_V,    KC_B
+#define _________________QWERTY_HR_ALT_R3__________       KC_N,    KC_M,    KC_COMM, KC_DOT,  HR_SLSH
 
 #define ______________COLEMAK_MOD_DH_L1____________       KC_Q,    KC_W,    KC_F,    KC_P,    KC_B
 #define ______________COLEMAK_MOD_DH_L2____________       KC_A,    KC_R,    KC_S,    KC_T,    KC_G
@@ -43,9 +46,12 @@
 #define ______________COLEMAK_MOD_DH_R2____________       KC_M,    KC_N,    KC_E,    KC_I,    KC_O
 #define ______________COLEMAK_MOD_DH_R3____________       KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH
 
-#define _________HOMEROW_COLEMAK_MOD_DH_L2_________       GUI_A,   ALT_R,   SFT_S,   CTL_T,   KC_G
-#define _________HOMEROW_COLEMAK_MOD_DH_R2_________       KC_M,    CTL_N,   SFT_E,   ALT_I,   GUI_O
-
+#define ______________COLEMAK_MOD_DH_HR_L2_________       HR_A,    HR_R,    HR_S,    HR_T,    KC_G
+#define ______________COLEMAK_MOD_DH_HR_R2_________       KC_M,    HR_N,    HR_E,    HR_I,    HR_O
+#define ______________COLEMAK_MOD_DH_HR_ALT_L2_____       KC_A,    HR_R,    HR_S_CM, HR_T,    KC_G
+#define ______________COLEMAK_MOD_DH_HR_ALT_R2_____       KC_M,    HR_N,    HR_E,    HR_I,    KC_O
+#define ______________COLEMAK_MOD_DH_HR_ALT_L3_____       HR_Z,    KC_X,    KC_C,    KC_D,    KC_V
+#define ______________COLEMAK_MOD_DH_HR_ALT_R3_____       KC_K,    KC_H,    KC_COMM, KC_DOT,  HR_SLSH
 
 #define _________________LOWER_L1__________________       KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC
 #define _________________LOWER_L2__________________       KC_LBRC, KC_LPRN, KC_UNDS, KC_RPRN, KC_GRV
@@ -56,8 +62,8 @@
 #define _________________LOWER_R3__________________       KC_ASTR, KC_PLUS, KC_LT,   KC_GT,   KC_LBRC
 
 
-#define _________________RAISE_L1__________________       _______,    _______,     _______,      _______,   G(KC_SPC) 
-#define _________________RAISE_L2__________________       C(KC_LEFT), C(KC_RIGHT), C(S(KC_TAB)), C(KC_TAB), ALT_TAB
+#define _________________RAISE_L1__________________       _______,    _______,     _______,      KC_CAPS,   G(KC_SPC) 
+#define _________________RAISE_L2__________________       C(KC_LEFT), C(KC_RIGHT), C(S(KC_TAB)), C(KC_TAB), CMB_TOG
 #define _________________RAISE_L3__________________       C(KC_Z),    C(KC_X),     C(KC_C),      ALT_TAB,   C(KC_V)
 
 #define _________________RAISE_R1__________________       DF(_QWERTY), DF(_COLEMAK_DH), DF(_NAVIGATION), DF(_GAME),  KC_PSCR
@@ -65,7 +71,7 @@
 #define _________________RAISE_R3__________________       KC_HOME, KC_PGDN, KC_PGUP, KC_END,  _______
 
 
-#define _________________ADJUST_L1_________________       ___________________BLANK___________________
+#define _________________ADJUST_L1_________________       _______, _______, _______,  KC_CAPS, _______
 #define _________________ADJUST_L2_________________       ________________MOUSE_BUTTON_______________
 #define _________________ADJUST_L3_________________       C(KC_Z),  C(KC_X), C(KC_C), C(KC_V), _______
 
@@ -92,10 +98,10 @@
 #define ________________SYMBOL_LEFT________________       KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC
 #define ________________SYMBOL_RIGHT_______________       KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN
 
-#define ________________NUMPAD_TOP_________________        _______,  KC_7,  KC_8,  KC_9,  KC_EQL
-#define ________________NUMPAD_MID_________________        KC_PAST,  KC_4,  KC_5,  KC_6,  KC_PPLS
-#define ________________NUMPAD_BOT_________________        KC_PSLS,  KC_1,  KC_2,  KC_3,  KC_PMNS
-#define ________________NUMPAD_THUMB_______________        KC_ENT,   KC_P0, KC_PDOT
+#define ________________NUMPAD_TOP_________________       _______,  KC_7,  KC_8,  KC_9,  KC_EQL
+#define ________________NUMPAD_MID_________________       KC_PAST,  KC_4,  KC_5,  KC_6,  KC_PPLS
+#define ________________NUMPAD_BOT_________________       KC_PSLS,  KC_1,  KC_2,  KC_3,  KC_PMNS
+#define ________________NUMPAD_THUMB_______________       KC_ENT,   KC_P0, KC_PDOT
 
 
 #define ________________MOUSE_BUTTON_______________       TB_SCR,  TB_MCL,  TB_RCL,  TB_LCL,  TB_RCL
@@ -104,7 +110,7 @@
 
 #define ___________________BLANK___________________       _______, _______, _______, _______, _______
 
-#define ______________3x3_THUMBCLUSTER_L___________       ESC_ALT,    SPC_LWR,  BSPC_NUM
-#define ______________3x3_THUMBCLUSTER_R___________       KC_SFTENT,  SPC_RSE,  COLN_ADJ
+#define ______________THUMBCLUSTER_3x3_L___________       ESC_ALT,    SPC_LWR,  BSPC_NUM
+#define ______________THUMBCLUSTER_3x3_R___________       KC_SFTENT,  SPC_RSE,  COLN_ADJ
 
 // clang-format on

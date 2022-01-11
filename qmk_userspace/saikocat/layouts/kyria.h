@@ -22,8 +22,8 @@
 
 // clang-format off
 
-#define ________LAYOUT_KYRIA_THUMBCLUSTER_L________    _______,   ESC_ALT, MO(_LOWER), KC_SPC,   BSPC_NUM
-#define ________LAYOUT_KYRIA_THUMBCLUSTER_R________    KC_SFTENT, KC_SPC,  MO(_RAISE), COLN_ADJ, _______
+#define ____________THUMBCLUSTER_KYRIA_L___________    _______,   ESC_ALT, MO(_LOWER), KC_SPC,   BSPC_NUM
+#define ____________THUMBCLUSTER_KYRIA_R___________    KC_SFTENT, KC_SPC,  MO(_RAISE), COLN_ADJ, _______
 
 /*
  * Base Layer: QWERTY
@@ -43,14 +43,14 @@
     KC_TAB,  _________________QWERTY_L1_________________,                                      _________________QWERTY_R1_________________, KC_BSPC,  \
     KC_LCTL, _________________QWERTY_L2_________________,                                      _________________QWERTY_R2_________________, QUOT_CTL  \
     KC_LSFT, _________________QWERTY_L3_________________, _______, _______, _______, _______,  _________________QWERTY_R3_________________, KC_DEL,   \
-                               ________LAYOUT_KYRIA_THUMBCLUSTER_L________, ________LAYOUT_KYRIA_THUMBCLUSTER_R________
+                               ____________THUMBCLUSTER_KYRIA_L___________, ____________THUMBCLUSTER_KYRIA_R___________
 
 
 #define __LAYOUT_KYRIA__QWERTY__HR \
     KC_TAB,  _________________QWERTY_L1_________________,                                     _________________QWERTY_R1_________________, KC_BSPC,  \
-    KC_LCTL, KC_A,  ALT_S, SFT_D, CTL_F, KC_G,                                                KC_H,  CTL_J, SFT_K,   ALT_L,  KC_SCLN,      QUOT_CTL, \
-    KC_LSFT, GUI_Z, KC_X,  KC_C,  KC_V,  KC_B,            _______, _______, _______, _______, KC_N, KC_M,  KC_COMM, KC_DOT, GUI_SLSH,      KC_DEL,   \
-                               ________LAYOUT_KYRIA_THUMBCLUSTER_L________, ________LAYOUT_KYRIA_THUMBCLUSTER_R________
+    KC_LCTL, _________________QWERTY_HR_ALT_L2__________,                                     _________________QWERTY_HR_ALT_R2__________, QUOT_CTL, \
+    KC_LSFT, _________________QWERTY_HR_ALT_L3__________, _______, _______, _______, _______, _________________QWERTY_HR_ALT_R3__________, KC_DEL,   \
+                               ____________THUMBCLUSTER_KYRIA_L___________, ____________THUMBCLUSTER_KYRIA_R___________
 
 /*
  * Base Layer: Colemak DH
@@ -70,14 +70,14 @@
     KC_TAB,  ______________COLEMAK_MOD_DH_L1____________,                                     ______________COLEMAK_MOD_DH_R1____________, KC_BSPC,  \
     KC_LCTL, ______________COLEMAK_MOD_DH_L2____________,                                     ______________COLEMAK_MOD_DH_R2____________, QUOT_CTL, \
     KC_LSFT, ______________COLEMAK_MOD_DH_L3____________, _______, _______, _______, _______, ______________COLEMAK_MOD_DH_R3____________, KC_DEL,   \
-                               ________LAYOUT_KYRIA_THUMBCLUSTER_L________, ________LAYOUT_KYRIA_THUMBCLUSTER_R________
+                               ____________THUMBCLUSTER_KYRIA_L___________, ____________THUMBCLUSTER_KYRIA_R___________
 
 
 #define __LAYOUT_KYRIA__COLEMAK_DH__HR \
-    KC_TAB,  ______________COLEMAK_MOD_DH_L1____________,                          ______________COLEMAK_MOD_DH_R1____________, KC_BSPC,  \
-    KC_LCTL, KC_A,  ALT_R, SFT_S, CTL_T, KC_G,                                     KC_M, CTL_N, SFT_E,   ALT_I,   KC_O,         QUOT_CTL, \
-    KC_LSFT, GUI_Z, KC_X,  KC_C,  KC_D,  KC_V, _______, _______, _______, _______, KC_K, KC_H,  KC_COMM, KC_DOT,  GUI_SLSH,     KC_DEL,   \
-                    ________LAYOUT_KYRIA_THUMBCLUSTER_L________, ________LAYOUT_KYRIA_THUMBCLUSTER_R________
+    KC_TAB,  ______________COLEMAK_MOD_DH_L1____________,                                     ______________COLEMAK_MOD_DH_R1____________, KC_BSPC,  \
+    KC_LCTL, ______________COLEMAK_MOD_DH_HR_ALT_L2_____,                                     ______________COLEMAK_MOD_DH_HR_ALT_R2_____, QUOT_CTL, \
+    KC_LSFT, ______________COLEMAK_MOD_DH_HR_ALT_L3_____, _______, _______, _______, _______, ______________COLEMAK_MOD_DH_HR_ALT_R3_____, KC_DEL,   \
+                    ____________THUMBCLUSTER_KYRIA_L___________, ____________THUMBCLUSTER_KYRIA_R___________
 
 
 /* 
@@ -98,7 +98,7 @@
     KC_TAB,   _________________QWERTY_L1_________________,                                     ___________________BLANK___________________, _______,   \
     KC_LCTL,  _________________QWERTY_L2_________________,                                     ___________________BLANK___________________, _______,   \
     KC_LSFT,  _________________QWERTY_L3_________________, _______, _______, _______, _______, ___________________BLANK___________________, A(KC_TAB), \
-                      _______, SH_MON, MO(_GAME_NUM), KC_SPC, MO(_GAME_NUM), ________LAYOUT_KYRIA_THUMBCLUSTER_R________
+                      _______, SH_MON, MO(_GAME_NUM), KC_SPC, MO(_GAME_NUM), ____________THUMBCLUSTER_KYRIA_R___________
 
 
 
@@ -247,7 +247,7 @@
     KC_ESC,    C(KC_3), C(KC_2), C(KC_1), C(KC_0), C(KC_4),                                     DF(_QWERTY), DF(_COLEMAK_DH), DF(_RAISE), DF(_GAME),  KC_PSCR, _______, \
     KC_LCTL,   ________________NUMBER_LEFT_BEAKL__________,                                     ___________________BLANK___________________, _______, \
     KC_SFTENT, KC_F3,   KC_F2,   KC_F1,   KC_F4,   KC_F5,   _______, _______, _______, _______, ___________________BLANK___________________, _______, \
-                                 _______, _______, _______, _______, _______, ________LAYOUT_KYRIA_THUMBCLUSTER_R________
+                                 _______, _______, _______, _______, _______, ____________THUMBCLUSTER_KYRIA_R___________
 
 
 

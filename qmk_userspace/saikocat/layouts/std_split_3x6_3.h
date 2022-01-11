@@ -32,14 +32,14 @@
     KC_TAB,  _________________QWERTY_L1_________________,        _________________QWERTY_R1_________________, KC_BSPC,  \
     KC_LCTL, _________________QWERTY_L2_________________,        _________________QWERTY_R2_________________, QUOT_CTL, \
     KC_LSFT, _________________QWERTY_L3_________________,        _________________QWERTY_R3_________________, KC_DEL,   \
-             ______________3x3_THUMBCLUSTER_L___________,        ______________3x3_THUMBCLUSTER_R___________
+             ______________THUMBCLUSTER_3x3_L___________,        ______________THUMBCLUSTER_3x3_R___________
 
 
 #define __LAYOUT_SPLIT_3x6_3__QWERTY__HR \
     KC_TAB,  _________________QWERTY_L1_________________,        _________________QWERTY_R1_________________, KC_BSPC,  \
-    KC_LCTL, KC_A,  ALT_S, SFT_D, CTL_F, KC_G,                   KC_H, CTL_J, SFT_K,   ALT_L,  KC_SCLN,       QUOT_CTL, \
-    KC_LSFT, GUI_Z, KC_X,  KC_C,  KC_V,  KC_B,                   KC_N, KC_M,  KC_COMM, KC_DOT, GUI_SLSH,      KC_DEL,   \
-             ______________3x3_THUMBCLUSTER_L___________,        ______________3x3_THUMBCLUSTER_R___________
+    KC_LCTL, _________________QWERTY_HR_ALT_L2__________,        _________________QWERTY_HR_ALT_R2__________, QUOT_CTL, \
+    KC_LSFT, _________________QWERTY_HR_ALT_L3__________,        _________________QWERTY_HR_ALT_R3__________, KC_DEL,   \
+             ______________THUMBCLUSTER_3x3_L___________,        ______________THUMBCLUSTER_3x3_R___________
 
 
 
@@ -57,14 +57,14 @@
     KC_TAB,  ______________COLEMAK_MOD_DH_L1____________,        ______________COLEMAK_MOD_DH_R1____________, KC_BSPC,  \
     KC_LCTL, ______________COLEMAK_MOD_DH_L2____________,        ______________COLEMAK_MOD_DH_R2____________, QUOT_CTL, \
     KC_LSFT, ______________COLEMAK_MOD_DH_L3____________,        ______________COLEMAK_MOD_DH_R3____________, KC_DEL,   \
-             ______________3x3_THUMBCLUSTER_L___________,        ______________3x3_THUMBCLUSTER_R___________
+             ______________THUMBCLUSTER_3x3_L___________,        ______________THUMBCLUSTER_3x3_R___________
 
 
 #define __LAYOUT_SPLIT_3x6_3__COLEMAK_DH__HR \
     KC_TAB,  ______________COLEMAK_MOD_DH_L1____________,        ______________COLEMAK_MOD_DH_R1____________, KC_BSPC,  \
-    KC_LCTL, KC_A,  ALT_R, SFT_S, CTL_T, KC_G,                   KC_M, CTL_N, SFT_E,   ALT_I,   KC_O,         QUOT_CTL, \
-    KC_LSFT, GUI_Z, KC_X,  KC_C,  KC_D,  KC_V,                   KC_K, KC_H,  KC_COMM, KC_DOT,  GUI_SLSH,     KC_DEL,   \
-             ______________3x3_THUMBCLUSTER_L___________,        ______________3x3_THUMBCLUSTER_R___________
+    KC_LCTL, ______________COLEMAK_MOD_DH_HR_ALT_L2_____,        ______________COLEMAK_MOD_DH_HR_ALT_R2_____, QUOT_CTL, \
+    KC_LSFT, ______________COLEMAK_MOD_DH_HR_ALT_L3_____,        ______________COLEMAK_MOD_DH_HR_ALT_R3_____,  KC_DEL,  \
+             ______________THUMBCLUSTER_3x3_L___________,        ______________THUMBCLUSTER_3x3_R___________
 
 
 /* ,-----------------------------------------.                ,-----------------------------------------.
@@ -82,7 +82,7 @@
     KC_TAB,  _________________QWERTY_L1_________________,        ___________________BLANK___________________, _______,   \
     KC_LCTL, _________________QWERTY_L2_________________,        ___________________BLANK___________________, _______,   \
     KC_LSFT, _________________QWERTY_L3_________________,        ___________________BLANK___________________, A(KC_TAB), \
-                           SH_MON, KC_SPC, MO(_GAME_NUM),        ______________3x3_THUMBCLUSTER_R___________
+                           SH_MON, KC_SPC, MO(_GAME_NUM),        ______________THUMBCLUSTER_3x3_R___________
 
 
 
@@ -172,7 +172,7 @@
     KC_ESC,    C(KC_3), C(KC_2), C(KC_1), C(KC_0), C(KC_4),        DF(_QWERTY), DF(_COLEMAK_DH), DF(_RAISE), DF(_GAME),  KC_PSCR, _______, \
     KC_LCTL,   ________________NUMBER_LEFT_BEAKL__________,        ___________________BLANK___________________, _______, \
     KC_SFTENT, KC_F3,   KC_F2,   KC_F1,   KC_F4,   KC_F5,          ___________________BLANK___________________, _______, \
-                                 _______, _______, _______,        ______________3x3_THUMBCLUSTER_R___________
+                                 _______, _______, _______,        ______________THUMBCLUSTER_3x3_R___________
 
 
 /* ,-----------------------------------------.                ,-----------------------------------------.
