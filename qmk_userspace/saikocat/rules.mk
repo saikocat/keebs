@@ -27,13 +27,20 @@ TERMINAL_ENABLE = no
 UNICODE_ENABLE = no
 NKRO_ENABLE = no
 FAUXCLICKY_ENABLE = no
-
-#EXTRAKEY_ENABLE = no
+MUSIC_ENABLE = no
 MOUSEKEY_ENABLE = no
+# EXTRAKEY_ENABLE = no
 
 LTO_ENABLE = yes
 BOOTMAGIC_ENABLE = yes
 BOOTLOADER = atmel-dfu
+
+# Combos
+ifeq ($(strip $(CUSTOM_COMBO_ENABLE)), yes)
+	COMBO_ENABLE = yes
+	VPATH += keyboards/gboards/
+	SRC += combos/combos.c
+endif
 
 # Enable custom OLED features
 ifeq ($(strip $(OLED_ENABLE)), yes)
