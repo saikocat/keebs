@@ -14,12 +14,22 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "combos/combos.h"
 #include "features/encoder.h"
 #include "transports/split_transport_sync.h"
 
 /* Layer state check */
 __attribute__((weak)) layer_state_t layer_state_set_keymap(layer_state_t state) {
     state = update_tri_layer_state(state, _LOWER, _ADJUST, _SPECIAL);
+
+#ifdef ENCODER_ENABLE
+    layer_state_set_encoder(state);
+#endif
+
+#ifdef COMBO_ENABLE
+    layer_state_set_combo(state);
+#endif
+
     return state;
 }
 
