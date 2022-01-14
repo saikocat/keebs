@@ -1,3 +1,4 @@
 #include "combos/vim.def"
 #include "combos/mods.def"
 #include "combos/symbols.def"
+#include "combos/numpad.def"
