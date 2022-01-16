@@ -33,7 +33,13 @@ MOUSEKEY_ENABLE = no
 
 LTO_ENABLE = yes
 BOOTMAGIC_ENABLE = yes
-BOOTLOADER = atmel-dfu
+
+# Bootloader
+BOOTLOADER ?= atmel-dfu
+ifeq ($(strip $(CUSTOM_BOOTLOADER)), nano)
+	BOOTLOADER = qmk-hid
+	BOOTLOADER_SIZE = 512
+endif
 
 # Combos
 ifeq ($(strip $(CUSTOM_COMBO_ENABLE)), yes)
