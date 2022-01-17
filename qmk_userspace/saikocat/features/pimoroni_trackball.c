@@ -106,7 +106,7 @@ static report_mouse_t handle_scrolling(report_mouse_t mouse_report) {
 
 __attribute__((weak)) report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
 #ifdef POINTING_DEVICE_RIGHT
-    if (!is_keyboard_master()) {
+    if (is_keyboard_left()) {
         return mouse_report;
     }
 #endif
@@ -149,6 +149,20 @@ bool process_record_user_pimoroni_trackball(uint16_t keycode, keyrecord_t *recor
     return true;
 }
 
-__attribute__((weak)) void pointing_device_init_user() { pimoroni_trackball_led_update_colours(); }
+__attribute__((weak)) void pointing_device_init_user() {
+#ifdef POINTING_DEVICE_RIGHT
+    if (is_keyboard_left()) {
+        return;
+    }
+#endif
+    pimoroni_trackball_led_update_colours();
+}
 
-__attribute__((weak)) void pointing_device_suspend_power_down_keymap(void) { pimoroni_trackball_led_off(); }
+__attribute__((weak)) void pointing_device_suspend_power_down_keymap(void) {
+#ifdef POINTING_DEVICE_RIGHT
+    if (is_keyboard_left()) {
+        return;
+    }
+#endif
+    pimoroni_trackball_led_off(); 
+}
