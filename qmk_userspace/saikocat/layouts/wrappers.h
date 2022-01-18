@@ -20,7 +20,7 @@
 #include "layouts/crkbd.h"
 #include "layouts/kyria.h"
 
-#define HR_GACS(k1, k2, k3, k4) GUI_T(k1), ALT_T(k2), SFT_T(k3), CTL_T(k4)
+#define HRM_GACS(k1, k2, k3, k4) GUI_T(k1), ALT_T(k2), SFT_T(k3), CTL_T(k4)
 
 // clang-format off
 #define _________________QWERTY_L1_________________       KC_Q,    KC_W,    KC_E,    KC_R,    KC_T
