@@ -33,6 +33,3 @@ COMB(QUOT,                  KC_QUOT,             HR_J, HR_L)
 
 COMB(BACKTICK,              KC_GRV,              KC_V, HR_D)
 COMB(TILDE,                 KC_TILD,             KC_C, HR_F)
-
-
-COMB(RET_PLOVER,            KC_ENT,              HR_F, HR_J)

@@ -1,7 +1,9 @@
 COMB(KL_WORD_BSPC,          C(KC_BSPC),          HR_K, HR_L)
 
-COMB(ASCLN_OS_SHIFT,        OSM(MOD_RSFT),       KC_A, KC_SCLN)
-COMB(WE_OS_SHIFT,           OSM(MOD_LSFT),       KC_W, KC_E)
-COMB(XC_OS_CTRL,            OSM(MOD_LCTL),       KC_X, KC_C)
-COMB(ZX_OS_ALT,             OSM(MOD_LALT),       KC_X, HR_Z)
-COMB(OP_OS_GUI,             OSM(MOD_LGUI),       KC_O, KC_P)
+COMB(SFT_OS_ASCLN,          OSM(MOD_RSFT),       KC_A, KC_SCLN)
+COMB(SFT_OS_WE,             OSM(MOD_LSFT),       KC_W, KC_E)
+COMB(CTL_OS_XC,             OSM(MOD_LCTL),       KC_X, KC_C)
+COMB(ALT_OR_ZX,             OSM(MOD_LALT),       KC_X, HR_Z)
+COMB(GUI_OS_OP,             OSM(MOD_LGUI),       KC_O, KC_P)
+
+COMB(RET_PLOVER,            KC_ENT,              HR_F, HR_J)
