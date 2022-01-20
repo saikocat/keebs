@@ -1,4 +1,4 @@
-COMB(KL_WORD_BSPC,          C(KC_BSPC),          HR_K, HR_L)
+COMB(WORD_BSPC_KL,          C(KC_BSPC),          HR_K, HR_L)
 
 COMB(SFT_OS_ASCLN,          OSM(MOD_RSFT),       KC_A, KC_SCLN)
 COMB(SFT_OS_WE,             OSM(MOD_LSFT),       KC_W, KC_E)
@@ -7,3 +7,5 @@ COMB(ALT_OR_ZX,             OSM(MOD_LALT),       KC_X, HR_Z)
 COMB(GUI_OS_OP,             OSM(MOD_LGUI),       KC_O, KC_P)
 
 COMB(RET_PLOVER,            KC_ENT,              HR_F, HR_J)
+
+COMB(DELETE_KL,             KC_DEL,              HR_S, HR_F)
