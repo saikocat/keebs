@@ -18,6 +18,7 @@
 #include "behaviours/process_records.h"
 #include "features/oled.h"
 #include "features/pimoroni_trackball.h"
+#include "features/caps_word.h"
 
 /* Reverse of shift
  *
@@ -179,6 +180,11 @@ __attribute__((weak)) bool process_record_user(uint16_t keycode, keyrecord_t *re
 #endif
 #ifdef PIMORONI_TRACKBALL_ENABLE
     if (!process_record_user_pimoroni_trackball(keycode, record)) {
+        return false;
+    }
+#endif
+#ifdef CAPS_WORD_ENABLE
+    if (!process_caps_word(keycode, record)) {
         return false;
     }
 #endif
