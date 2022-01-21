@@ -20,6 +20,7 @@
 
 #include "definitions.h"
 #include "combos/combos.h"
+#include "features/caps_word.h"
 #include "layouts/wrappers.h"
 #include "behaviours/callbacks.h"
 #include "behaviours/power_management.h"
