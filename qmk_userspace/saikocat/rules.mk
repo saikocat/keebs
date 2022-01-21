@@ -29,7 +29,7 @@ NKRO_ENABLE = no
 FAUXCLICKY_ENABLE = no
 MUSIC_ENABLE = no
 MOUSEKEY_ENABLE = no
-# EXTRAKEY_ENABLE = no
+EXTRAKEY_ENABLE ?= no
 
 LTO_ENABLE = yes
 BOOTMAGIC_ENABLE = yes
@@ -46,6 +46,15 @@ ifeq ($(strip $(CUSTOM_COMBO_ENABLE)), yes)
 	COMBO_ENABLE = yes
 	VPATH += keyboards/gboards/
 	SRC += combos/combos.c
+endif
+
+# Caps Word
+CAPS_WORD_ENABLE ?= yes
+ifeq ($(strip $(CAPS_WORD_ENABLE)), yes)
+	OPT_DEFS += -DCAPS_WORD_ENABLE
+	SRC += features/caps_word.c
+else
+	CAPS_WORD_ENABLE ?= yes
 endif
 
 # Enable custom OLED features
