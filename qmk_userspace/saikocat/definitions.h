@@ -45,6 +45,7 @@ enum userspace_custom_keycodes {
     BSPC_LWR = LT(_LOWER, KC_BSPC),
     TAB_LWR  = LT(_LOWER, KC_TAB),
     SPC_RSE  = LT(_RAISE, KC_SPC),
+    DEL_LWR  = LT(_LOWER, KC_DEL),
     DEL_RSE  = LT(_RAISE, KC_DEL),
     ENT_RSE  = LT(_RAISE, KC_ENTER),
     SCLN_ADJ = LT(_ADJUST, KC_SCLN),
