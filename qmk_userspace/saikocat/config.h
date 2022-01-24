@@ -95,7 +95,6 @@
 
 /* Combo */
 #if defined(COMBO_ENABLE)
-#    define COMBO_VARIABLE_LEN
 #    define COMBO_TERM 25
 #    define COMBO_ONLY_FROM_LAYER 0
 #endif
