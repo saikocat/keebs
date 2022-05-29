@@ -62,7 +62,7 @@
 #define _________________LOWER_R3__________________       KC_ASTR, KC_PLUS, KC_LT,   KC_GT,   KC_LBRC
 
 
-#define _________________RAISE_L1__________________       _______,    _______,     _______,      KC_CAPS,   G(KC_SPC) 
+#define _________________RAISE_L1__________________       _______,    _______,     _______,      CAPSWRD,   G(KC_SPC) 
 #define _________________RAISE_L2__________________       C(KC_LEFT), C(KC_RIGHT), C(S(KC_TAB)), C(KC_TAB), CMB_TOG
 #define _________________RAISE_L3__________________       C(KC_Z),    C(KC_X),     C(KC_C),      ALT_TAB,   C(KC_V)
 
@@ -104,6 +104,10 @@
 #define ________________NUMPAD_THUMB_______________       KC_ENT,   KC_P0, KC_PDOT
 
 
+#define _________________SPECIAL_L1________________       QK_BOOT, EEP_RST, XXXXXXX, XXXXXXX, XXXXXXX
+#define _________________SPECIAL_L2________________       XXXXXXX, XXXXXXX, EH_LEFT, EH_RGHT, CG_TOGG
+
+
 #define ________________MOUSE_BUTTON_______________       TB_SCR,  TB_MCL,  TB_RCL,  TB_LCL,  TB_RCL
 
 #define ________________HOME_ROW_L_________________       KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, _______
@@ -112,9 +116,11 @@
 #define ________________HOME_ROW_OSM_R_____________       _______,       OSM(MOD_RCTL), OSM(MOD_RSFT), OSM(MOD_RALT), OSM(MOD_RGUI)
 
 #define ___________________BLANK___________________       _______, _______, _______, _______, _______
+#define _________________DISABLED__________________       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+
 
 #define ______________THUMBCLUSTER_3x3_L___________       ESC_ALT, DEL_LWR, BSPC_NUM
-#define ______________THUMBCLUSTER_3x3_R___________       SPC_RSFT, SPC_RSE, COLN_ADJ
+#define ______________THUMBCLUSTER_3x3_R___________       KC_SPC,  SPC_RSE, COLN_ADJ
 #define ______________THUMBCLUSTER_3x3_GAME_R______       KC_ENT,  SPC_RSE, COLN_ADJ
 
 // clang-format on

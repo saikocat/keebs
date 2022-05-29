@@ -100,7 +100,7 @@
     KC_ESC,    _________________SYMBOL_L1_________________,        _________________SYMBOL_R1_________________, _______, \
     _______,   _________________SYMBOL_L2_________________,        _________________SYMBOL_R2_________________, KC_DQUO, \
     KC_SFTENT, _________________SYMBOL_L3_________________,        _________________SYMBOL_R3_________________, _______, \
-                                  SH_MON, _______, _______,        KC_ENT, MO(_SYMNUM), MO(_SPECIAL)
+                                  SH_MON, _______, _______,        KC_ENT, _______, MO(_SPECIAL)
 
 
 /* ,-----------------------------------------.                ,-----------------------------------------.
@@ -150,9 +150,9 @@
  *                             `--------------------'  `--------------------'
  */
 #define __LAYOUT_SPLIT_3x6_3__SPECIAL \
-    _______, RESET,   EEP_RST, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
-    _______, XXXXXXX, XXXXXXX, EH_LEFT, EH_RGHT, CG_TOGG,         XXXXXXX, KC_RCTL, KC_RSFT, KC_LALT, KC_RGUI, XXXXXXX, \
-    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
+    _______, _________________SPECIAL_L1________________,         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
+    _______, _________________SPECIAL_L2________________,         XXXXXXX, KC_RCTL, KC_RSFT, KC_LALT, KC_RGUI, XXXXXXX, \
+    _______, _________________DISABLED__________________,         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
                                _______, _______, _______,         _______, _______, _______
 
 
