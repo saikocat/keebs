@@ -8,6 +8,7 @@ COMB(GUI_OS_OP,             OSM(MOD_LGUI),       KC_O, KC_P)
 
 COMB(RET_PLOVER,            KC_ENT,              KC_F, KC_J)
 COMB(RET_DOTSLASH,          KC_ENT,              KC_DOT, KC_SLSH)
+COMB(RET_THUMB,             KC_ENT,              BSPC_NUM, KC_SPC)
 
 COMB(DELETE_KL,             KC_DEL,              KC_S, KC_F)
 
