@@ -22,5 +22,5 @@
 #    define OLED_DISPLAY_128X64
 #endif
 
-#define ENCODER_RESOLUTION 2 
+#define ENCODER_RESOLUTIONS { 2, 4 }
 #define ENCODER_DIRECTION_FLIP
