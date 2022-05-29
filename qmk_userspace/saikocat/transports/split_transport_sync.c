@@ -22,9 +22,7 @@
 
 uint32_t transport_user_state = 0;
 
-#ifdef SLAVE_OLED_MASTER_TRACKBALL
 extern uint32_t oled_idle_timer;
-#endif
 
 user_runtime_config_t user_state;
 
@@ -41,17 +39,13 @@ void keyboard_post_init_transport_sync(void) {
 
 void user_transport_update(void) {
     if (is_keyboard_master()) {
-#ifdef SLAVE_OLED_MASTER_TRACKBALL
         user_state.oled_idle_timer = oled_idle_timer;
-#endif
 
         transport_user_state = user_state.raw;
     } else {
         user_state.raw = transport_user_state;
 
-#ifdef SLAVE_OLED_MASTER_TRACKBALL
         oled_idle_timer = user_state.oled_idle_timer;
-#endif
     }
 }
 

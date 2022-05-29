@@ -16,6 +16,7 @@ CONSOLE_ENABLE = no
 
 # Disable unused features to reduce firmware size
 GRAVE_ESC_ENABLE = no
+SPACE_CADET_ENABLE = no
 RGBLIGHT_ENABLE = no
 BACKLIGHT_ENABLE = no
 SLEEP_LED_ENABLE = no
@@ -103,25 +104,7 @@ ifeq ($(strip $(PIMORONI_TRACKBALL_ENABLE)), yes)
     $(info 'POINTING_DEVICE' is PIMORONI_TRACKBALL)
 endif
 
-SLAVE_OLED_MASTER_TRACKBALL ?= no
-ifeq ($(strip $(SLAVE_OLED_MASTER_TRACKBALL)), yes)
-	OPT_DEFS += -DSLAVE_OLED_MASTER_TRACKBALL
-    $(info 'SLAVE_OLED_MASTER_TRACKBALL' is true)
-
-	POINTING_DEVICE_RIGHT ?= yes
-	ifeq ($(strip $(POINTING_DEVICE_RIGHT)), yes)
-		OPT_DEFS += -DPOINTING_DEVICE_RIGHT
-        $(info 'POINTING_DEVICE_RIGHT' is true)
-	endif
-
-	POINTING_DEVICE_LEFT ?= no
-	ifeq ($(strip $(POINTING_DEVICE_LEFT)), yes)
-		OPT_DEFS += -DPOINTING_DEVICE_LEFT
-        $(info 'POINTING_DEVICE_LEFT' is true)
-	endif
-endif
-
-CUSTOM_SPLIT_TRANSPORT_SYNC ?= yes
+CUSTOM_SPLIT_TRANSPORT_SYNC ?= no
 ifeq ($(strip $(CUSTOM_SPLIT_TRANSPORT_SYNC)), yes)
     ifeq ($(strip $(SPLIT_KEYBOARD)), yes)
         QUANTUM_LIB_SRC += $(USER_PATH)/transports/split_transport_sync.c

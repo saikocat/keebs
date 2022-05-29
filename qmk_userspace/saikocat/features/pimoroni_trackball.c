@@ -19,8 +19,6 @@
 #include "report.h"
 #include "timer.h"
 
-#include "lib/lib8tion/lib8tion.h"
-
 #include "definitions.h"
 #include "features/pimoroni_trackball.h"
 
@@ -28,27 +26,31 @@ static report_mouse_t last_mouse_report               = {0};
 static uint32_t       last_mouse_activity_timer       = 0;
 static bool           pimoroni_trackball_is_scrolling = false;
 
-void pimoroni_trackball_set_scrolling(bool scrolling) { pimoroni_trackball_is_scrolling = scrolling; }
+void pimoroni_trackball_set_scrolling(bool scrolling) {
+    pimoroni_trackball_is_scrolling = scrolling;
+}
 
-void pimoroni_trackball_led_off(void) { pimoroni_trackball_set_rgbw(0x00, 0x00, 0x00, 0x00); }
+void pimoroni_trackball_led_off(void) {
+    pimoroni_trackball_set_rgbw(0x00, 0x00, 0x00, 0x00);
+}
 
 void pimoroni_trackball_led_update_colours(void) {
     switch (get_highest_layer(layer_state | default_layer_state)) {
         case _COLEMAK_DH:
         case _QWERTY:
-            pimoroni_trackball_set_rgbw(0, 51, 102, 23);  // PleasingBlue
+            pimoroni_trackball_set_rgbw(0, 51, 102, 23); // PleasingBlue
             break;
         case _RAISE:
-            pimoroni_trackball_set_rgbw(255, 0, 255, 80);  // Magenta
+            pimoroni_trackball_set_rgbw(255, 0, 255, 80); // Magenta
             break;
         case _LOWER:
-            pimoroni_trackball_set_rgbw(255, 191, 0, 0);  // Amber
+            pimoroni_trackball_set_rgbw(255, 191, 0, 0); // Amber
             break;
         case _GAME:
-            pimoroni_trackball_set_rgbw(48, 213, 200, 80);  // Turquoise
+            pimoroni_trackball_set_rgbw(48, 213, 200, 80); // Turquoise
             break;
         case _ADJUST:
-            pimoroni_trackball_set_rgbw(153, 0, 110, 39);  // DarkMagenta
+            pimoroni_trackball_set_rgbw(153, 0, 110, 39); // DarkMagenta
             break;
         default:
             pimoroni_trackball_set_rgbw(0, 0, 0, 80);
@@ -62,17 +64,17 @@ bool pimoroni_trackball_led_is_timeout(void) {
 }
 // clang-format on
 
-static void handle_mouse_button(uint8_t mouse_button_keycode, keyrecord_t *record) {
-    // TODO: This handles only const defined in report.h (MOUSE_BTN1).
-    // MOUSEKEY ENABLE have to deal with differently
+void pimoroni_trackball_register_button(bool pressed, enum mouse_buttons button) {
+#ifndef MOUSEKEY_ENABLE
     report_mouse_t current_report = pointing_device_get_report();
-    if (record->event.pressed) {
-        current_report.buttons |= mouse_button_keycode;
+    if (pressed) {
+        current_report.buttons |= button;
     } else {
-        current_report.buttons &= ~mouse_button_keycode;
+        current_report.buttons &= ~button;
     }
     pointing_device_set_report(current_report);
-    pointing_device_send();
+    // pointing_device_send();
+#endif
 }
 
 static report_mouse_t handle_scrolling(report_mouse_t mouse_report) {
@@ -137,19 +139,19 @@ bool process_record_user_pimoroni_trackball(uint16_t keycode, keyrecord_t *recor
             }
             return false;
         case TB_LCL:
-            handle_mouse_button(MOUSE_BTN1, record);
+            pimoroni_trackball_register_button(record->event.pressed, MOUSE_BTN1);
             return false;
         case TB_RCL:
-            handle_mouse_button(MOUSE_BTN2, record);
+            pimoroni_trackball_register_button(record->event.pressed, MOUSE_BTN2);
             return false;
         case TB_MCL:
-            handle_mouse_button(MOUSE_BTN3, record);
+            pimoroni_trackball_register_button(record->event.pressed, MOUSE_BTN3);
             return false;
     }
     return true;
 }
 
-__attribute__((weak)) void pointing_device_init_user() {
+__attribute__((weak)) void pointing_device_init_user(void) {
 #ifdef POINTING_DEVICE_RIGHT
     if (is_keyboard_left()) {
         return;
@@ -164,5 +166,5 @@ __attribute__((weak)) void pointing_device_suspend_power_down_keymap(void) {
         return;
     }
 #endif
-    pimoroni_trackball_led_off(); 
+    pimoroni_trackball_led_off();
 }

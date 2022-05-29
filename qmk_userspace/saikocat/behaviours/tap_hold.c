@@ -95,6 +95,10 @@ __attribute__((weak)) bool get_ignore_mod_tap_interrupt(uint16_t keycode, keyrec
         case HR_Z:
         case HR_SLSH:
             return true;
+        case SPC_SFT:
+        case SPC_RSFT:
+        case QUOT_CTL:
+            return true;
         default:
             return false;
     }

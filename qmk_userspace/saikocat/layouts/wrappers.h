@@ -106,11 +106,15 @@
 
 #define ________________MOUSE_BUTTON_______________       TB_SCR,  TB_MCL,  TB_RCL,  TB_LCL,  TB_RCL
 
-#define ________________HOME_ROW___________________       KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, _______
+#define ________________HOME_ROW_L_________________       KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, _______
+#define ________________HOME_ROW_R_________________       _______, KC_RCTL, KC_RSFT, KC_RALT, KC_RGUI
+#define ________________HOME_ROW_OSM_L_____________       OSM(MOD_LGUI), OSM(MOD_LALT), OSM(MOD_LSFT), OSM(MOD_LCTL), _______
+#define ________________HOME_ROW_OSM_R_____________       _______,       OSM(MOD_RCTL), OSM(MOD_RSFT), OSM(MOD_RALT), OSM(MOD_RGUI)
 
 #define ___________________BLANK___________________       _______, _______, _______, _______, _______
 
-#define ______________THUMBCLUSTER_3x3_L___________       ESC_ALT,    SPC_LWR,  BSPC_NUM
-#define ______________THUMBCLUSTER_3x3_R___________       KC_SFTENT,  SPC_RSE,  COLN_ADJ
+#define ______________THUMBCLUSTER_3x3_L___________       ESC_ALT, DEL_LWR, BSPC_NUM
+#define ______________THUMBCLUSTER_3x3_R___________       SPC_RSFT, SPC_RSE, COLN_ADJ
+#define ______________THUMBCLUSTER_3x3_GAME_R______       KC_ENT,  SPC_RSE, COLN_ADJ
 
 // clang-format on

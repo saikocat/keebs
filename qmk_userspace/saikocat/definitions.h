@@ -40,6 +40,7 @@ enum userspace_layers {
 enum userspace_custom_keycodes {
     QMK_BEST = SAFE_RANGE,
     ALT_TAB,
+    TB_SCR,
     COLN_ADJ = LT(_ADJUST, KC_SCLN),
     SPC_LWR  = LT(_LOWER, KC_SPC),
     BSPC_LWR = LT(_LOWER, KC_BSPC),
@@ -54,11 +55,15 @@ enum userspace_custom_keycodes {
     BSPC_NUM = LT(_NUM, KC_BSPC),
     ESC_ALT  = LALT_T(KC_ESC),
     QUOT_CTL = MT(MOD_RCTL, KC_QUOTE),
+    KCE_SFT  = MT(MOD_RSFT, KC_E),
+    SPC_SFT  = MT(MOD_LSFT, KC_SPC),
+    SPC_RSFT = RSFT_T(KC_SPC),    
+    ENT_SFT  = MT(MOD_RSFT, KC_ENTER),
+
     /* Trackball: Scroll, Left Click, Right Click, Middle Click */
-    TB_SCR,
-    TB_LCL,
-    TB_RCL,
-    TB_MCL,
+    TB_LCL = KC_MS_BTN1,
+    TB_RCL = KC_MS_BTN2,
+    TB_MCL = KC_MS_BTN3,
     /* Home row mods left hand */
     HR_Z = LGUI_T(KC_Z),
     HR_A = LGUI_T(KC_A),
@@ -80,4 +85,6 @@ enum userspace_custom_keycodes {
     HR_E = RSFT_T(KC_E),
     HR_I = LALT_T(KC_I),
     HR_O = RGUI_T(KC_O),
+
+    NEW_SAFE_RANGE,
 };

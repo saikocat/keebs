@@ -204,6 +204,9 @@ __attribute__((weak)) void post_process_record_keymap(uint16_t keycode, keyrecor
             if (record->event.pressed && layer_state_is(_LOWER)) {
                 layer_off(_LOWER);
             }
+            if (record->event.pressed && layer_state_is(_RAISE)) {
+                layer_off(_RAISE);
+            }
             break;
     }
 }

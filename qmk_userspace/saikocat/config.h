@@ -40,24 +40,28 @@
 #define NO_MUSIC_MODE
 #undef LOCKING_SUPPORT_ENABLE
 #undef LOCKING_RESYNC_ENABLE
-// #define NO_ACTION_ONESHOT 
+// #define NO_ACTION_ONESHOT
 
-/* Split keyboard setting */
-#if defined(SPLIT_KEYBOARD)
-#    define EE_HANDS
-#    define SPLIT_LAYER_STATE_ENABLE
-#    define SPLIT_LED_STATE_ENABLE
-#    define SPLIT_MODS_ENABLE
-#    ifdef WPM_ENABLE
-#        define SPLIT_WPM_ENABLE
-#    endif
-#    ifdef OLED_ENABLE
-#        ifndef SLAVE_OLED_MASTER_TRACKBALL
-#            define SPLIT_OLED_ENABLE
-#        endif
-#    endif
-#    ifdef CUSTOM_SPLIT_TRANSPORT_SYNC
-#        define SPLIT_TRANSACTION_IDS_USER RPC_ID_USER_STATE_SYNC
+#ifndef NO_ACTION_ONESHOT
+#    define ONESHOT_TIMEOUT 2000
+#endif
+
+/* Pimoroni Trackball */
+/* Default configurations
+ *
+ * #define PIMORONI_TRACKBALL_SCALE 5             // 5 is default, I personally prefer 3 which feels a little smoother.
+ * #define PIMORONI_TRACKBALL_DEBOUNCE_CYCLES 20  // number of cycles to stop motion after clicking. 20 x 8 (INTERVAL) so 160ms.
+ * #define PIMORONI_TRACKBALL_ERROR_COUNT 10      // stops trying to read from the pimoroni after this many faults.
+ */
+#ifdef PIMORONI_TRACKBALL_ENABLE
+#    define POINTING_DEVICE_ROTATION_90
+#    define PIMORONI_TRACKBALL_SCALE 4
+#endif
+
+#ifdef POINTING_DEVICE_ENABLE
+#    ifdef SPLIT_KEYBOARD
+#        // define SPLIT_POINTING_ENABLE
+#        define POINTING_DEVICE_RIGHT
 #    endif
 #endif
 
@@ -70,6 +74,9 @@
 #        undef OLED_UPDATE_INTERVAL
 #    endif
 #    ifdef SPLIT_KEYBOARD
+#        ifndef POINTING_DEVICE_RIGHT
+#            define SPLIT_OLED_ENABLE
+#        endif
 #        define OLED_UPDATE_INTERVAL 60
 #    else
 #        define OLED_UPDATE_INTERVAL 15
@@ -93,22 +100,22 @@
 #    endif
 #endif
 
+/* Split keyboard setting */
+#if defined(SPLIT_KEYBOARD)
+#    define EE_HANDS
+#    define SPLIT_LAYER_STATE_ENABLE
+#    define SPLIT_LED_STATE_ENABLE
+#    define SPLIT_MODS_ENABLE
+#    ifdef WPM_ENABLE
+#        define SPLIT_WPM_ENABLE
+#    endif
+#    ifdef CUSTOM_SPLIT_TRANSPORT_SYNC
+#        define SPLIT_TRANSACTION_IDS_USER RPC_ID_USER_STATE_SYNC
+#    endif
+#endif
+
 /* Combo */
 #if defined(COMBO_ENABLE)
 #    define COMBO_TERM 25
 #    define COMBO_ONLY_FROM_LAYER 0
-#endif
-
-/* Pimoroni Trackball */
-/* Default configurations
- *
- * #define PIMORONI_TRACKBALL_INTERVAL_MS 8       // change update rate for trackball, from testing update rate seems to be limited to around 250. Updating more frequently will slow down the keyboard.
- * #define PIMORONI_TRACKBALL_SCALE 5             // 5 is default, I personally prefer 3 which feels a little smoother.
- * #define PIMORONI_TRACKBALL_DEBOUNCE_CYCLES 20  // number of cycles to stop motion after clicking. 20 x 8 (INTERVAL) so 160ms.
- * #define PIMORONI_TRACKBALL_ERROR_COUNT 10      // stops trying to read from the pimoroni after this many faults.
- */
-#ifdef PIMORONI_TRACKBALL_ENABLE
-#    define POINTING_DEVICE_ROTATION_90
-#    define PIMORONI_TRACKBALL_SCALE 4
-#    define PIMORONI_TRACKBALL_INTERVAL_MS 4
 #endif

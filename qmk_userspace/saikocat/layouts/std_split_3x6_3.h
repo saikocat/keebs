@@ -31,14 +31,14 @@
 #define __LAYOUT_SPLIT_3x6_3__QWERTY \
     KC_TAB,  _________________QWERTY_L1_________________,        _________________QWERTY_R1_________________, KC_BSPC,  \
     KC_LCTL, _________________QWERTY_L2_________________,        _________________QWERTY_R2_________________, QUOT_CTL, \
-    KC_LSFT, _________________QWERTY_L3_________________,        _________________QWERTY_R3_________________, KC_DEL,   \
+    KC_LSFT, _________________QWERTY_L3_________________,        _________________QWERTY_R3_________________, ENT_SFT,   \
              ______________THUMBCLUSTER_3x3_L___________,        ______________THUMBCLUSTER_3x3_R___________
 
 
 #define __LAYOUT_SPLIT_3x6_3__QWERTY__HR \
     KC_TAB,  _________________QWERTY_L1_________________,        _________________QWERTY_R1_________________, KC_BSPC,  \
     KC_LCTL, _________________QWERTY_HR_ALT_L2__________,        _________________QWERTY_HR_ALT_R2__________, QUOT_CTL, \
-    KC_LSFT, _________________QWERTY_HR_ALT_L3__________,        _________________QWERTY_HR_ALT_R3__________, KC_DEL,   \
+    KC_LSFT, _________________QWERTY_HR_ALT_L3__________,        _________________QWERTY_HR_ALT_R3__________, ENT_SFT,   \
              ______________THUMBCLUSTER_3x3_L___________,        ______________THUMBCLUSTER_3x3_R___________
 
 
@@ -56,14 +56,14 @@
 #define __LAYOUT_SPLIT_3x6_3__COLEMAK_DH \
     KC_TAB,  ______________COLEMAK_MOD_DH_L1____________,        ______________COLEMAK_MOD_DH_R1____________, KC_BSPC,  \
     KC_LCTL, ______________COLEMAK_MOD_DH_L2____________,        ______________COLEMAK_MOD_DH_R2____________, QUOT_CTL, \
-    KC_LSFT, ______________COLEMAK_MOD_DH_L3____________,        ______________COLEMAK_MOD_DH_R3____________, KC_DEL,   \
+    KC_LSFT, ______________COLEMAK_MOD_DH_L3____________,        ______________COLEMAK_MOD_DH_R3____________, ENT_SFT,   \
              ______________THUMBCLUSTER_3x3_L___________,        ______________THUMBCLUSTER_3x3_R___________
 
 
 #define __LAYOUT_SPLIT_3x6_3__COLEMAK_DH__HR \
     KC_TAB,  ______________COLEMAK_MOD_DH_L1____________,        ______________COLEMAK_MOD_DH_R1____________, KC_BSPC,  \
     KC_LCTL, ______________COLEMAK_MOD_DH_HR_ALT_L2_____,        ______________COLEMAK_MOD_DH_HR_ALT_R2_____, QUOT_CTL, \
-    KC_LSFT, ______________COLEMAK_MOD_DH_HR_ALT_L3_____,        ______________COLEMAK_MOD_DH_HR_ALT_R3_____,  KC_DEL,  \
+    KC_LSFT, ______________COLEMAK_MOD_DH_HR_ALT_L3_____,        ______________COLEMAK_MOD_DH_HR_ALT_R3_____, ENT_SFT,  \
              ______________THUMBCLUSTER_3x3_L___________,        ______________THUMBCLUSTER_3x3_R___________
 
 
@@ -82,7 +82,7 @@
     KC_TAB,  _________________QWERTY_L1_________________,        ___________________BLANK___________________, _______,   \
     KC_LCTL, _________________QWERTY_L2_________________,        ___________________BLANK___________________, _______,   \
     KC_LSFT, _________________QWERTY_L3_________________,        ___________________BLANK___________________, A(KC_TAB), \
-                           SH_MON, KC_SPC, MO(_GAME_NUM),        ______________THUMBCLUSTER_3x3_R___________
+                           SH_MON, MO(_GAME_NUM), KC_SPC,        KC_ENT, SPC_RSE, COLN_ADJ
 
 
 
@@ -100,8 +100,7 @@
     KC_ESC,    _________________SYMBOL_L1_________________,        _________________SYMBOL_R1_________________, _______, \
     _______,   _________________SYMBOL_L2_________________,        _________________SYMBOL_R2_________________, KC_DQUO, \
     KC_SFTENT, _________________SYMBOL_L3_________________,        _________________SYMBOL_R3_________________, _______, \
-                                  SH_MON, _______, _______,        _______, MO(_SYMNUM), _______
-
+                                  SH_MON, _______, _______,        KC_ENT, MO(_SYMNUM), MO(_SPECIAL)
 
 
 /* ,-----------------------------------------.                ,-----------------------------------------.
@@ -206,6 +205,6 @@
     _______, ________________NUMBER_LEFT________________,        ________________NUMBER_RIGHT_______________,  _______, \
     _______, ________________SYMBOL_LEFT________________,        ________________SYMBOL_RIGHT_______________,  _______, \
     _______, _______, _______, KC_LCBR, KC_RCBR, _______,        _______, KC_LBRC, KC_RBRC, KC_MINS, KC_EQL,   _______, \
-                               _______, _______, _______,        _______,  _______, _______
+                               _______, _______, _______,        _______, _______, _______
 
 // clang-format on
