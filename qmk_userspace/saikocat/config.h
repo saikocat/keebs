@@ -119,3 +119,10 @@
 #    define COMBO_TERM 25
 #    define COMBO_ONLY_FROM_LAYER 0
 #endif
+
+/* Caps Word */
+#if defined(CAPS_WORD_ENABLE)
+#    define CAPS_WORD_IDLE_TIMEOUT 3000
+#    define DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD
+#    define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
+#endif

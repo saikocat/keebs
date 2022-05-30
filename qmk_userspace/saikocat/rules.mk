@@ -49,27 +49,23 @@ ifeq ($(strip $(CUSTOM_COMBO_ENABLE)), yes)
 	SRC += combos/combos.c
 endif
 
-# Caps Word
-CAPS_WORD_ENABLE ?= yes
-ifeq ($(strip $(CAPS_WORD_ENABLE)), yes)
-	OPT_DEFS += -DCAPS_WORD_ENABLE
-	SRC += features/caps_word.c
-else
-	CAPS_WORD_ENABLE ?= yes
-endif
+# Caps Word: QMK >= 0.17.0
+CAPS_WORD_ENABLE = yes
+SRC += features/caps_word.c
 
 # Enable custom OLED features
-ifeq ($(strip $(OLED_ENABLE)), yes)
+ifeq ($(strip $(CUSTOM_OLED_ENABLE)), yes)
 	OLED_ENABLE = yes
 	OLED_DRIVER ?= SSD1306
+	OPT_DEFS += -DOLED_ENABLE
 	SRC += features/oled.c
-    $(info 'OLED_ENABLE' is $(OLED_ENABLE))
+    $(info 'OLED_ENABLE' is $(CUSTOM_OLED_ENABLE))
 
-	ifeq ($(OLED_CUSTOM_MASCOT), neko)
-		OPT_DEFS += -DOLED_CUSTOM_MASCOT
+	ifeq ($(CUSTOM_OLED_MASCOT), neko)
+		OPT_DEFS += -DCUSTOM_OLED_MASCOT
 		SRC += features/oled_mascot_neko.c
 
-        $(info 'OLED_CUSTOM_MASCOT' is $(OLED_CUSTOM_MASCOT))
+        $(info 'CUSTOM_OLED_MASCOT' is $(CUSTOM_OLED_MASCOT))
 	endif
 endif
 

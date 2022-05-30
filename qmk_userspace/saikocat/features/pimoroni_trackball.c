@@ -113,7 +113,7 @@ __attribute__((weak)) report_mouse_t pointing_device_task_user(report_mouse_t mo
     }
 #endif
 
-    if (has_mouse_report_changed(last_mouse_report, mouse_report)) {
+    if (has_mouse_report_changed(&last_mouse_report, &mouse_report)) {
         last_mouse_activity_timer = timer_read32();
         memcpy(&last_mouse_report, &mouse_report, sizeof(mouse_report));
         pimoroni_trackball_led_update_colours();
